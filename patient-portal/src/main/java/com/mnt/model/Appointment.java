@@ -20,7 +20,7 @@ public class Appointment extends Model {
 	public Long id;
 	
 	// Day of Appointment 
-	public int date;
+	public int appointmentDate;
 	public int month;
 	public int year;
 	
@@ -67,7 +67,7 @@ public class Appointment extends Model {
 		appointment.appointmentOf_Type = appointmentOf_Type;
 		appointment.appointmentWith_Id = appointmentWith_Id;
 		appointment.appointmentWith_Type = appointmentWith_Type;
-		appointment.date = day.get(Calendar.DATE);
+		appointment.appointmentDate = day.get(Calendar.DATE);
 		appointment.month = day.get(Calendar.MONTH);
 		appointment.year = day.get(Calendar.YEAR);
 		appointment.startMin = startMin;
@@ -84,12 +84,12 @@ public class Appointment extends Model {
 		this.id = id;
 	}
 
-	public int getDate() {
-		return date;
+	public int getAppointmentDate() {
+		return appointmentDate;
 	}
 
-	public void setDate(int date) {
-		this.date = date;
+	public void setAppointmentDate(int date) {
+		this.appointmentDate = date;
 	}
 
 	public int getMonth() {

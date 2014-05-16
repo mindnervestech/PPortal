@@ -1,0 +1,214 @@
+<div class="container">
+	<form class="form-horizontal">
+		<h3>Demographics</h3>
+		
+		<div class="form-group">
+			<label class="col-sm-4 control-label">Patient SSN</label>
+			<div class="col-sm-4">
+				<input name="masked" ui-mask="999-99-9999" ng-model="x" class="form-control" style="vertical-align: top;">
+				<div class="help-inline"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Patient Date of Birth</label>
+		     <div class="col-sm-4">
+				  <input type="text"  role="button"  class="form-control col-sm-10" data-toggle="dropdown" value="{{demographicForm.pdob | date:'MMMM-dd-yyyy' || 'DOB'}}" placeholder="MMMM-dd-yyyy">
+   				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+   	 			     <datetimepicker  data-ng-model="demographicForm.pdob" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
+ 				  </ul>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Patient Gender</label>
+		     <div class="col-sm-4">
+		         <select class="form-control" ng-model="demographicForm.gender" ng-options="g as g.label for g in genders">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Race</label>
+		     <div class="col-sm-4">
+		         <select class="form-control" ng-model="demographicForm.race" ng-options="r as r.label for r in races">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Ethnicity</label>
+		     <div class="col-sm-4">
+		         <select class="form-control" ng-model="demographicForm.ethnicity" ng-options="e as e.label for e in ethnicities">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Preferred Language</label>
+		     <div class="col-sm-4">
+		         <select class="form-control" ng-model="demographicForm.prefLang" ng-options="e as e.label for e in preferLanguages">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Patient Student Status</label>
+		     <div class="col-sm-4">
+		         <select class="form-control" ng-model="demographicForm.stdstatus" ng-options="e as e.label for e in stdstatuses">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Country</label>
+		     <div class="col-sm-4">
+		         <select class="form-control" ng-model="demographicForm.country" ng-options="c as c.label for c in countries">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Street Address</label>
+		     <div class="col-sm-4">
+				 <textarea rows="3" cols="55"></textarea>				 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Zip Code</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control">		 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">City</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control">		 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">State</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control">		 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">State</label>
+		     <div class="col-sm-4">
+				 <input type="text" readonly="readonly" class="form-control">		 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Mail Address</label>
+		     <div class="col-sm-4">
+				 <textarea rows="3" cols="55"></textarea>				 
+		     </div>
+		     <span class="col-sm-4">*If different from address. Only valid for US addresses.</span>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Mail Zip Code</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control">		 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Mail City</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control">		 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Mail State</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control">		 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Notes</label>
+		     <div class="col-sm-4">
+				 <textarea rows="3" cols="55"></textarea>				 
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Patient Marital Status</label>
+		     <div class="col-sm-4">
+		         <select class="form-control" ng-model="demographicForm.marStatus" ng-options="m as m.label for m in maritalStatuses">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">EPSDT Services</label>
+		     <div class="col-sm-4">
+		         <select class="form-control" ng-model="demographicForm.epsdt" ng-options="e as e.label for e in epsdtservices">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Emergency Contact Name</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control">		 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Emergency Contact Phone</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control">		 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Emergency Contact Relation</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control">		 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+	</form>
+</div>

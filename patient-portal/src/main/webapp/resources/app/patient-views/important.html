@@ -1,0 +1,232 @@
+<div class="container">
+	<form class="form-horizontal">
+		<h3>Important Information</h3>
+		
+		<div class="form-group">
+			<label class="col-sm-4 control-label">Status</label>
+			<div class="col-sm-4">
+				<select class="form-control" ng-model="importantForm.status" ng-options="status as status.label for status in statuses">
+		
+				</select>
+				<div class="help-inline"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-4 control-label">Title</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" id="title" placeholder="Title">
+				<div class="help-inline"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-4 control-label">First Name</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" placeholder="First Name">
+				<div class="help-inline"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-4 control-label">Nick Name</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" placeholder="Nick Name">
+				<div class="help-inline"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-4 control-label">Middle Name</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" placeholder="Middle Name">
+				<div class="help-inline"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-4 control-label">Last Name</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" placeholder="Last Name">
+				<div class="help-inline"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-4 control-label">Suffix</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" placeholder="Suffix">
+				<div class="help-inline"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-4 control-label">Home Phone</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" placeholder="Home Phone">
+				<div class="help-inline"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-4 control-label">Cell Phone</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" placeholder="Cell Phone">
+				<div class="help-inline"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Disable SMS/Txt</label>
+		     <div class="col-sm-4 checkbox">
+		         <input type="checkbox">
+		         <span class="help-inline">Disable all SMS/Txt messages for this user. </span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-4 control-label">Office Phone</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" placeholder="Office Phone">
+				<div class="help-inline"></div>
+			</div>
+			
+			<label class="col-sm-2 control-label">Office Phone</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" placeholder="Office Phone">
+				<div class="help-inline"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Email</label>
+		     <div class="col-sm-4 checkbox">
+		         <input type="text" class="form-control" placeholder="Email">
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label"></label>
+		     <div class="col-sm-4 checkbox">
+		          <input type="checkbox">
+		         <span class="help-inline">Allow Duplicate Email</span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Alternate Email</label>
+		     <div class="col-sm-4 checkbox">
+		         <input type="text" class="form-control" placeholder="Alternate Email">
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Preferred Communication</label>
+		     <div class="col-sm-4 checkbox">
+		         <select class="form-control" ng-model="importantForm.comm" ng-options="comm as comm.label for comm in communications">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Reminder Language</label>
+		     <div class="col-sm-4 checkbox">
+		         <select class="form-control" ng-model="importantForm.language" ng-options="language as language.label for language in languages">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Patient Chart photo</label>
+		     <div class="col-sm-4 file">
+		         <input type="file">
+		     </div>
+		     <span class="col-sm-4">Will be attached to patient's chart on iPad EMR.</span>
+		</div>
+		
+		<hr>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Medication History Consent</label>
+		     <div class="col-sm-4">
+		         <select class="form-control" ng-model="importantForm.consent" ng-options="yn as yn.label for yn in YesNos">
+				 	
+				 </select>
+		     </div>
+		     <span class="col-sm-4">Patient has given consent to obtain medication history.</span>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Payment Profile</label>
+		     <div class="col-sm-4">
+				 	<select class="form-control"  ng-model="importantForm.payment" ng-options="payment as payment.label for payment in paymentModes">
+						
+					</select>
+		     </div>
+		     <span class="col-sm-4">*affects default procedure prices</span>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Patient's Copay $</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control" placeholder="Patient's Copay">
+				 <span class="help-inline"></span>	
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Default Appointment Profile</label>
+		     <div class="col-sm-4">
+				 <select class="form-control">
+				 	<option>----</option>
+				 </select>
+				 <span class="help-inline"></span>	
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Follow-up Date</label>
+		     <div class="col-sm-4">
+				  <input type="text"  role="button"  class="form-control col-sm-10" data-toggle="dropdown" value="{{importantForm.follow | date:'MMMM-dd-yyyy' || 'Last'}}" placeholder="MMMM-dd-yyyy">
+   				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+   	 			     <datetimepicker  data-ng-model="importantForm.follow" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
+ 				  </ul>
+		     </div>
+		     <span class="col-sm-4">Patient will get reminders around this date to make an appointment</span>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Follow-up Reason</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control" placeholder="Follow-up Reason">
+		     </div>
+		     <span class="help-inline">e.g. 2 week follow-up</span>	
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-4 control-label">Last Appointment</label>
+		     <div class="col-sm-4">
+				  <input type="text"  role="button"  class="form-control col-sm-10" data-toggle="dropdown" value="{{importantForm.lastApt | date:'MMMM-dd-yyyy' || 'Last'}}" placeholder="MMMM-dd-yyyy">
+   				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+   	 			     <datetimepicker  data-ng-model="importantForm.lastApt" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
+ 				  </ul>
+		     </div>
+		</div>
+		
+		<hr>
+		
+		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-10">
+				<button type="button" class="btn btn-primary">Save Demographics</button>
+			</div>
+		</div>
+	</form>
+</div>

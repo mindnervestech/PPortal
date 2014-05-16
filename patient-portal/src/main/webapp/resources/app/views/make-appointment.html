@@ -1,0 +1,95 @@
+
+<form class="form-horizontal" role="form">
+	<div class="form-group">
+		<label for="primaryDoctor" class="col-sm-2 control-label">Primary Doctor</label>
+		 <div class="col-sm-8">
+		 	<select class="form-control" id="primaryDoctor" data-ng-change="choosePrimaryDoctor()" 
+					data-ng-model="appointmentForm.primaryDoctor" 
+					data-ng-options="a.value as a.text for a in primaryDoctorOption">
+					
+			</select>
+    	</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="specialty" class="col-sm-2 control-label">Specialty Required</label>
+		 <div class="col-sm-3">
+		 	<select class="form-control" id="specialty" data-ng-change="chooseSpecialty()" 
+					data-ng-model="appointmentForm.specialty" 
+					data-ng-options="a.value as a.text for a in specialtiesOption">
+			</select>
+    	</div>
+    	
+    	<label for="doctorName" class="col-sm-2 control-label">Doctor Name</label>
+		 <div class="col-sm-3">
+		 	<select class="form-control" id="doctorName" data-ng-change="chooseDoctor()" 
+					data-ng-model="appointmentForm.doctor" 
+					data-ng-options="a.value as a.text for a in doctorsOption">
+			</select>
+    	</div>
+	</div>
+	
+	<div class="form-group dropdown">
+		<label for="appointmentDate" class="col-sm-2 control-label">Appointment Date</label>
+		<div class="col-sm-6">
+		 	<input  readonly="readonly" type="text" class="input-sm form-control dropdown-toggle textStyle" 
+		 	data-toggle="dropdown" value="{{appointmentForm.appointmentDate | date:'MMMM-dd-yyyy' || 'Choose Appoitment Date'}}" placeholder="Choose Appoitment Date">
+		 	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		   		<datetimepicker  data-ng-model="appointmentForm.appointmentDate" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
+			</ul>
+		 </div>
+		 <div class="col-sm-2">
+			<button data-ng-disabled = "appointmentForm.appointmentDate.length > 4" data-ng-click="checkAvailability()"> Check Availability</button>
+		 </div>
+	</div>
+	
+	<div class="form-group">
+		<label for="appointmentDate" class="col-sm-2 control-label">Appointment Slots</label>
+		<div class="col-sm-8">
+			<button 
+			data-ng-disabled="slot.status == 'BOOKED'" 
+			data-ng-click="markAppoitment(slot)" 
+			data-ng-class="(slot.status=='BOOKED') ? 'btn-danger' : (slot.status == 'REQUESTED') ? 'btn-warning' : 'btn-default'" 
+			data-ng-repeat="slot in slots" >{{slot.startTime}} - {{slot.endTime}}
+			</button>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="visitType" class="col-sm-2 control-label">Visit Type</label>
+		 <div class="col-sm-3">
+		 	<select class="form-control" id="visitType"  
+					data-ng-model="appointmentForm.visitType" 
+					data-ng-options="a.value as a.text for a in visitTypeOption">
+			</select>
+    	</div>
+    	
+    	<label for="email" class="col-sm-2 control-label">Email</label>
+		<div class="col-sm-3">
+		 	<input  type="text" id="email" class="input-sm form-control dropdown-toggle textStyle" 
+		 	 placeholder="enter email">
+		 	
+		 </div>
+	</div>
+	
+	<div class="form-group">
+		<label for="notes" class="col-sm-2 control-label">Notes</label>
+		 <div class="col-sm-10">
+		 	<textarea class="form-control" id="notes" data-ng-model="appointmentForm.notes">
+			</textarea>
+    	</div>
+	</div>
+	
+	<div class="form-group">
+	 <label for="book" class="col-sm-2 control-label"></label>
+	 <div class="col-sm-2">
+		<button  class="btn-primary form-control" data-ng-click="bookAppoitment()">Book</button>
+	 </div>	
+	</div>
+	
+</form>
+
+
+
+	
+

@@ -5,7 +5,7 @@
 		<div class="form-group">
 			<label class="col-sm-4 control-label">Status</label>
 			<div class="col-sm-4">
-				<select class="form-control" ng-model="importantForm.status" ng-options="status as status.label for status in statuses">
+				<select class="form-control" ng-model="importantForm.status" ng-options="status as status.label for status in metadatas.statuses">
 		
 				</select>
 				<div class="help-inline"></div>
@@ -136,7 +136,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-4 control-label">Reminder Language</label>
 		     <div class="col-sm-4 checkbox">
-		         <select class="form-control" ng-model="importantForm.language" ng-options="language as language.label for language in languages">
+		         <select class="form-control" ng-model="importantForm.language" ng-options="language as language.label for language in metadatas.languages">
 					
 				 </select>
 				 
@@ -167,7 +167,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-4 control-label">Payment Profile</label>
 		     <div class="col-sm-4">
-				 	<select class="form-control"  ng-model="importantForm.payment" ng-options="payment as payment.label for payment in paymentModes">
+				 	<select class="form-control"  ng-model="importantForm.payment" ng-options="payment as payment.label for payment in metadatas.paymentModes">
 						
 					</select>
 		     </div>

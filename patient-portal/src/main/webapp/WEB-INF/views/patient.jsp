@@ -8,6 +8,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/patient-dependency/bootstrap-3.1.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/patient-dependency/bootstrap-3.1.1/css/bootstrap-theme.min.css">
+		<link  href="${pageContext.request.contextPath}/resources/app/bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/patient-dependency/angular-bootstrap-datetimepicker/src/css/datetimepicker.css"/>
 		<title>Form Screens</title>
 	</head>
@@ -25,6 +26,7 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/app/patient-dependency/moment/moment.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/app/patient-dependency/angular-ui-utils/ui-utils.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/app/patient-dependency/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/app/bower_components/angular-xeditable/dist/js/xeditable.js"></script>
 	<!-- End dependency js here -->
 		<div id="content" ng-view="">
     	

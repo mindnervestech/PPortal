@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.mnt.metadata.Communication;
+import com.mnt.metadata.Country;
 import com.mnt.metadata.EpsdtServices;
 import com.mnt.metadata.Ethnicities;
 import com.mnt.metadata.Gender;
@@ -55,6 +56,7 @@ public class MetaDataServiceImpl implements MetaDataService {
 		List<Races> races = Races.getAllRaces();
 		List<StudentStatus> studentStatus = StudentStatus.getAllStudentStatuses();
 		List<YesNos> yesNos = YesNos.getAllYesNos();
+		List<Country> countries = Country.getAllCountries();
 		
 		MetadataVM metadata = new MetadataVM();
 		List<DropdownVM> dropdownVM = new ArrayList<>();
@@ -140,6 +142,13 @@ public class MetaDataServiceImpl implements MetaDataService {
 			dropdownVM.add(vm);
 		}
 		metadata.setYesNos(dropdownVM);
+		
+		dropdownVM = new ArrayList<>();
+		for(Country c : countries) {
+			DropdownVM vm = new DropdownVM(c.getLabel(), c.getValue());
+			dropdownVM.add(vm);
+		}
+		metadata.setCountries(dropdownVM);
 		
 		return metadata;
 	}

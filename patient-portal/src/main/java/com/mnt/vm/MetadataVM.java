@@ -15,6 +15,7 @@ public class MetadataVM {
 	public List<DropdownVM> races;
 	public List<DropdownVM> studentStatuses;
 	public List<DropdownVM> yesNos;
+	public List<DropdownVM> countries;
 	
 	public MetadataVM() {}
 	
@@ -64,5 +65,9 @@ public class MetadataVM {
 
 	public void setLanguages(List<DropdownVM> languages) {
 		this.languages = languages;
+	}
+
+	public void setCountries(List<DropdownVM> countries) {
+		this.countries = countries;
 	}
 }

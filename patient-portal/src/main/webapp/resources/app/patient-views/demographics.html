@@ -23,7 +23,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-4 control-label">Patient Gender</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.gender" ng-options="g as g.label for g in genders">
+		         <select class="form-control" ng-model="demographicForm.gender" ng-options="g as g.label for g in metadatas.genders">
 					
 				 </select>
 				 
@@ -34,7 +34,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-4 control-label">Race</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.race" ng-options="r as r.label for r in races">
+		         <select class="form-control" ng-model="demographicForm.race" ng-options="r as r.label for r in metadatas.races">
 					
 				 </select>
 				 
@@ -45,7 +45,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-4 control-label">Ethnicity</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.ethnicity" ng-options="e as e.label for e in ethnicities">
+		         <select class="form-control" ng-model="demographicForm.ethnicity" ng-options="e as e.label for e in metadatas.ethnicities">
 					
 				 </select>
 				 
@@ -56,7 +56,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-4 control-label">Preferred Language</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.prefLang" ng-options="e as e.label for e in preferLanguages">
+		         <select class="form-control" ng-model="demographicForm.prefLang" ng-options="e as e.label for e in metadatas.preferLanguages">
 					
 				 </select>
 				 
@@ -67,7 +67,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-4 control-label">Patient Student Status</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.stdstatus" ng-options="e as e.label for e in stdstatuses">
+		         <select class="form-control" ng-model="demographicForm.stdstatus" ng-options="e as e.label for e in metadatas.studentStatuses">
 					
 				 </select>
 				 
@@ -78,7 +78,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-4 control-label">Country</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.country" ng-options="c as c.label for c in countries">
+		         <select class="form-control" ng-model="demographicForm.country" ng-options="c as c.label for c in metadatas.countries">
 					
 				 </select>
 				 
@@ -119,7 +119,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">State</label>
+		  	 <label class="col-sm-4 control-label">Formatted Address</label>
 		     <div class="col-sm-4">
 				 <input type="text" readonly="readonly" class="form-control">		 
 		         <span class="help-inline"></span>
@@ -168,7 +168,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-4 control-label">Patient Marital Status</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.marStatus" ng-options="m as m.label for m in maritalStatuses">
+		         <select class="form-control" ng-model="demographicForm.marStatus" ng-options="m as m.label for m in metadatas.maritalStatus">
 					
 				 </select>
 				 
@@ -179,7 +179,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-4 control-label">EPSDT Services</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.epsdt" ng-options="e as e.label for e in epsdtservices">
+		         <select class="form-control" ng-model="demographicForm.epsdt" ng-options="e as e.label for e in metadatas.epsdts">
 					
 				 </select>
 				 

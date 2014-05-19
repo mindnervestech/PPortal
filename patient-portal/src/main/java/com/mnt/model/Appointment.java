@@ -14,13 +14,14 @@ import play.db.ebean.Model;
 @Entity
 public class Appointment extends Model {
 	
-	public static Model.Finder<Long,Appointment> find = new Model.Finder<Long,Appointment>(Long.class, Appointment.class);
+	// Don't make it Public
+	private static Model.Finder<Long,Appointment> find = new Model.Finder<Long,Appointment>(Long.class, Appointment.class);
 	
 	@Id
 	public Long id;
 	
 	// Day of Appointment 
-	public int appointmentDate;
+	public int date;
 	public int month;
 	public int year;
 	
@@ -59,7 +60,7 @@ public class Appointment extends Model {
 		
 	}
 
-	public static void makeAppointmentOfXForADayY(Long appointmentOf_Id, String appointmentOf_Type, 
+	public static Long makeAppointmentOfXForADayY(Long appointmentOf_Id, String appointmentOf_Type, 
 			Long appointmentWith_Id, String appointmentWith_Type, int startMin,int endMin, Calendar day) {
 		
 		Appointment appointment = new Appointment();
@@ -67,13 +68,14 @@ public class Appointment extends Model {
 		appointment.appointmentOf_Type = appointmentOf_Type;
 		appointment.appointmentWith_Id = appointmentWith_Id;
 		appointment.appointmentWith_Type = appointmentWith_Type;
-		appointment.appointmentDate = day.get(Calendar.DATE);
+		appointment.date = day.get(Calendar.DATE);
 		appointment.month = day.get(Calendar.MONTH);
 		appointment.year = day.get(Calendar.YEAR);
 		appointment.startMin = startMin;
 		appointment.endMin = endMin;
 		appointment.status = SlotStatus.AVAILABLE.name();
 		appointment.save();
+		return appointment.id;
 	}
 
 	public Long getId() {
@@ -84,12 +86,12 @@ public class Appointment extends Model {
 		this.id = id;
 	}
 
-	public int getAppointmentDate() {
-		return appointmentDate;
+	public int getDate() {
+		return date;
 	}
 
-	public void setAppointmentDate(int date) {
-		this.appointmentDate = date;
+	public void setDate(int date) {
+		this.date = date;
 	}
 
 	public int getMonth() {

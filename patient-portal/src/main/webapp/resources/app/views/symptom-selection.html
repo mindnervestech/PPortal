@@ -1,0 +1,103 @@
+<p><b>LOCATION:</b> Select other Area (s) if needed <br>
+    						
+    						<form role="form" id="symptom-form">
+    							<div class="form-group">
+									<label>Level One</label>
+									<select  
+										data-ng-change="updateLevelTwo()" 
+										data-ng-model="symptomFormArray[currentSymptomFormIndex].levelOneArea" 
+										data-ng-options="area.value as area.text for area in levelOneOption">
+									</select>
+								</div>
+    							<div class="form-group">
+									<label>Level Two</label>
+									<select 
+										data-ng-model="symptomFormArray[currentSymptomFormIndex].levelTwoArea"  
+										data-ng-options="area.value as area.text for area in levelTwoOption">
+									</select>
+								</div>
+								
+								<p><b>Please use details below to describe <b class="textRed" 
+								ng-bind="symptomFormArray[currentSymptomFormIndex].levelOneArea"></b> symptoms:</b></p>
+    						
+    							<div class="form-group">
+									<label>When Does This Happen</label>
+									<select data-ng-model="symptomFormArray[currentSymptomFormIndex].whenThisHappen"   
+											data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.whenThisHappen">
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Describe Pain</label>
+									<select  data-ng-model="symptomFormArray[currentSymptomFormIndex].painArea" 
+									         data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.painArea">
+									</select>
+									
+								</div>
+								<div class="form-group">
+									<label>Pain Lasts</label> 
+									<br>
+									<div class="col-sm-6">
+										<input type="number" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLasts">
+									</div>
+									<div class="col-sm-6">
+										<select data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit">
+										  <option selected="selected">Seconds</option>
+										  <option>Miniutes</option>
+										  <option>Hours</option>
+										  <option>Days</option>
+										</select>
+									</div>
+								<br class="clear">
+								</div>
+								<div class="severity form-group">
+									<b class="fa fa-smile-o"></b>
+									<div class="scrollarArea">
+										<input type="text" class="percent">
+										<div class="severityScrollar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 50%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 50%;"></a></div>
+									</div>
+									<b class="fa fa-frown-o"></b>
+								
+								<br class="clear">	
+								</div> 
+								<div class="form-group">
+									<label>Relieved By</label> 
+									<br>
+									<div class="col-sm-6">
+										<select 
+										data-ng-model="symptomFormArray[currentSymptomFormIndex].relievedBy"  
+										data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.relievedBy">
+									</select>
+									</div>
+								<br class="clear">
+								</div>
+								<div class="form-group">
+									<label>Made Worse By</label>
+									<select
+									data-ng-model="symptomFormArray[currentSymptomFormIndex].worseBy"  
+									data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.worseBy"></select>
+								</div>
+								<div class="form-group">
+									<label>Other Symptoms Associated with <b class="textRed">TODO</b></label>
+									<select
+									data-ng-model="symptomFormArray[currentSymptomFormIndex].associatedSymptoms"  
+									data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.associatedSymptoms"></select>
+								</div>
+                                <div class="text-center">
+                                	<a data-ng-click="doneSymptomSelection()" id="btnAddSympStep1" class="btn btnOrange"><b class="fa fa-check-circle-o">
+                                		</b> Done
+                                	</a>
+                                	<a data-ng-show="symptomFormArray.length < 3 && currentSymptomFormIndex + 1 == symptomFormArray.length" data-ng-click="addOtherSymptom()" class="btn btnOrange">
+                                		<b class="fa fa-check-circle-o"></b> Add Other Symptom
+                                	</a>
+                                	<a 
+                                		data-ng-show="(currentSymptomFormIndex == 0 && symptomFormArray.length >1) || (currentSymptomFormIndex == 1 && symptomFormArray.length > 2) || (currentSymptomFormIndex == 2 && symptomFormArray.length > 2)" 
+                                		data-ng-click="removeThisSymptom(currentSymptomFormIndex)" class="btn btnOrange">
+                                		<b class="fa fa-check-circle-o"></b> Remove This Symptom
+                                	</a>
+                                	<a data-ng-show="currentSymptomFormIndex +1 < symptomFormArray.length" 
+                                	data-ng-click="setcurrentSymptomFormIndex(currentSymptomFormIndex +1)" class="btn btnOrange">
+                                		<b class="fa fa-check-circle-o"></b> Next Symptom
+                                	</a>
+                                	<a id="btnAddSympStep1Close" class="btn btnGrey"><b class="fa fa-times-circle"></b> Cancel</a>
+                            	</div>
+                            </form>

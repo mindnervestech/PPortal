@@ -4,46 +4,47 @@ var app = angular.module('home-app');
 
 ///////////////////////// Search Service Start //////////////////////////////////
 
-app.controller('HomeController',function($scope, $filter, AppointmentSlotService, MetaDataService){
+app.controller('HomeController',function($scope, $location, $filter, AppointmentSlotService, MetaDataService){
 	
 	$scope.symptomFormArray = [];
 	$scope.currentSymptomFormIndex = 0;
 	
 	$scope.levelOneOption = [
-	                         {text:"Head" , value:1, sub:[
-	                                                        {text:"Scalp" , value:21},
-	                                                        {text:"Fore Head" , value:22},
-	                                                        {text:"Right Eye" , value:23},
-	                                                        {text:"Left Eye" , value:24},
-	                                                        {text:"Nose" , value:25},
-	                                                        {text:"Right Ear" , value:31},
-	                                                        {text:"Left Ear" , value:32},
-	                                                        {text:"Mouth" , value:30},
-	                                                        {text:"Jaws" , value:28},
-	                                                        {text:"Chin" , value:29},
-	                                                        {text:"Right Face" , value:26},
-	                                                        {text:"Left Face" , value:27}]},
-	                         {text:"Neck(Front)" , value:2, sub:[
-	                                                         {text:"Throat" , value:14},
-	                                                         {text:"Neck" , value:15}]},
-	                         {text:"Chest" , value:3, sub:[
-	                                                         {text:"Left Chest" , value:16},
-	                                                         {text:"Right Chest" , value:17}]},
-	                         {text:"Right Upper Arm" , value:4, sub:[{text:"" , value:""}]},
-	                         {text:"Left Upper  Arm" , value:5, sub:[{text:"" , value:""}]},
-	                         {text:"Abdomen" , value:6, sub:[{text:"" , value:""}]},
-	                         {text:"Right Lower Arm" , value:7, sub:[{text:"" , value:""}]},
-	                         {text:"Left Lower Arm" , value:8, sub:[{text:"" , value:""}]},
-	                         {text:"Pelvis" , value:9, sub:[{text:"" , value:""}]},
-	                         {text:"Right Thigh Area" , value:10, sub:[{text:"" , value:""}]},
-	                         {text:"Left Thigh Area" , value:11, sub:[{text:"" , value:""}]},
-	                         {text:"Right Calf Area" , value:12, sub:[{text:"" , value:""}]},
-	                         {text:"Left Calf Area" , value:13, sub:[{text:"" , value:""}]}
+	                         {text:"Head" , value:4, sub:[
+	                                                      	{text:"Choose" , value:null},
+	                                                        {text:"Scalp" , value:7},
+	                                                        {text:"Fore Head" , value:8},
+	                                                        {text:"Right Eye" , value:9},
+	                                                        {text:"Left Eye" , value:10},
+	                                                        {text:"Nose" , value:6},
+	                                                        {text:"Right Ear" , value:11},
+	                                                        {text:"Left Ear" , value:12},
+	                                                        {text:"Mouth" , value:5},
+	                                                        {text:"Jaws" , value:13},
+	                                                        {text:"Chin" , value:14},
+	                                                        {text:"Right Face" , value:15},
+	                                                        {text:"Left Face" , value:16}]},
+	                         {text:"Neck(Front)" , value:20, sub:[
+	                                                         {text:"Throat" , value:18},
+	                                                         {text:"Neck" , value:19}]},
+	                         {text:"Chest" , value:21, sub:[
+	                                                         {text:"Left Chest" , value:22},
+	                                                         {text:"Right Chest" , value:23}]},
+	                         {text:"Right Upper Arm" , value:1, sub:[{text:"" , value:""}]},
+	                         {text:"Left Upper  Arm" , value:30, sub:[{text:"" , value:""}]},
+	                         {text:"Abdomen" , value:25, sub:[{text:"" , value:""}]},
+	                         {text:"Right Lower Arm" , value:21, sub:[{text:"" , value:""}]},
+	                         {text:"Left Lower Arm" , value:22, sub:[{text:"" , value:""}]},
+	                         {text:"Pelvis" , value:23, sub:[{text:"" , value:""}]},
+	                         {text:"Right Thigh Area" , value:24, sub:[{text:"" , value:""}]},
+	                         {text:"Left Thigh Area" , value:31, sub:[{text:"" , value:""}]},
+	                         {text:"Right Calf Area" , value:32, sub:[{text:"" , value:""}]},
+	                         {text:"Left Calf Area" , value:28, sub:[{text:"" , value:""}]}
 	                         ];
 	
 	
 	$scope.symptomForm = {
-			levelOneArea : 1,
+			levelOneArea : 4,
 			levelTwoArea : 1,
 			painArea: 1,
 			whenThisHappen : 1
@@ -160,12 +161,26 @@ app.controller('HomeController',function($scope, $filter, AppointmentSlotService
 	$scope.bookAppoitment = function () {
 		$scope.appointmentForm.slot = $filter('filter')($scope.slots,{status:"REQUESTED"});
 		$scope.appointmentForm.appointmentWith = 1; // hardcodded for now
+		angular.foreach($scope.symptomFormArray, function(data){
+			data.metadata = ''; 
+		});;
 		AppointmentSlotService.BookAppointmentSlot.save({
 			appointment : $scope.appointmentForm,
 			symptoms : $scope.symptomFormArray
 		});
 	};
 	
+	
+	$scope.step = 1;
+	
+	$scope.doneSymptomSelection = function () {
+		$scope.step = 2;
+		
+	};
+	
+	$scope.gotoSymptomSelection = function () {
+		$scope.step = 1;
+	};
     
 	
 	

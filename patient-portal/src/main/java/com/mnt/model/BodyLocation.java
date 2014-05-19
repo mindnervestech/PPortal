@@ -6,9 +6,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.codehaus.jackson.annotate.JsonIgnoreType;
+import org.springframework.cache.annotation.Cacheable;
 
 import play.db.ebean.Model;
 
@@ -36,6 +37,17 @@ public class BodyLocation  extends Model {
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	public List<RelievedBy> relievedBy;
+	
+	@Column(name="containedin_id")
+	public Long containedin;
+	
+	@Cacheable(value="defaultCache#0", key="#id")
+	public static String getNameById(Long id) {
+		return find.byId(id).name;
+	}
+	
+	@Column(name="group_id")
+	public Long group;
 	
 	public List<RelievedBy> getRelievedBy() {
 		return relievedBy;
@@ -78,6 +90,18 @@ public class BodyLocation  extends Model {
 	}
 	public void setWorseBy(List<WorsedBy> worseBy) {
 		this.worseBy = worseBy;
+	}
+	public Long getContainedin() {
+		return containedin;
+	}
+	public void setContainedin(Long containedin) {
+		this.containedin = containedin;
+	}
+	public Long getGroup() {
+		return group;
+	}
+	public void setGroup(Long group) {
+		this.group = group;
 	}
 	
 	

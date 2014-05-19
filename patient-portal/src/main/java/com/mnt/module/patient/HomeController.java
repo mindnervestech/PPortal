@@ -45,16 +45,6 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/patient/", method = RequestMethod.GET)
-	public String patientForm() {
-		return "patient";
-	}
-	
-	@RequestMapping(value = "/get-metadata", method = RequestMethod.GET)
-	public @ResponseBody JsonNode getMetadata() {
-		return Json.toJson(metadataService.getMetadataForPatients());
-	}
-	
 	@RequestMapping(value = "/get-appointment-slots", method = RequestMethod.GET)
 	public @ResponseBody JsonNode getAppointmentSlots(@RequestParam("date") @DateTimeFormat(pattern="yyyyMMdd") Date date) {
 		Calendar calendar = Calendar.getInstance();

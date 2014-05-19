@@ -9,11 +9,13 @@ import play.db.ebean.Model;
 @Entity
 public class PainArea extends Model {
 
+	public static Model.Finder<Long,PainArea> find = new Model.Finder<Long,PainArea>(Long.class, PainArea.class);
+	
 	@Id
 	public Long id;
 	
-	@Column(unique=true,length=100)
 	public String description;
+	
 
 	public Long getId() {
 		return id;
@@ -29,6 +31,11 @@ public class PainArea extends Model {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public static String getDescriptionById(Long id) {
+		// TODO Auto-generated method stub
+		return PainArea.find.byId(id).description;
 	}
 	
 }

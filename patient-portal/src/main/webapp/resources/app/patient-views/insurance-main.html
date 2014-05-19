@@ -1,0 +1,6 @@
+<tabset>
+    <tab ng-repeat="tab in tabs.insurances" heading="{{tab.title}}" active="tab.active">
+      <div data-ng-include style="width: 100%;" 
+      		data-src="tab.content"></div>
+    </tab>
+</tabset>

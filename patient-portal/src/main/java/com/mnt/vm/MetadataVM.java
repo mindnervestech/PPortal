@@ -16,6 +16,8 @@ public class MetadataVM {
 	public List<DropdownVM> studentStatuses;
 	public List<DropdownVM> yesNos;
 	public List<DropdownVM> countries;
+	public List<DropdownVM> secInsuranceTypes;
+	
 	
 	public MetadataVM() {}
 	
@@ -69,5 +71,9 @@ public class MetadataVM {
 
 	public void setCountries(List<DropdownVM> countries) {
 		this.countries = countries;
+	}
+
+	public void setSecInsuranceTypes(List<DropdownVM> secInsuranceTypes) {
+		this.secInsuranceTypes = secInsuranceTypes;
 	}
 }

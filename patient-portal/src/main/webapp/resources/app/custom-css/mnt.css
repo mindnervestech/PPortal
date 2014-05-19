@@ -1,0 +1,5 @@
+@CHARSET "ISO-8859-1";
+
+.tabbable>.nav-tabs>li>a {
+	color: #428bca !important;
+}

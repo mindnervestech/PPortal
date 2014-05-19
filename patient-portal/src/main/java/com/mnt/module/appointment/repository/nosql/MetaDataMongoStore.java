@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mnt.model.BodyLocation;
 import com.mnt.module.appointment.repository.MetaDataStore;
+import com.mnt.vm.MetadataVM;
 
 @Repository("metaDataMongoStore")
 public class MetaDataMongoStore implements MetaDataStore {
@@ -16,6 +17,11 @@ public class MetaDataMongoStore implements MetaDataStore {
 	@Override
 	public BodyLocation getPainMetaDataByLocationID(Long id) {
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public MetadataVM getMetadataForPatients() {
+		return null;
 	}
 
 	@Override

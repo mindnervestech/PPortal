@@ -132,7 +132,7 @@
              
              <div class="statsRight col-sm-6">
 	                <div class="col-xs-4">
-	               		<a class="panel panel4" data-toggle="modal" href="#patientModal">
+	               		<a class="panel panel4" ng-href="/patient/">
 	                        <h1>PATIENT</h1>
 	                        <p>Register on 21 March</p>
 	                    </a>

@@ -1,9 +1,9 @@
 <div class="container">
 	<form class="form-horizontal">
-		<h3>Demographics</h3>
+		<h3 class="text-danger">Demographics</h3>
 		
 		<div class="form-group">
-			<label class="col-sm-4 control-label">Patient SSN</label>
+			<label class="col-sm-offset-1 col-sm-2">Patient SSN</label>
 			<div class="col-sm-4">
 				<input name="masked" ui-mask="999-99-9999" ng-model="x" class="form-control" style="vertical-align: top;">
 				<div class="help-inline"></div>
@@ -11,7 +11,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Patient Date of Birth</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Patient Date of Birth</label>
 		     <div class="col-sm-4">
 				  <input type="text"  role="button"  class="form-control col-sm-10" data-toggle="dropdown" value="{{demographicForm.pdob | date:'MMMM-dd-yyyy' || 'DOB'}}" placeholder="MMMM-dd-yyyy">
    				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -21,7 +21,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Patient Gender</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Patient Gender</label>
 		     <div class="col-sm-4">
 		         <select class="form-control" ng-model="demographicForm.gender" ng-options="g as g.label for g in metadatas.genders">
 					
@@ -32,7 +32,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Race</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Race</label>
 		     <div class="col-sm-4">
 		         <select class="form-control" ng-model="demographicForm.race" ng-options="r as r.label for r in metadatas.races">
 					
@@ -43,7 +43,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Ethnicity</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Ethnicity</label>
 		     <div class="col-sm-4">
 		         <select class="form-control" ng-model="demographicForm.ethnicity" ng-options="e as e.label for e in metadatas.ethnicities">
 					
@@ -54,7 +54,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Preferred Language</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Preferred Language</label>
 		     <div class="col-sm-4">
 		         <select class="form-control" ng-model="demographicForm.prefLang" ng-options="e as e.label for e in metadatas.preferLanguages">
 					
@@ -65,7 +65,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Patient Student Status</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Patient Student Status</label>
 		     <div class="col-sm-4">
 		         <select class="form-control" ng-model="demographicForm.stdstatus" ng-options="e as e.label for e in metadatas.studentStatuses">
 					
@@ -76,7 +76,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Country</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Country</label>
 		     <div class="col-sm-4">
 		         <select class="form-control" ng-model="demographicForm.country" ng-options="c as c.label for c in metadatas.countries">
 					
@@ -87,23 +87,15 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Street Address</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Street Address</label>
 		     <div class="col-sm-4">
-				 <textarea rows="3" cols="55"></textarea>				 
+				 <textarea rows="3" cols="40"></textarea>				 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Zip Code</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control">		 
-		         <span class="help-inline"></span>
-		     </div>
-		</div>
-		
-		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">City</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Zip Code</label>
 		     <div class="col-sm-4">
 				 <input type="text" class="form-control">		 
 		         <span class="help-inline"></span>
@@ -111,7 +103,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">State</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">City</label>
 		     <div class="col-sm-4">
 				 <input type="text" class="form-control">		 
 		         <span class="help-inline"></span>
@@ -119,7 +111,15 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Formatted Address</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">State</label>
+		     <div class="col-sm-4">
+				 <input type="text" class="form-control">		 
+		         <span class="help-inline"></span>
+		     </div>
+		</div>
+		
+		<div class="form-group">
+		  	 <label class="col-sm-offset-1 col-sm-2">Formatted Address</label>
 		     <div class="col-sm-4">
 				 <input type="text" readonly="readonly" class="form-control">		 
 		         <span class="help-inline"></span>
@@ -127,15 +127,15 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Mail Address</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Mail Address</label>
 		     <div class="col-sm-4">
-				 <textarea rows="3" cols="55"></textarea>				 
+				 <textarea rows="3" cols="40"></textarea>				 
 		     </div>
 		     <span class="col-sm-4">*If different from address. Only valid for US addresses.</span>
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Mail Zip Code</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Mail Zip Code</label>
 		     <div class="col-sm-4">
 				 <input type="text" class="form-control">		 
 		         <span class="help-inline"></span>
@@ -143,7 +143,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Mail City</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Mail City</label>
 		     <div class="col-sm-4">
 				 <input type="text" class="form-control">		 
 		         <span class="help-inline"></span>
@@ -151,7 +151,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Mail State</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Mail State</label>
 		     <div class="col-sm-4">
 				 <input type="text" class="form-control">		 
 		         <span class="help-inline"></span>
@@ -159,14 +159,14 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Notes</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Notes</label>
 		     <div class="col-sm-4">
-				 <textarea rows="3" cols="55"></textarea>				 
+				 <textarea rows="3" cols="40"></textarea>				 
 		     </div>
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Patient Marital Status</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Patient Marital Status</label>
 		     <div class="col-sm-4">
 		         <select class="form-control" ng-model="demographicForm.marStatus" ng-options="m as m.label for m in metadatas.maritalStatus">
 					
@@ -177,7 +177,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">EPSDT Services</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">EPSDT Services</label>
 		     <div class="col-sm-4">
 		         <select class="form-control" ng-model="demographicForm.epsdt" ng-options="e as e.label for e in metadatas.epsdts">
 					
@@ -188,7 +188,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Emergency Contact Name</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Emergency Contact Name</label>
 		     <div class="col-sm-4">
 				 <input type="text" class="form-control">		 
 		         <span class="help-inline"></span>
@@ -196,7 +196,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Emergency Contact Phone</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Emergency Contact Phone</label>
 		     <div class="col-sm-4">
 				 <input type="text" class="form-control">		 
 		         <span class="help-inline"></span>
@@ -204,7 +204,7 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-4 control-label">Emergency Contact Relation</label>
+		  	 <label class="col-sm-offset-1 col-sm-2">Emergency Contact Relation</label>
 		     <div class="col-sm-4">
 				 <input type="text" class="form-control">		 
 		         <span class="help-inline"></span>

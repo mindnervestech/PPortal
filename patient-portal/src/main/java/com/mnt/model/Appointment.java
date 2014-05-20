@@ -21,9 +21,9 @@ public class Appointment extends Model {
 	public Long id;
 	
 	// Day of Appointment 
-	public int date;
-	public int month;
-	public int year;
+	public int appointmentDate;
+	public int appointmentMonth;
+	public int appointmentYear;
 	
 	//Status of Appointment
 	public String status;
@@ -52,9 +52,9 @@ public class Appointment extends Model {
 	public static List<Appointment> getAppointmentSlots(Long appointmentOf_Id,String appointmentOf_Type,Calendar day) {
 		return find.where().
 			eq("appointmentOf_Id", appointmentOf_Id).
-			eq("date", day.get(Calendar.DATE)).
-			eq("month", day.get(Calendar.MONTH)).
-			eq("year", day.get(Calendar.YEAR)).
+			eq("appointment_date", day.get(Calendar.DATE)).
+			eq("appointment_month", day.get(Calendar.MONTH)).
+			eq("appointment_year", day.get(Calendar.YEAR)).
 			eq("appointmentOf_Type", appointmentOf_Type)
 			.findList();
 		
@@ -68,9 +68,9 @@ public class Appointment extends Model {
 		appointment.appointmentOf_Type = appointmentOf_Type;
 		appointment.appointmentWith_Id = appointmentWith_Id;
 		appointment.appointmentWith_Type = appointmentWith_Type;
-		appointment.date = day.get(Calendar.DATE);
-		appointment.month = day.get(Calendar.MONTH);
-		appointment.year = day.get(Calendar.YEAR);
+		appointment.appointmentDate = day.get(Calendar.DATE);
+		appointment.appointmentMonth = day.get(Calendar.MONTH);
+		appointment.appointmentYear = day.get(Calendar.YEAR);
 		appointment.startMin = startMin;
 		appointment.endMin = endMin;
 		appointment.status = SlotStatus.AVAILABLE.name();
@@ -84,30 +84,6 @@ public class Appointment extends Model {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public int getDate() {
-		return date;
-	}
-
-	public void setDate(int date) {
-		this.date = date;
-	}
-
-	public int getMonth() {
-		return month;
-	}
-
-	public void setMonth(int month) {
-		this.month = month;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
 	}
 
 	public String getStatus() {
@@ -172,6 +148,30 @@ public class Appointment extends Model {
 
 	public void setAppointmentWith_Type(String appointmentWith_Type) {
 		this.appointmentWith_Type = appointmentWith_Type;
+	}
+
+	public int getAppointmentDate() {
+		return appointmentDate;
+	}
+
+	public void setAppointmentDate(int appointmentDate) {
+		this.appointmentDate = appointmentDate;
+	}
+
+	public int getAppointmentMonth() {
+		return appointmentMonth;
+	}
+
+	public void setAppointmentMonth(int appointmentMonth) {
+		this.appointmentMonth = appointmentMonth;
+	}
+
+	public int getAppointmentYear() {
+		return appointmentYear;
+	}
+
+	public void setAppointmentYear(int appointmentYear) {
+		this.appointmentYear = appointmentYear;
 	}
 	
 	

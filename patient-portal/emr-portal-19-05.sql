@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `appointment` (
 
 -- Dumping data for table emr-portal.appointment: ~6 rows (approximately)
 /*!40000 ALTER TABLE `appointment` DISABLE KEYS */;
-INSERT INTO `appointment` (`id`, `date`, `month`, `year`, `status`, `notes`, `start_min`, `end_min`, `appointment_of_id`, `appointment_of_type`, `appointment_with_id`, `appointment_with_type`) VALUES
+INSERT INTO `appointment` (`id`, `appointment_date`, `appointment_month`, `appointment_year`, `status`, `notes`, `start_min`, `end_min`, `appointment_of_id`, `appointment_of_type`, `appointment_with_id`, `appointment_with_type`) VALUES
 	(1, 1, 4, 2014, 'AVAILABLE', NULL, 0, 30, 1, 'Doctor', 1, 'User'),
 	(2, 1, 4, 2014, 'AVAILABLE', NULL, 0, 30, 1, 'Doctor', 1, 'User'),
 	(3, 1, 4, 2014, 'AVAILABLE', NULL, 0, 30, 1, 'Doctor', 1, 'User'),

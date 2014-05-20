@@ -57,6 +57,7 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 		angular.forEach($scope.levelOneOption, function(item){
 	        if(item.value == $scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea) {
 	        	$scope.levelTwoOption = item.sub;
+	        	$scope.symptomFormArray[$scope.currentSymptomFormIndex].selectedLevelOneText = item.text;
 	        }
 	      });
 		$scope.setLevelTwo($scope.levelTwoOption[0].value);
@@ -77,6 +78,54 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	$scope.setLevelTwo = function(id) {
 		$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelTwoArea = id;
 		getMetadata(id);
+	};
+	
+	$scope.setLevelTwoSelectedText= function() {
+		angular.forEach($scope.levelTwoOption, function(item){
+	        if(item.value == $scope.symptomFormArray[$scope.currentSymptomFormIndex].levelTwoArea) {
+	        	$scope.symptomFormArray[$scope.currentSymptomFormIndex].selectedLevelTwoText = item.text;
+	        }
+	      });
+	};
+	
+	$scope.setWhenThisHappenSelectedText = function() {
+		angular.forEach($scope.symptomFormArray[$scope.currentSymptomFormIndex].metadata.whenThisHappen, function(item){
+			if(item.id == $scope.symptomFormArray[$scope.currentSymptomFormIndex].whenThisHappen) {
+	        	$scope.symptomFormArray[$scope.currentSymptomFormIndex].selectedWhenThisHappenText = item.description;
+	        }
+	      });
+	};
+	
+	$scope.setDescribePainSelectedText = function() {
+		angular.forEach($scope.symptomFormArray[$scope.currentSymptomFormIndex].metadata.painArea, function(item){
+			if(item.id == $scope.symptomFormArray[$scope.currentSymptomFormIndex].painArea) {
+	        	$scope.symptomFormArray[$scope.currentSymptomFormIndex].selectedPainAreaText = item.description;
+	        }
+	      });
+	};
+	
+	$scope.setRelievedBySelectedText = function() {
+		angular.forEach($scope.symptomFormArray[$scope.currentSymptomFormIndex].metadata.relievedBy, function(item){
+			if(item.id == $scope.symptomFormArray[$scope.currentSymptomFormIndex].relievedBy) {
+	        	$scope.symptomFormArray[$scope.currentSymptomFormIndex].selectedRelievedByText = item.description;
+	        }
+	      });
+	};
+	
+	$scope.setMadeWorseBySelectedText = function() {
+		angular.forEach($scope.symptomFormArray[$scope.currentSymptomFormIndex].metadata.worseBy, function(item){
+			if(item.id == $scope.symptomFormArray[$scope.currentSymptomFormIndex].worseBy) {
+	        	$scope.symptomFormArray[$scope.currentSymptomFormIndex].selectedWorseByText = item.description;
+	        }
+	      });
+	};
+	
+	$scope.setAssociatedSymptomsSelectedText = function() {
+		angular.forEach($scope.symptomFormArray[$scope.currentSymptomFormIndex].metadata.associatedSymptoms, function(item){
+			if(item.id == $scope.symptomFormArray[$scope.currentSymptomFormIndex].associatedSymptoms) {
+	        	$scope.symptomFormArray[$scope.currentSymptomFormIndex].selectedAssociatedSymptomsText = item.description;
+	        }
+	      });
 	};
 	$scope.metadata = {
 			painArea : [] 
@@ -161,9 +210,9 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	$scope.bookAppoitment = function () {
 		$scope.appointmentForm.slot = $filter('filter')($scope.slots,{status:"REQUESTED"});
 		$scope.appointmentForm.appointmentWith = 1; // hardcodded for now
-		angular.foreach($scope.symptomFormArray, function(data){
+		angular.forEach($scope.symptomFormArray, function(data){
 			data.metadata = ''; 
-		});;
+		});
 		AppointmentSlotService.BookAppointmentSlot.save({
 			appointment : $scope.appointmentForm,
 			symptoms : $scope.symptomFormArray
@@ -182,9 +231,12 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 		$scope.step = 1;
 	};
     
+
+	$scope.gotoConfirmationPage = function () {
+		$scope.step = 3;
+	};
 	
-	
-	
-	
-	
+	$scope.gotoAppointmentPage = function () {
+		$scope.step = 2;
+	};
 });

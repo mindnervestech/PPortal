@@ -26,9 +26,13 @@ public class Doctors extends Model {
 		return find.byId(id);
 	}
 	
+	public static List<Doctors> findAll() {
+		return find.all();
+	}
+	
 	public static String getFullNameById(Long id) {
 		Doctors doctors = find.byId(id);
-		return "TODO";//doctors.firstname +" "+ doctors.lastname;
+		return doctors.firstname +" "+ doctors.lastname;
 	}
 
 

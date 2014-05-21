@@ -9,6 +9,8 @@ import play.db.ebean.Model;
 @Entity
 public class RelievedBy extends Model {
 
+	public static Model.Finder<Long,RelievedBy> find = new Model.Finder<Long,RelievedBy>(Long.class, RelievedBy.class);
+	
 	@Id
 	public Long id;
 	
@@ -31,4 +33,7 @@ public class RelievedBy extends Model {
 		this.description = description;
 	}
 	
+	public static String getDescriptionById(Long id) {
+		return RelievedBy.find.byId(id).description;
+	}
 }

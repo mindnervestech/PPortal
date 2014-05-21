@@ -3,6 +3,8 @@ package com.mnt.module.patient;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.codehaus.jackson.JsonNode;
 import org.slf4j.Logger;
@@ -22,6 +24,7 @@ import play.libs.Json;
 import com.mnt.module.appointment.data.AppointmentRequest;
 import com.mnt.module.appointment.service.AppoitmentService;
 import com.mnt.module.appointment.service.MetaDataService;
+import com.mnt.module.appointment.service.UserDataService;
 
 /**
  * Handles requests for the application home page.
@@ -31,6 +34,9 @@ public class HomeController {
 	
 	@Autowired
 	private AppoitmentService appoitmentService; 
+	
+	@Autowired
+	private UserDataService userDataService;
 	
 	@Autowired
 	private MetaDataService metadataService;
@@ -67,10 +73,18 @@ public class HomeController {
 		return Json.toJson(metadataService.getPainMetaDataByLocationID(location, sublocation));
 	}
 	
+	@RequestMapping(value = "/get-all-doctors", method = RequestMethod.GET)
+	public @ResponseBody JsonNode getAllDoctorsData() {
+		return Json.toJson(userDataService.getAllDoctorsData());
+	}
+	
 	@RequestMapping(value = "/book-appointment-slots", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody JsonNode bookAppointmentSlots (@RequestBody AppointmentRequest request) throws ParseException {
-		appoitmentService.bookAppointment(request);
-		return null;
+		String appointmentId = appoitmentService.bookAppointment(request);
+		Map<String, String> response = new HashMap<>();
+		response.put("appointmentId", appointmentId);
+		
+		return Json.toJson(response);
 	}
 	
 }

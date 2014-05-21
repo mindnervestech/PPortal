@@ -1,20 +1,22 @@
 <p><b>LOCATION:</b> Select other Area (s) if needed <br>
     						
-    						<form role="form" id="symptom-form">
-    							<div class="form-group">
+    						<form name="form" role="form" id="symptom-form">
+    							<div class="form-group col-sm-6">
 									<label>Level One</label>
-									<select  
+									<select required="required"
 										data-ng-options="area.value as area.text for area in levelOneOption"
 										data-ng-change="updateLevelTwo()" 
 										data-ng-model="symptomFormArray[currentSymptomFormIndex].levelOneArea">
+										<option value="">-- Select--</option>
 									</select>
 								</div>
-    							<div class="form-group">
+    							<div class="form-group col-sm-5 col-sm-offset-1">
 									<label>Level Two</label>
-									<select 
+									<select required="required"
 										data-ng-model="symptomFormArray[currentSymptomFormIndex].levelTwoArea" 
 										data-ng-change="setLevelTwoSelectedText()"  
 										data-ng-options="area.value as area.text for area in levelTwoOption">
+										<option value="">-- Select--</option>
 									</select>
 								</div>
 								
@@ -40,7 +42,7 @@
 									<label>Pain Lasts</label> 
 									<br>
 									<div class="col-sm-6">
-										<input type="number" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLasts">
+										<input required="required" type="number" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLasts">
 									</div>
 									<div class="col-sm-6">
 										<select data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit">
@@ -62,10 +64,10 @@
 								
 								<br class="clear">	
 								</div> 
-								<div class="form-group">
+								<div class="form-group  col-sm-6">
 									<label>Relieved By</label> 
 									<br>
-									<div class="col-sm-6">
+									<div>
 										<select 
 										data-ng-model="symptomFormArray[currentSymptomFormIndex].relievedBy"  
 										data-ng-change="setRelievedBySelectedText()"
@@ -74,22 +76,24 @@
 									</div>
 								<br class="clear">
 								</div>
-								<div class="form-group">
+								<div class="form-group  col-sm-offset-1 col-sm-5">
 									<label>Made Worse By</label>
 									<select
 									data-ng-model="symptomFormArray[currentSymptomFormIndex].worseBy"
 									data-ng-change="setMadeWorseBySelectedText()"  
 									data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.worseBy"></select>
 								</div>
+								
+								<br class="clear">	
 								<div class="form-group">
-									<label>Other Symptoms Associated with <b class="textRed">TODO</b></label>
+									<label class="control-label">Other Symptoms Associated with <b class="textRed">TODO</b></label>
 									<select
 									data-ng-model="symptomFormArray[currentSymptomFormIndex].associatedSymptoms"  
 									data-ng-change="setAssociatedSymptomsSelectedText()"
 									data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.associatedSymptoms"></select>
 								</div>
                                 <div class="text-center">
-                                	<a data-ng-click="doneSymptomSelection()" id="btnAddSympStep1" class="btn btnOrange"><b class="fa fa-check-circle-o">
+                                	<a data-ng-disabled="form.$invalid" data-ng-click="doneSymptomSelection()" id="btnAddSympStep1" class="btn btnOrange"><b class="fa fa-check-circle-o">
                                 		</b> Done
                                 	</a>
                                 	<a data-ng-show="symptomFormArray.length < 3 && currentSymptomFormIndex + 1 == symptomFormArray.length" data-ng-click="addOtherSymptom()" class="btn btnOrange">

@@ -13,6 +13,12 @@ public class BookingRequest {
 	public Long doctor;
 	public String notes;
 	
+	//new fields added
+	public String selectedprimaryDoctorText;
+	public String selectedSpecialtyText;
+	public String selectedDoctorText;
+	public String email;
+	
 	@JsonProperty("slot")
 	public AppointmentSlot[] slots;
 }

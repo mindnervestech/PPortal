@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
-import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,9 @@ import com.mnt.model.BodyLocation;
 import com.mnt.model.Doctors;
 import com.mnt.model.KeyValue;
 import com.mnt.model.PainArea;
+import com.mnt.model.RelievedBy;
+import com.mnt.model.WhenThisHappen;
+import com.mnt.model.WorsedBy;
 import com.mnt.module.appointment.SlotStatus;
 import com.mnt.module.appointment.TimeConverter;
 import com.mnt.module.appointment.data.AppointmentRequest;
@@ -82,7 +84,7 @@ public class AppoitmentServiceImpl implements AppoitmentService {
 	}
 
 	@Override
-	public void bookAppointment(AppointmentRequest request) throws ParseException {
+	public String bookAppointment(AppointmentRequest request) throws ParseException {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(request.bookingRequest.appointmentDate);
 		int	startTime = TimeConverter.convertDayTimeToElapsedMin(request.bookingRequest.slots[0].startTime);
@@ -93,6 +95,7 @@ public class AppoitmentServiceImpl implements AppoitmentService {
 		
 		
 		appointmentDataStore.saveAppointmentAsDocument(convertAppointmentRequestToAppointmentDocument(request,appointmentId));
+		return appointmentId.toString();
 	}
 	
 	private AppointmentDocument convertAppointmentRequestToAppointmentDocument(AppointmentRequest request, Long appoitmentId ) {
@@ -114,18 +117,20 @@ public class AppoitmentServiceImpl implements AppoitmentService {
 		appointmentDocument.endTime = request.bookingRequest.slots[0].endTime;
 		appointmentDocument.startTime = request.bookingRequest.slots[0].startTime;
 		
+		List<SymptomDocument> documentList = new ArrayList<>();
 		for(SymptomReported sr : request.symptom) {
 			SymptomDocument document = new SymptomDocument();
 			document.levelOne = new KeyValue<Long, String>(sr.levelOneArea, BodyLocation.getNameById(sr.levelOneArea));
-			document.levelTwo = new KeyValue<Long, String>(sr.levelOneArea, BodyLocation.getNameById(sr.levelOneArea));
+			document.levelTwo = new KeyValue<Long, String>(sr.levelTwoArea, BodyLocation.getNameById(sr.levelTwoArea));
 			document.painArea = new KeyValue<Long, String>(sr.painArea, PainArea.getDescriptionById(sr.painArea));
-			/*document.painLasts = ;
-			document.painLastsUnit = ;
-			document.relievedBy = ;
-			document.whenThisHappen = ;
-			document.worseBy = ;*/
+			document.painLasts = sr.painLasts;
+			document.painLastsUnit = sr.painLastsUnit;
+			document.relievedBy = new KeyValue<Long, String>(sr.relievedBy, RelievedBy.getDescriptionById(sr.relievedBy));;
+			document.whenThisHappen = new KeyValue<Long, String>(sr.whenThisHappen, WhenThisHappen.getDescriptionById(sr.whenThisHappen));
+			document.worseBy = new KeyValue<Long, String>(sr.worseBy, WorsedBy.getDescriptionById(sr.worseBy));
+			documentList.add(document);
 		}
-		//appointmentDocument.symptom = new ;
+		appointmentDocument.symptom = documentList; 
 		
 		return appointmentDocument;
 	}

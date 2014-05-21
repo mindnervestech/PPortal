@@ -22,3 +22,14 @@ app.service('MetaDataService',function($resource){
 	);
 	
 });
+
+app.service('DoctorsDataService',function($resource){
+	this.GetData = $resource(
+			'/get-all-doctors',
+			{alt:'json',callback:'JSON_CALLBACK'},
+			{
+				get: {method:'GET', isArray:true}
+			}
+	);
+	
+});

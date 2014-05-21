@@ -3,7 +3,8 @@
 	<div class="form-group">
 		<label for="primaryDoctor" class="col-sm-2 control-label">Primary Doctor </label>
 		 <div class="col-sm-8">
-		 	<select class="form-control" id="primaryDoctor" data-ng-change="choosePrimaryDoctor()" 
+		 	<select required class="form-control" id="primaryDoctor" 
+		 			data-ng-change="choosePrimaryDoctor()" 
 					data-ng-model="appointmentForm.primaryDoctor" 
 					data-ng-options="a.value as a.text for a in primaryDoctorOption">
 					
@@ -66,8 +67,8 @@
     	
     	<label for="email" class="col-sm-2 control-label">Email</label>
 		<div class="col-sm-3">
-		 	<input  type="text" id="email" class="input-sm form-control dropdown-toggle textStyle" 
-		 	 placeholder="enter email">
+		 	<input type="email" id="email" class="input-sm form-control dropdown-toggle textStyle" 
+		 	 placeholder="enter email" data-ng-model="appointmentForm.email">
 		 	
 		 </div>
 	</div>

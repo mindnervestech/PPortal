@@ -9,6 +9,8 @@ import play.db.ebean.Model;
 @Entity
 public class WhenThisHappen  extends Model {
 
+	public static Model.Finder<Long,WhenThisHappen> find = new Model.Finder<Long,WhenThisHappen>(Long.class, WhenThisHappen.class);
+	
 	@Id
 	public Long id;
 	
@@ -29,5 +31,9 @@ public class WhenThisHappen  extends Model {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public static String getDescriptionById(Long whenThisHappen) {
+		return find.byId(whenThisHappen).description;
 	}
 }

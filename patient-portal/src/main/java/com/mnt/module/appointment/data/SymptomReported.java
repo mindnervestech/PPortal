@@ -14,4 +14,14 @@ public class SymptomReported {
 	public Long whenThisHappen;
 	@JsonIgnore
 	public String metadata; 
+	
+	//new Fields added
+	public String selectedLevelOneText;
+	public String selectedLevelTwoText;
+	public String selectedWhenThisHappenText;
+	public String selectedPainAreaText;
+	public String selectedRelievedByText;
+	public String selectedWorseByText;
+	public String selectedAssociatedSymptomsText;
+	
 }

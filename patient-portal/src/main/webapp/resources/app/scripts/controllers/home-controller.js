@@ -4,14 +4,13 @@ var app = angular.module('home-app');
 
 ///////////////////////// Search Service Start //////////////////////////////////
 
-app.controller('HomeController',function($scope, $location, $filter, AppointmentSlotService, MetaDataService){
+app.controller('HomeController',function($scope, $location, $filter, AppointmentSlotService, MetaDataService, DoctorsDataService){
 	
 	$scope.symptomFormArray = [];
 	$scope.currentSymptomFormIndex = 0;
 	
 	$scope.levelOneOption = [
 	                         {text:"Head" , value:4, sub:[
-	                                                      	{text:"Choose" , value:null},
 	                                                        {text:"Scalp" , value:7},
 	                                                        {text:"Fore Head" , value:8},
 	                                                        {text:"Right Eye" , value:9},
@@ -127,6 +126,31 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	        }
 	      });
 	};
+	
+	$scope.choosePrimaryDoctor = function() {
+		angular.forEach($scope.primaryDoctorOption, function(item){
+			if(item.value == $scope.appointmentForm.primaryDoctor) {
+	        	$scope.appointmentForm.selectedprimaryDoctorText = item.text;
+	        }
+	      });
+	};
+	
+	$scope.chooseSpecialty = function() {
+		angular.forEach($scope.specialtiesOption, function(item){
+			if(item.value == $scope.appointmentForm.specialty) {
+	        	$scope.appointmentForm.selectedSpecialtyText = item.text;
+	        }
+	      });
+	};
+	
+	$scope.chooseDoctor = function() {
+		angular.forEach($scope.doctorsOption, function(item){
+			if(item.value == $scope.appointmentForm.doctor) {
+	        	$scope.appointmentForm.selectedDoctorText = item.text;
+	        }
+	      });
+	};
+	
 	$scope.metadata = {
 			painArea : [] 
 	};
@@ -153,10 +177,7 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 		console.log($scope.symptomFormArray[$scope.currentSymptomFormIndex]);
 	};
 	
-	$scope.primaryDoctorOption = [{text:"Dr Gary", value:1},
-	                              {text:'Dr James', value:2},
-	                              {text:'Dr Jagbir', value:3},
-	                              {text:'Dr Amit', value:4}];
+	$scope.primaryDoctorOption = DoctorsDataService.GetData.get();
 	
 	
 	$scope.specialtiesOption = [  {text:"Pediatrician", value:1},
@@ -164,10 +185,7 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	                              {text:'Neurology', value:3},
 	                              {text:'Radiology', value:4}];
 	
-	$scope.doctorsOption = [{text:"Dr Gary", value:1},
-	                        {text:'Dr James', value:2},
-	                        {text:'Dr Jagbir', value:3},
-	                        {text:'Dr Amit', value:4}];
+	$scope.doctorsOption = DoctorsDataService.GetData.get();
 	
 	
 	
@@ -189,7 +207,6 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	
 	var isMutipleSlotSelectionAllowed = true; 
 	$scope.markAppoitment = function(slot) {
-		
 		if(isMutipleSlotSelectionAllowed == false) {
 			if(slot.status == 'REQUESTED') {
 				slot.status = 'AVAILABLE';
@@ -210,12 +227,18 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	$scope.bookAppoitment = function () {
 		$scope.appointmentForm.slot = $filter('filter')($scope.slots,{status:"REQUESTED"});
 		$scope.appointmentForm.appointmentWith = 1; // hardcodded for now
+		
 		angular.forEach($scope.symptomFormArray, function(data){
 			data.metadata = ''; 
 		});
+		
 		AppointmentSlotService.BookAppointmentSlot.save({
 			appointment : $scope.appointmentForm,
 			symptoms : $scope.symptomFormArray
+		}, function(response) {
+			$scope.step = 4;
+			$scope.appointmentId = response.appointmentId;
+			console.log(response);
 		});
 	};
 	

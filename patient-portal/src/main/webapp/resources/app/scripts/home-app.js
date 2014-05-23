@@ -25,7 +25,9 @@ angular.module('home-app', [
       })
       .when('/make-appointment', {
     	  templateUrl: 'resources/app/views/make-appointment.html',
-    	  
+      })
+      .when('/appointment-list', {
+    	  templateUrl: 'resources/app/views/appointment-list.html',
       });
   })
   .run(function(editableOptions) {

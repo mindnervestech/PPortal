@@ -14,7 +14,7 @@
 									<label>Level Two</label>
 									<select required="required"
 										data-ng-model="symptomFormArray[currentSymptomFormIndex].levelTwoArea" 
-										data-ng-change="setLevelTwoSelectedText()"  
+										data-ng-change="setLevelTwo(symptomFormArray[currentSymptomFormIndex].levelTwoArea)"  
 										data-ng-options="area.value as area.text for area in levelTwoOption">
 										<option value="">-- Select--</option>
 									</select>
@@ -25,14 +25,14 @@
     						
     							<div class="form-group">
 									<label>When Does This Happen</label>
-									<select data-ng-model="symptomFormArray[currentSymptomFormIndex].whenThisHappen" 
+									<select required="required" data-ng-model="symptomFormArray[currentSymptomFormIndex].whenThisHappen" 
 											data-ng-change="setWhenThisHappenSelectedText()"  
 											data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.whenThisHappen">
 									</select>
 								</div>
 								<div class="form-group">
 									<label>Describe Pain</label>
-									<select  data-ng-model="symptomFormArray[currentSymptomFormIndex].painArea" 
+									<select required="required" data-ng-model="symptomFormArray[currentSymptomFormIndex].painArea" 
 											 data-ng-change="setDescribePainSelectedText()" 	
 									         data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.painArea">
 									</select>
@@ -45,7 +45,8 @@
 										<input required="required" type="number" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLasts">
 									</div>
 									<div class="col-sm-6">
-										<select data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit">
+										<select required="required" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit">
+										  <option value="">-- Select--</option>
 										  <option selected="selected">Seconds</option>
 										  <option>Miniutes</option>
 										  <option>Hours</option>
@@ -68,35 +69,40 @@
 									<label>Relieved By</label> 
 									<br>
 									<div>
-										<select 
+										<select required="required"
 										data-ng-model="symptomFormArray[currentSymptomFormIndex].relievedBy"  
 										data-ng-change="setRelievedBySelectedText()"
 										data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.relievedBy">
+										<option value="">-- Select--</option>
 									</select>
 									</div>
 								<br class="clear">
 								</div>
 								<div class="form-group  col-sm-offset-1 col-sm-5">
 									<label>Made Worse By</label>
-									<select
+									<select required="required"
 									data-ng-model="symptomFormArray[currentSymptomFormIndex].worseBy"
 									data-ng-change="setMadeWorseBySelectedText()"  
-									data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.worseBy"></select>
+									data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.worseBy">
+										<option value="">-- Select--</option>
+									</select>
 								</div>
 								
 								<br class="clear">	
 								<div class="form-group">
 									<label class="control-label">Other Symptoms Associated with <b class="textRed">TODO</b></label>
-									<select
+									<select required="required"
 									data-ng-model="symptomFormArray[currentSymptomFormIndex].associatedSymptoms"  
 									data-ng-change="setAssociatedSymptomsSelectedText()"
-									data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.associatedSymptoms"></select>
+									data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.associatedSymptoms">
+										<option value="">-- Select--</option>
+									</select>
 								</div>
                                 <div class="text-center">
                                 	<a data-ng-disabled="form.$invalid" data-ng-click="doneSymptomSelection()" id="btnAddSympStep1" class="btn btnOrange"><b class="fa fa-check-circle-o">
                                 		</b> Done
                                 	</a>
-                                	<a data-ng-show="symptomFormArray.length < 3 && currentSymptomFormIndex + 1 == symptomFormArray.length" data-ng-click="addOtherSymptom()" class="btn btnOrange">
+                                	<a data-ng-disabled="form.$invalid" data-ng-show="symptomFormArray.length < 3 && currentSymptomFormIndex + 1 == symptomFormArray.length" data-ng-click="addOtherSymptom()" class="btn btnOrange">
                                 		<b class="fa fa-check-circle-o"></b> Add Other Symptom
                                 	</a>
                                 	<a 

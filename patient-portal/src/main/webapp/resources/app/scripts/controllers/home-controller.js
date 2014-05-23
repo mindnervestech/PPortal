@@ -4,7 +4,7 @@ var app = angular.module('home-app');
 
 ///////////////////////// Search Service Start //////////////////////////////////
 
-app.controller('HomeController',function($scope, $location, $filter, AppointmentSlotService, MetaDataService, DoctorsDataService){
+app.controller('HomeController',function($scope, $location, $filter, AppointmentService, AppointmentSlotService, MetaDataService, DoctorsDataService){
 	
 	$scope.symptomFormArray = [];
 	$scope.currentSymptomFormIndex = 0;
@@ -59,7 +59,10 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	        	$scope.symptomFormArray[$scope.currentSymptomFormIndex].selectedLevelOneText = item.text;
 	        }
 	      });
-		$scope.setLevelTwo($scope.levelTwoOption[0].value);
+		if($scope.levelTwoOption != undefined) {
+			$scope.setLevelTwo($scope.levelTwoOption[0].value);
+		}
+		
 		$scope.$apply;
 	};
 	
@@ -76,16 +79,23 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	
 	$scope.setLevelTwo = function(id) {
 		$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelTwoArea = id;
-		getMetadata(id);
-	};
-	
-	$scope.setLevelTwoSelectedText= function() {
+		
 		angular.forEach($scope.levelTwoOption, function(item){
 	        if(item.value == $scope.symptomFormArray[$scope.currentSymptomFormIndex].levelTwoArea) {
 	        	$scope.symptomFormArray[$scope.currentSymptomFormIndex].selectedLevelTwoText = item.text;
 	        }
 	      });
+		
+		getMetadata(id);
 	};
+	
+	/*$scope.setLevelTwoSelectedText= function() {
+		angular.forEach($scope.levelTwoOption, function(item){
+	        if(item.value == $scope.symptomFormArray[$scope.currentSymptomFormIndex].levelTwoArea) {
+	        	$scope.symptomFormArray[$scope.currentSymptomFormIndex].selectedLevelTwoText = item.text;
+	        }
+	      });
+	};*/
 	
 	$scope.setWhenThisHappenSelectedText = function() {
 		angular.forEach($scope.symptomFormArray[$scope.currentSymptomFormIndex].metadata.whenThisHappen, function(item){
@@ -200,7 +210,8 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	
 	$scope.slots = [];
 	$scope.checkAvailability = function() {
-		AppointmentSlotService.GetAppointmentSlots.get({date:$filter('date')($scope.appointmentForm.appointmentDate,'yyyyMMdd')},function(data) {
+		AppointmentSlotService.GetAppointmentSlots.get({date:$filter('date')($scope.appointmentForm.appointmentDate,'yyyyMMdd'),
+												doctor_id: $scope.appointmentForm.primaryDoctor},function(data) {
 			$scope.slots = data;
 		});
 	};
@@ -226,7 +237,7 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	
 	$scope.bookAppoitment = function () {
 		$scope.appointmentForm.slot = $filter('filter')($scope.slots,{status:"REQUESTED"});
-		$scope.appointmentForm.appointmentWith = 1; // hardcodded for now
+		$scope.appointmentForm.appointmentWith = $scope.appointmentForm.primaryDoctor; // hardcodded for now
 		
 		angular.forEach($scope.symptomFormArray, function(data){
 			data.metadata = ''; 
@@ -238,6 +249,11 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 		}, function(response) {
 			$scope.step = 4;
 			$scope.appointmentId = response.appointmentId;
+			
+
+			$scope.appointmentList = AppointmentService.GetAllApps.get({}, function(responce) {
+				console.log(responce);
+			});
 			console.log(response);
 		});
 	};
@@ -262,4 +278,8 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	$scope.gotoAppointmentPage = function () {
 		$scope.step = 2;
 	};
+	
+	$scope.appointmentList = AppointmentService.GetAllApps.get({}, function(responce) {
+		console.log(responce);
+	});
 });

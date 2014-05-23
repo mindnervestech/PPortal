@@ -49,13 +49,13 @@ public class Appointment extends Model {
 	//Object Type with whom Appointment is made.
 	public String appointmentWith_Type;
 
-	public static List<Appointment> getAppointmentSlots(Long appointmentOf_Id,String appointmentOf_Type,Calendar day) {
+	public static List<Appointment> getAppointmentSlots(Long appointmentWith_Id,String appointmentWith_Type,Calendar day) {
 		return find.where().
-			eq("appointmentOf_Id", appointmentOf_Id).
+			eq("appointmentWith_Id", appointmentWith_Id).
 			eq("appointment_date", day.get(Calendar.DATE)).
 			eq("appointment_month", day.get(Calendar.MONTH)).
 			eq("appointment_year", day.get(Calendar.YEAR)).
-			eq("appointmentOf_Type", appointmentOf_Type)
+			eq("appointmentWith_Type", appointmentWith_Type)
 			.findList();
 		
 	}
@@ -76,6 +76,10 @@ public class Appointment extends Model {
 		appointment.status = SlotStatus.AVAILABLE.name();
 		appointment.save();
 		return appointment.id;
+	}
+	
+	public static List<Appointment> getAllAppointments(Long patientId) {
+		return find.where().eq("appointmentOf_Id", patientId).findList();
 	}
 
 	public Long getId() {

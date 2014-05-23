@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.mnt.model.Doctors;
+import com.mnt.model.Patient;
+import com.mnt.pojo.User;
 import com.mnt.vm.ApplicationDataVM;
 
 @Service
@@ -21,6 +23,20 @@ public class UserDataServiceImpl implements UserDataService{
 			doctorList.add(vm);
 		}
 		return doctorList;
+	}
+
+	@Override
+	public Patient validatePatientUser(User user) {
+		Patient patient = Patient.getPatientByCodeAndPassword(user);
+		return patient;
+	}
+
+	@Override
+	public void updateUserPassword(String code, String newPassword) {
+		Patient patient = Patient.getPatientByCode(code);
+		patient.setPatientPassword(newPassword);
+		patient.setTemp(false);
+		patient.update();
 	}
 
 }

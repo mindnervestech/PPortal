@@ -19,6 +19,9 @@ public class BookingRequest {
 	public String selectedDoctorText;
 	public String email;
 	
+	public Long loggedUserId;
+	public String loggedUserName;
+	
 	@JsonProperty("slot")
 	public AppointmentSlot[] slots;
 }

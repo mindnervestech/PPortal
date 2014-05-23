@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.mnt.metadata.Statuses;
-import com.avaje.ebean.Ebean;
 import com.mnt.model.BodyLocation;
 import com.mnt.module.appointment.repository.MetaDataStore;
 import com.mnt.vm.DropdownVM;

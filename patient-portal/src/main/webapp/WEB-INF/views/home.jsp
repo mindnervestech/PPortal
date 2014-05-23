@@ -34,7 +34,7 @@
         }
     </style>
   </head>
-  <body id="patientDashboardPage" ng-app="home-app" ng-controller="HomeController">
+  <body id="patientDashboardPage" ng-app="home-app" ng-controller="HomeController" style="overflow-y: scroll;">
   <span us-spinner spinner-key="loading..." ></span>
   		<header id="top" class="navbar-fixed-top">
     	<nav class="container nav" role="navigation">
@@ -98,7 +98,7 @@
                    	    	<li><a href="#"><b class="fa fa-pencil-square"> </b> Edit Profile</a></li>
                             <li><a href="#"><b class="fa fa-cog"> </b> Settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="#"><b class="fa fa-sign-out"> </b> Logout</a></li>
+                            <li><a href="/logout"><b class="fa fa-sign-out"> </b> Logout</a></li>
                         </ul>
 		    </li>
                 </ul>
@@ -111,7 +111,7 @@
             <section id="stats">
             	<div class="statsLeft col-sm-6">
 	                <div class="col-xs-4">
-	               		<a class="panel panel1" data-toggle="modal" href="#appointmentsModal">
+	               		<a class="panel panel1" href="/#/appointment-list">
 	                        <h1>APPOINTMENTS</h1>
 	                        <p><b>28</b> Due to 21 days</p>
 	                    </a>
@@ -249,7 +249,7 @@
     <section class="container"><!--container section!-->
     	
         <aside class="sideLinks col-sm-2">
-        	<a class="panel" href="#/make-appointment">
+        	<a class="panel" data-ng-href="/#/" data-ng-click="step = 1;">
 	            <h2>Appointments</h2>
 	            <p class="col-sm-9">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
 	            <b class="col-sm-3 fa fa-clock-o"></b>

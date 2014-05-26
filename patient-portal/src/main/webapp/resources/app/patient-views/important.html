@@ -5,7 +5,7 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Status</label>
 			<div class="col-sm-4">
-				<select class="form-control" ng-model="importantForm.status" ng-options="status as status.label for status in metadatas.statuses">
+				<select class="form-control" data-ng-model="importantForm.status" ng-options="status as status.label for status in metadatas.statuses track by status.value">
 		
 				</select>
 				<div class="help-inline"></div>
@@ -15,7 +15,7 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Title</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" id="title" placeholder="Title">
+				<input type="text" class="form-control" ng-model="importantForm.title" id="title" placeholder="Title">
 				<div class="help-inline"></div>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">First Name</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" placeholder="First Name">
+				<input type="text" class="form-control" ng-model="importantForm.firstName" placeholder="First Name">
 				<div class="help-inline"></div>
 			</div>
 		</div>
@@ -31,7 +31,7 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Nick Name</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" placeholder="Nick Name">
+				<input type="text" class="form-control" ng-model="importantForm.nickName" placeholder="Nick Name">
 				<div class="help-inline"></div>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Middle Name</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" placeholder="Middle Name">
+				<input type="text" class="form-control" ng-model="importantForm.middleName" placeholder="Middle Name">
 				<div class="help-inline"></div>
 			</div>
 		</div>
@@ -47,7 +47,7 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Last Name</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" placeholder="Last Name">
+				<input type="text" class="form-control" ng-model="importantForm.lastName" placeholder="Last Name">
 				<div class="help-inline"></div>
 			</div>
 		</div>
@@ -55,7 +55,7 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Suffix</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" placeholder="Suffix">
+				<input type="text" class="form-control" ng-model="importantForm.suffix" placeholder="Suffix">
 				<div class="help-inline"></div>
 			</div>
 		</div>
@@ -63,7 +63,7 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Home Phone</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" placeholder="Home Phone">
+				<input type="text" class="form-control" ng-model="importantForm.homePhone" placeholder="Home Phone">
 				<div class="help-inline"></div>
 			</div>
 		</div>
@@ -71,7 +71,7 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Cell Phone</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" placeholder="Cell Phone">
+				<input type="text" class="form-control" ng-model="importantForm.cellPhone" placeholder="Cell Phone">
 				<div class="help-inline"></div>
 			</div>
 		</div>
@@ -79,7 +79,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Disable SMS/Txt</label>
 		     <div class="col-sm-4 checkbox">
-		         <input type="checkbox">
+		         <input type="checkbox" ng-model="importantForm.isDisableSMS">
 		         <span class="help-inline">Disable all SMS/Txt messages for this user. </span>
 		     </div>
 		</div>
@@ -87,13 +87,13 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Office Phone</label>
 			<div class="col-sm-3">
-				<input type="text" class="form-control" placeholder="Office Phone">
+				<input type="text" class="form-control" ng-model="importantForm.officePhone" placeholder="Office Phone">
 				<div class="help-inline"></div>
 			</div>
 			
-			<label class="col-sm-offset-1 col-sm-1">Office Phone</label>
+			<label class="col-sm-offset-1 col-sm-1">Office Ext</label>
 			<div class="col-sm-3">
-				<input type="text" class="form-control" placeholder="Office Phone">
+				<input type="text" class="form-control" ng-model="importantForm.officeExt" placeholder="Office Ext">
 				<div class="help-inline"></div>
 			</div>
 		</div>
@@ -101,7 +101,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Email</label>
 		     <div class="col-sm-4 checkbox">
-		         <input type="text" class="form-control" placeholder="Email">
+		         <input type="text" class="form-control" ng-model="importantForm.email" placeholder="Email">
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -109,7 +109,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2"></label>
 		     <div class="col-sm-4 checkbox">
-		          <input type="checkbox">
+		          <input type="checkbox" ng-model="importantForm.isDuplicateEmailAllow">
 		         <span class="help-inline">Allow Duplicate Email</span>
 		     </div>
 		</div>
@@ -117,7 +117,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Alternate Email</label>
 		     <div class="col-sm-4 checkbox">
-		         <input type="text" class="form-control" placeholder="Alternate Email">
+		         <input type="text" class="form-control" ng-model="importantForm.isAltEmail" placeholder="Alternate Email">
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -125,7 +125,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Preferred Communication</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="importantForm.comm" ng-options="comm as comm.label for comm in communications">
+		         <select class="form-control" ng-model="importantForm.communication" ng-options="comm as comm.label for comm in metadatas.communications track by comm.value">
 					
 				 </select>
 				 
@@ -136,7 +136,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Reminder Language</label>
 		     <div class="col-sm-4 checkbox">
-		         <select class="form-control" ng-model="importantForm.language" ng-options="language as language.label for language in metadatas.languages">
+		         <select class="form-control" ng-model="importantForm.language" ng-options="language as language.label for language in metadatas.languages track by language.value ">
 					
 				 </select>
 				 
@@ -157,7 +157,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Medication History Consent</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="importantForm.consent" ng-options="yn as yn.label for yn in YesNos">
+		         <select class="form-control" ng-model="importantForm.consent" ng-options="yn as yn.label for yn in YesNos track by yn.value">
 				 	
 				 </select>
 		     </div>
@@ -167,7 +167,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Payment Profile</label>
 		     <div class="col-sm-4">
-				 	<select class="form-control"  ng-model="importantForm.payment" ng-options="payment as payment.label for payment in metadatas.paymentModes">
+				 	<select class="form-control"  ng-model="importantForm.payment" ng-options="payment as payment.label for payment in metadatas.paymentModes track by payment.value">
 						
 					</select>
 		     </div>
@@ -177,7 +177,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Patient's Copay $</label>
 		     <div class="col-sm-4">
-				 <input type="text" class="form-control" placeholder="Patient's Copay">
+				 <input type="text" class="form-control" ng-model="importantForm.patientCopay" placeholder="Patient's Copay">
 				 <span class="help-inline"></span>	
 		     </div>
 		</div>
@@ -225,7 +225,7 @@
 		
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-10">
-				<button type="button" class="btn btn-primary">Save Demographics</button>
+				<button type="button" data-ng-click="saveImportantDetails()" class="btn btn-primary">Save Demographics</button>
 			</div>
 		</div>
 	</form>

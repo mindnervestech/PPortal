@@ -14,6 +14,7 @@ import org.codehaus.jackson.JsonNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,10 @@ import com.mnt.module.appointment.service.MetaDataService;
 import com.mnt.module.appointment.service.UserDataService;
 import com.mnt.pojo.User;
 import com.mnt.vm.AppointmentVM;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+import com.mongodb.util.JSON;
 
 /**
  * Handles requests for the application home page.
@@ -47,6 +52,9 @@ public class HomeController {
 	
 	@Autowired
 	private MetaDataService metadataService;
+	
+	@Autowired
+	private MongoTemplate mongoTemplate;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -155,5 +163,52 @@ public class HomeController {
 		List<AppointmentVM> appointments = appoitmentService.getAllAppointmentsOfPatient(patientCode);
 		
 		return Json.toJson(appointments);
+	}
+	
+	@RequestMapping(value = "/save-patient-imp-details", method = RequestMethod.POST)
+	public String savePatientImportantDetails(@RequestBody String patientImp, HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		
+		String collectionName = "patientInfo";
+		DBCollection dbCollection = null;
+		if(!mongoTemplate.collectionExists(collectionName)) {
+			dbCollection = mongoTemplate.createCollection(collectionName);
+		}
+		else {
+			dbCollection = mongoTemplate.getCollection(collectionName);
+		}
+		
+		BasicDBObject whereQuery = new BasicDBObject();
+		whereQuery.put("patientId", patient.getId());
+		boolean isUpdate = (dbCollection.findOne(whereQuery)==null) ? false : true;
+		
+		if(isUpdate) {
+			DBObject dbObject = (DBObject) JSON.parse(patientImp);
+			dbObject.put("patientId", patient.getId());
+			dbCollection.update(whereQuery, dbObject);
+		} else {
+			DBObject dbObject = (DBObject) JSON.parse(patientImp);
+			
+			dbObject.put("patientId", patient.getId());
+			dbCollection.save(dbObject);
+		}
+		
+		return "patient";
+	}
+	
+	@RequestMapping(value = "/get-patient-imp-details", method = RequestMethod.GET)
+	public @ResponseBody JsonNode getPatientImportantDetails(HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		
+		String collectionName = "patientInfo";
+		DBCollection dbCollection = null;
+		dbCollection = mongoTemplate.getCollection(collectionName);
+		BasicDBObject whereQuery = new BasicDBObject();
+		whereQuery.put("patientId", patient.getId());
+		DBObject dbObject = dbCollection.findOne(whereQuery);
+		System.out.println(dbObject.get("importantForm"));
+		return Json.toJson(dbObject.get("importantForm"));
 	}
 }

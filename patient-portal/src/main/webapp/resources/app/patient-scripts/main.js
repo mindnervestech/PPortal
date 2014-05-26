@@ -2,7 +2,7 @@
 
 var patientPortal = angular.module('patientPortal');
 
-patientPortal.controller('MenuBarController', function($scope,MetadataService) {
+patientPortal.controller('MenuBarController', function($scope,MetadataService, PatientInfo) {
 	$scope.tabs = [
 	               { title:'Important',active: true, content:'/resources/app/patient-views/important.html' },
 	               { title:'Demographics', content:'/resources/app/patient-views/demographics.html'},
@@ -22,6 +22,8 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService) {
 			companyName : 'Degree2'
 	};
 	
+	$scope.importantForm = {};
+	
 	$scope.metadatas = MetadataService.GetMetadata.get(function(data) {
 		
 	});
@@ -32,5 +34,16 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService) {
 	
 	$scope.updateSecInsuranceForm = function() {
 		console.log($scope.secInsurance);
+	};
+	
+	PatientInfo.getImpDetails.get( function(response) {
+		$scope.importantForm = response;
+	});
+	
+	$scope.saveImportantDetails = function() {
+		console.log($scope.importantForm);
+		PatientInfo.saveImportant.save({importantForm : $scope.importantForm}, function() {
+			console.log("Commited");
+		});
 	};
 });

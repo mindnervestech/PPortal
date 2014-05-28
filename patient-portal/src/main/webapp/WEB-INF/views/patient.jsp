@@ -101,7 +101,7 @@
                    	    	<li><a href="#"><b class="fa fa-pencil-square"> </b> Edit Profile</a></li>
                             <li><a href="#"><b class="fa fa-cog"> </b> Settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="#"><b class="fa fa-sign-out"> </b> Logout</a></li>
+                            <li><a href="/logout"><b class="fa fa-sign-out"> </b> Logout</a></li>
                         </ul>
 		    </li>
                 </ul>

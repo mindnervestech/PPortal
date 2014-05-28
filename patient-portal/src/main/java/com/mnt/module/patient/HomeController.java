@@ -30,6 +30,7 @@ import com.mnt.model.Patient;
 import com.mnt.module.appointment.data.AppointmentRequest;
 import com.mnt.module.appointment.service.AppoitmentService;
 import com.mnt.module.appointment.service.MetaDataService;
+import com.mnt.module.appointment.service.PatientService;
 import com.mnt.module.appointment.service.UserDataService;
 import com.mnt.pojo.User;
 import com.mnt.vm.AppointmentVM;
@@ -54,7 +55,7 @@ public class HomeController {
 	private MetaDataService metadataService;
 	
 	@Autowired
-	private MongoTemplate mongoTemplate;
+	private PatientService patientService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -171,28 +172,41 @@ public class HomeController {
 		Patient patient = Patient.getPatientByCode(patientCode);
 		
 		String collectionName = "patientInfo";
-		DBCollection dbCollection = null;
-		if(!mongoTemplate.collectionExists(collectionName)) {
-			dbCollection = mongoTemplate.createCollection(collectionName);
-		}
-		else {
-			dbCollection = mongoTemplate.getCollection(collectionName);
-		}
+		patientService.saveDataToMongoCollection(collectionName, patientImp, patient.getId());
 		
-		BasicDBObject whereQuery = new BasicDBObject();
-		whereQuery.put("patientId", patient.getId());
-		boolean isUpdate = (dbCollection.findOne(whereQuery)==null) ? false : true;
+		return "patient";
+	}
+	
+	@RequestMapping(value = "/save-patient-demographic-details", method = RequestMethod.POST)
+	public String savePatientDemographicDetails(@RequestBody String patientDemographic, HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
 		
-		if(isUpdate) {
-			DBObject dbObject = (DBObject) JSON.parse(patientImp);
-			dbObject.put("patientId", patient.getId());
-			dbCollection.update(whereQuery, dbObject);
-		} else {
-			DBObject dbObject = (DBObject) JSON.parse(patientImp);
-			
-			dbObject.put("patientId", patient.getId());
-			dbCollection.save(dbObject);
-		}
+		String collectionName = "patientDemographics";
+		patientService.saveDataToMongoCollection(collectionName, patientDemographic, patient.getId());
+		
+		return "patient";
+	}
+	
+	@RequestMapping(value = "/save-patient-primary-insurance-details", method = RequestMethod.POST)
+	public String savePatientPrimaryInsuranceDetails(@RequestBody String patientPrimary, HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		
+		String collectionName = "patientPrimaryInsurance";
+		patientService.saveDataToMongoCollection(collectionName, patientPrimary, patient.getId());
+		
+		return "patient";
+	}
+	
+	@RequestMapping(value = "/save-patient-secondary-insurance-details", method = RequestMethod.POST)
+	public String savePatientSecondaryInsuranceDetails(@RequestBody String patientSecondary, HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		
+		String collectionName = "patientSecondaryInsurance";
+		
+		patientService.saveDataToMongoCollection(collectionName, patientSecondary, patient.getId());
 		
 		return "patient";
 	}
@@ -203,12 +217,41 @@ public class HomeController {
 		Patient patient = Patient.getPatientByCode(patientCode);
 		
 		String collectionName = "patientInfo";
-		DBCollection dbCollection = null;
-		dbCollection = mongoTemplate.getCollection(collectionName);
-		BasicDBObject whereQuery = new BasicDBObject();
-		whereQuery.put("patientId", patient.getId());
-		DBObject dbObject = dbCollection.findOne(whereQuery);
-		System.out.println(dbObject.get("importantForm"));
-		return Json.toJson(dbObject.get("importantForm"));
+		DBObject dbObject = patientService.getDBObjectOfPatient(collectionName, patient.getId());
+		
+		return Json.toJson((dbObject==null) ? "" : dbObject.get("importantForm"));
+	}
+	
+	@RequestMapping(value = "/get-patient-primary-insurance-details", method = RequestMethod.GET)
+	public @ResponseBody JsonNode getPatientPrimaryInsuranceDetails(HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		
+		String collectionName = "patientPrimaryInsurance";
+		DBObject dbObject = patientService.getDBObjectOfPatient(collectionName, patient.getId());
+		
+		return Json.toJson((dbObject==null) ? "" : dbObject.get("insuranceForm"));
+	}
+	
+	@RequestMapping(value = "/get-patient-demographic-details", method = RequestMethod.GET)
+	public @ResponseBody JsonNode getPatientDemographicDetails(HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		
+		String collectionName = "patientDemographics";
+		DBObject dbObject = patientService.getDBObjectOfPatient(collectionName, patient.getId());
+		
+		return Json.toJson((dbObject==null) ? "" : dbObject.get("demographicForm"));
+	}
+	
+	@RequestMapping(value = "/get-patient-secondary-insurance-details", method = RequestMethod.GET)
+	public @ResponseBody JsonNode getPatientSecondaryInsuranceDetails(HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		
+		String collectionName = "patientSecondaryInsurance";
+		DBObject dbObject = patientService.getDBObjectOfPatient(collectionName, patient.getId());
+		
+		return Json.toJson((dbObject==null) ? "" : dbObject.get("secInsuranceForm"));
 	}
 }

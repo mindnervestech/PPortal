@@ -5,7 +5,7 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Patient SSN</label>
 			<div class="col-sm-4">
-				<input name="masked" ui-mask="999-99-9999" ng-model="x" class="form-control" style="vertical-align: top;">
+				<input name="masked" ui-mask="999-99-9999" data-ng-model="demographicForm.patientSSN" class="form-control" style="vertical-align: top;">
 				<div class="help-inline"></div>
 			</div>
 		</div>
@@ -13,9 +13,9 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Patient Date of Birth</label>
 		     <div class="col-sm-4">
-				  <input type="text"  role="button"  class="form-control col-sm-10" data-toggle="dropdown" value="{{demographicForm.pdob | date:'MMMM-dd-yyyy' || 'DOB'}}" placeholder="MMMM-dd-yyyy">
+				  <input type="text"  role="button"  class="form-control col-sm-10" data-toggle="dropdown" value="{{demographicForm.patientDOB | date:'MMMM-dd-yyyy' || 'DOB'}}" placeholder="MMMM-dd-yyyy">
    				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-   	 			     <datetimepicker  data-ng-model="demographicForm.pdob" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
+   	 			     <datetimepicker  data-ng-model="demographicForm.patientDOB" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
  				  </ul>
 		     </div>
 		</div>
@@ -23,7 +23,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Patient Gender</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.gender" ng-options="g as g.label for g in metadatas.genders">
+		         <select class="form-control" ng-model="demographicForm.patientGender" ng-options="g as g.label for g in metadatas.genders track by g.value">
 					
 				 </select>
 				 
@@ -34,7 +34,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Race</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.race" ng-options="r as r.label for r in metadatas.races">
+		         <select class="form-control" ng-model="demographicForm.race" ng-options="r as r.label for r in metadatas.races track by r.value">
 					
 				 </select>
 				 
@@ -45,7 +45,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Ethnicity</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.ethnicity" ng-options="e as e.label for e in metadatas.ethnicities">
+		         <select class="form-control" data-ng-model="demographicForm.patientEthnicity" ng-options="e as e.label for e in metadatas.ethnicities track by e.value">
 					
 				 </select>
 				 
@@ -56,7 +56,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Preferred Language</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.prefLang" ng-options="e as e.label for e in metadatas.preferLanguages">
+		         <select class="form-control" data-ng-model="demographicForm.preferredLanguage" ng-options="e as e.label for e in metadatas.preferLanguages track by e.value">
 					
 				 </select>
 				 
@@ -67,7 +67,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Patient Student Status</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.stdstatus" ng-options="e as e.label for e in metadatas.studentStatuses">
+		         <select class="form-control" data-ng-model="demographicForm.studentStatus" ng-options="e as e.label for e in metadatas.studentStatuses track by e.value">
 					
 				 </select>
 				 
@@ -78,7 +78,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Country</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.country" ng-options="c as c.label for c in metadatas.countries">
+		         <select class="form-control" data-ng-model="demographicForm.country" ng-options="c as c.label for c in metadatas.countries track by c.value">
 					
 				 </select>
 				 
@@ -89,7 +89,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Street Address</label>
 		     <div class="col-sm-4">
-				 <textarea rows="3" cols="40"></textarea>				 
+				 <textarea rows="3" cols="40" data-ng-model="demographicForm.streetAddress"></textarea>				 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -97,7 +97,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Zip Code</label>
 		     <div class="col-sm-4">
-				 <input type="text" class="form-control">		 
+				 <input type="text" class="form-control" data-ng-model="demographicForm.zipCode">		 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -105,7 +105,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">City</label>
 		     <div class="col-sm-4">
-				 <input type="text" class="form-control">		 
+				 <input type="text" class="form-control" data-ng-model="demographicForm.city">		 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -113,7 +113,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">State</label>
 		     <div class="col-sm-4">
-				 <input type="text" class="form-control">		 
+				 <input type="text" class="form-control" data-ng-model="demographicForm.state">		 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -129,7 +129,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Mail Address</label>
 		     <div class="col-sm-4">
-				 <textarea rows="3" cols="40"></textarea>				 
+				 <textarea rows="3" cols="40" data-ng-model="demographicForm.mailAddress"></textarea>				 
 		     </div>
 		     <span class="col-sm-4">*If different from address. Only valid for US addresses.</span>
 		</div>
@@ -137,7 +137,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Mail Zip Code</label>
 		     <div class="col-sm-4">
-				 <input type="text" class="form-control">		 
+				 <input type="text" class="form-control" data-ng-model="demographicForm.mailZipCode">		 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -145,7 +145,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Mail City</label>
 		     <div class="col-sm-4">
-				 <input type="text" class="form-control">		 
+				 <input type="text" class="form-control" data-ng-model="demographicForm.mailCity">		 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -153,7 +153,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Mail State</label>
 		     <div class="col-sm-4">
-				 <input type="text" class="form-control">		 
+				 <input type="text" class="form-control" data-ng-model="demographicForm.mailState">		 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -161,14 +161,14 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Notes</label>
 		     <div class="col-sm-4">
-				 <textarea rows="3" cols="40"></textarea>				 
+				 <textarea rows="3" cols="40" data-ng-model="demographicForm.notes"></textarea>				 
 		     </div>
 		</div>
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Patient Marital Status</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.marStatus" ng-options="m as m.label for m in metadatas.maritalStatus">
+		         <select class="form-control" data-ng-model="demographicForm.maritalStatus" data-ng-options="m as m.label for m in metadatas.maritalStatus track by m.value">
 					
 				 </select>
 				 
@@ -179,7 +179,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">EPSDT Services</label>
 		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.epsdt" ng-options="e as e.label for e in metadatas.epsdts">
+		         <select class="form-control" data-ng-model="demographicForm.EPSDTService" ng-options="e as e.label for e in metadatas.epsdts track by e.value">
 					
 				 </select>
 				 
@@ -190,7 +190,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Emergency Contact Name</label>
 		     <div class="col-sm-4">
-				 <input type="text" class="form-control">		 
+				 <input type="text" class="form-control" data-ng-model="demographicForm.emergencyContactName">		 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -198,7 +198,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Emergency Contact Phone</label>
 		     <div class="col-sm-4">
-				 <input type="text" class="form-control">		 
+				 <input type="text" class="form-control" data-ng-model="demographicForm.emergencyContactPhone">		 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -206,9 +206,15 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Emergency Contact Relation</label>
 		     <div class="col-sm-4">
-				 <input type="text" class="form-control">		 
+				 <input type="text" class="form-control" data-ng-model="demographicForm.emergencyContactRelation">		 
 		         <span class="help-inline"></span>
 		     </div>
+		</div>
+		
+		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-10">
+				<button type="button" data-ng-click="saveDemographicsDetails()" class="btn btn-primary">Save Demographics</button>
+			</div>
 		</div>
 	</form>
 </div>

@@ -11,7 +11,7 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Subscriber is the Patient</label>
 			<div class="col-sm-6">
-				<input type="checkbox" class="col-sm-2" ng-show="insuranceForm.$visible" ng-model="insurance.isSubscriberPatient" ng-init="insurance.isSubscriberPatient=true">
+				<input type="checkbox" class="col-sm-2" data-ng-click="resetSubscriberForm()" ng-show="insuranceForm.$visible" ng-model="insurance.isSubscriberPatient">
 				<span ng-show="!insuranceForm.$visible" class="col-sm-2">{{ insurance.isSubscriberPatient && "Yes!" || "No!" }}</span>
 				<div class="col-sm-offset-1 col-sm-9" ng-show="insuranceForm.$visible">Insured person is the same person as the Patient</div>
 			</div>
@@ -101,49 +101,49 @@
 			<div class="form-group">
 			  	 <label class="col-sm-offset-1 col-sm-2">Patient relationship to the Subscribe</label>
 			     <div class="col-sm-4">
-			     	 <span ng-show="!insuranceForm.$visible" editable-select="insurance.subscriberPatientRelation" e-name="subscriberPatientRelation" e-ng-options="g.label as g.label for g in metadatas.genders">{{insurance.subscriberPatientRelation || 'Not Set'}}</span>
+			     	 <span ng-show="!insuranceForm.$visible" editable-select="insurance.subscriberForm.subscriberPatientRelation" e-name="subscriberPatientRelation" e-ng-options="g.label as g.label for g in metadatas.genders">{{insurance.subscriberForm.subscriberPatientRelation || 'Not Set'}}</span>
 			     </div>
 			</div>
 			
 			<div class="form-group">
 			  	 <label class="col-sm-offset-1 col-sm-2">Subscriber First Name</label>
 			     <div class="col-sm-4">
-			     	 <span ng-show="!insuranceForm.$visible" editable-text="insurance.subscriberFirstName" e-name="subscriberFirstName" e-placeholder="Subscriber First Name">{{insurance.subscriberFirstName || 'Not Set'}}</span>
+			     	 <span ng-show="!insuranceForm.$visible" editable-text="insurance.subscriberForm.subscriberFirstName" e-name="subscriberFirstName" e-placeholder="Subscriber First Name">{{insurance.subscriberForm.subscriberFirstName || 'Not Set'}}</span>
 			     </div>
 			</div>
 			
 			<div class="form-group">
 			  	 <label class="col-sm-offset-1 col-sm-2">Subscriber Middle Name</label>
 			     <div class="col-sm-4">
-			     	 <span ng-show="!insuranceForm.$visible" editable-text="insurance.subscriberMiddleName" e-name="subscriberMiddleName" e-placeholder="Subscriber Middle Name">{{insurance.subscriberMiddleName || 'Not Set'}}</span>
+			     	 <span ng-show="!insuranceForm.$visible" editable-text="insurance.subscriberForm.subscriberMiddleName" e-name="subscriberMiddleName" e-placeholder="Subscriber Middle Name">{{insurance.subscriberForm.subscriberMiddleName || 'Not Set'}}</span>
 			     </div>
 			</div>
 			
 			<div class="form-group">
 			  	 <label class="col-sm-offset-1 col-sm-2">Subscriber Last Name</label>
 			     <div class="col-sm-4">
-			     	 <span ng-show="!insuranceForm.$visible" editable-text="insurance.subscriberLastName" e-name="subscriberLastName" e-placeholder="Subscriber Last Name">{{insurance.subscriberLastName || 'Not Set'}}</span>
+			     	 <span ng-show="!insuranceForm.$visible" editable-text="insurance.subscriberForm.subscriberLastName" e-name="subscriberLastName" e-placeholder="Subscriber Last Name">{{insurance.subscriberForm.subscriberLastName || 'Not Set'}}</span>
 			     </div>
 			</div>
 			
 			<div class="form-group">
 			  	 <label class="col-sm-offset-1 col-sm-2">Subscriber's Gender</label>
 			     <div class="col-sm-4">
-			     	 <span ng-show="!insuranceForm.$visible" editable-select="insurance.subscriberGender" e-name="subscriberGender" e-ng-options="g.label as g.label for g in metadatas.genders">{{insurance.subscriberGender || 'Not Set'}}</span>
+			     	 <span ng-show="!insuranceForm.$visible" editable-select="insurance.subscriberForm.subscriberGender" e-name="subscriberGender" e-ng-options="g.label as g.label for g in metadatas.genders">{{insurance.subscriberForm.subscriberGender || 'Not Set'}}</span>
 			     </div>
 			</div>
 			
 			<div class="form-group">
 			  	 <label class="col-sm-offset-1 col-sm-2">Subscriber suffix</label>
 			     <div class="col-sm-4">
-			     	 <span ng-show="!insuranceForm.$visible" editable-text="insurance.subscriberSuffix" e-name="subscriberSuffix" e-placeholder="Subscriber Suffix">{{insurance.subscriberSuffix || 'Not Set'}}</span>
+			     	 <span ng-show="!insuranceForm.$visible" editable-text="insurance.subscriberForm.subscriberSuffix" e-name="subscriberSuffix" e-placeholder="Subscriber Suffix">{{insurance.subscriberForm.subscriberSuffix || 'Not Set'}}</span>
 			     </div>
 			</div>
 			
 			<div class="form-group">
 			  	 <label class="col-sm-offset-1 col-sm-2">Subscriber DOB</label>
 			     <div class="col-sm-4">
-			     	 <span ng-show="!insuranceForm.$visible" e-class="form-control" editable-bsdate="insurance.subscriberDOB" e-name="subscriberDOB" e-datepicker-popup="dd-MMMM-yyyy" e-placeholder="Subscriber DOB">{{ (insurance.subscriberDOB | date:"dd/MM/yyyy") || 'Not Set'}}</span>
+			     	 <span ng-show="!insuranceForm.$visible" e-class="form-control" editable-bsdate="insurance.subscriberForm.subscriberDOB" e-name="subscriberDOB" e-datepicker-popup="dd-MMMM-yyyy" e-placeholder="Subscriber DOB">{{ (insurance.subscriberDOB | date:"dd/MM/yyyy") || 'Not Set'}}</span>
 			     </div>
 			</div>
 			
@@ -192,7 +192,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Default Onset Date</label>
 		     <div class="col-sm-4">
-		     	 <span ng-show="!insuranceForm.$visible" e-class="form-control" editable-bsdate="insurance.defaultOnsetDate" e-name="defaultOnsetDate" e-datepicker-popup="dd-MMMM-yyyy" e-placeholder="Default Onset Date">{{ (insurance.defaultOnsetDate | date:"dd/MM/yyyy") || 'Not Set'}}</span>
+		     	 <span ng-show="!insuranceForm.$visible" e-class="form-control" editable-bsdate="insurance.defaultOnsetDate" e-name="defaultOnsetDate" e-datepicker-popup="dd-MMMM-yyyy" e-placeholder="Default Onset Date">{{ (insurance.subscriberForm.defaultOnsetDate | date:"dd/MM/yyyy") || 'Not Set'}}</span>
 		     </div>
 		     <span class=" col-sm-offset-1 col-sm-4">HCFA Box #14</span>
 		</div>
@@ -200,7 +200,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Prepopulate Last Related Visit</label>
 		     <div class="col-sm-4">
-		     	 <input type="checkbox" ng-model="insurance.isPrepopulateLastVisit" ng-init="insurance.isPrepopulateLastVisit=true">
+		     	 <input type="checkbox" ng-model="insurance.isPrepopulateLastVisit">
 		     </div>
 		     <span class="col-sm-offset-1 col-sm-4">HCFA Box #19</span>
 		</div>

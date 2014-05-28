@@ -1,11 +1,11 @@
-<div class="container">
-	<form class="form-horizontal">
+<div  class="container" style="height: 500px;float: left;" >
+	<form class="form-horizontal" style="float: left;width: 100%;">
 		<h3 class="text-danger">Important Information</h3>
 		
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Status</label>
 			<div class="col-sm-4">
-				<select class="form-control" data-ng-model="importantForm.status" ng-options="status as status.label for status in metadatas.statuses track by status.value">
+				<select class="form-control custom-control" data-ng-model="importantForm.status" ng-options="status as status.label for status in metadatas.statuses track by status.value">
 		
 				</select>
 				<div class="help-inline"></div>
@@ -15,66 +15,56 @@
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Title</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" ng-model="importantForm.title" id="title" placeholder="Title">
+				<input type="text" class="form-control custom-control" ng-model="importantForm.title" id="title" placeholder="Title">
 				<div class="help-inline"></div>
 			</div>
 		</div>
 		
 		<div class="form-group">
-			<label class="col-sm-offset-1 col-sm-2">First Name</label>
-			<div class="col-sm-4">
-				<input type="text" class="form-control" ng-model="importantForm.firstName" placeholder="First Name">
+			<label class="col-sm-offset-1 col-sm-1">Full Name</label>
+			<div class="col-sm-offset-1 col-sm-2">
+				<input type="text" class="form-control custom-control" ng-model="importantForm.firstName" placeholder="First Name">
+				<div class="help-inline"></div>
+			</div>
+			
+			<div class="col-sm-2" style="margin-left: 2%;">
+				<input type="text" class="form-control custom-control" ng-model="importantForm.lastName" placeholder="Last Name">
 				<div class="help-inline"></div>
 			</div>
 		</div>
 		
-		<div class="form-group">
-			<label class="col-sm-offset-1 col-sm-2">Nick Name</label>
-			<div class="col-sm-4">
-				<input type="text" class="form-control" ng-model="importantForm.nickName" placeholder="Nick Name">
-				<div class="help-inline"></div>
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label class="col-sm-offset-1 col-sm-2">Middle Name</label>
-			<div class="col-sm-4">
-				<input type="text" class="form-control" ng-model="importantForm.middleName" placeholder="Middle Name">
-				<div class="help-inline"></div>
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label class="col-sm-offset-1 col-sm-2">Last Name</label>
-			<div class="col-sm-4">
-				<input type="text" class="form-control" ng-model="importantForm.lastName" placeholder="Last Name">
-				<div class="help-inline"></div>
-			</div>
-		</div>
-		
-		<div class="form-group">
+		 <div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Suffix</label>
-			<div class="col-sm-4">
-				<input type="text" class="form-control" ng-model="importantForm.suffix" placeholder="Suffix">
+			<div class="col-sm-2">
+				<input type="text" class="form-control custom-control" ng-model="importantForm.suffix" placeholder="Suffix">
 				<div class="help-inline"></div>
 			</div>
-		</div>
+			
+			<label class="col-sm-offset-1 col-sm-1">Nick Name</label>
+			<div class="col-sm-2" style="margin-left: 2%;">
+				<input type="text" class="form-control custom-control" ng-model="importantForm.nickName" placeholder="Nick Name">
+				<div class="help-inline"></div>
+			</div>
+		</div> 
+		
+	
+	
 		
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Home Phone</label>
-			<div class="col-sm-4">
-				<input type="text" class="form-control" ng-model="importantForm.homePhone" placeholder="Home Phone">
+			<div class="col-sm-2">
+				<input type="text" class="form-control custom-control" ng-model="importantForm.homePhone" placeholder="Home Phone">
+				<div class="help-inline"></div>
+			</div>
+			
+			<label class="col-sm-offset-1 col-sm-1">Cell Phone</label>
+			<div class="col-sm-2"  style="margin-left: 2%;">
+				<input type="text" class="form-control custom-control" ng-model="importantForm.cellPhone" placeholder="Cell Phone">
 				<div class="help-inline"></div>
 			</div>
 		</div>
-		
-		<div class="form-group">
-			<label class="col-sm-offset-1 col-sm-2">Cell Phone</label>
-			<div class="col-sm-4">
-				<input type="text" class="form-control" ng-model="importantForm.cellPhone" placeholder="Cell Phone">
-				<div class="help-inline"></div>
-			</div>
-		</div>
+		 
+	
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Disable SMS/Txt</label>
@@ -86,22 +76,28 @@
 		
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Office Phone</label>
-			<div class="col-sm-3">
-				<input type="text" class="form-control" ng-model="importantForm.officePhone" placeholder="Office Phone">
+			<div class="col-sm-2">
+				<input type="text" class="form-control custom-control" ng-model="importantForm.officePhone" placeholder="Office Phone">
 				<div class="help-inline"></div>
 			</div>
 			
 			<label class="col-sm-offset-1 col-sm-1">Office Ext</label>
-			<div class="col-sm-3">
-				<input type="text" class="form-control" ng-model="importantForm.officeExt" placeholder="Office Ext">
+			<div class="col-sm-2" style="margin-left: 2%;">
+				<input type="text" class="form-control custom-control" ng-model="importantForm.officeExt" placeholder="Office Ext">
 				<div class="help-inline"></div>
 			</div>
 		</div>
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Email</label>
-		     <div class="col-sm-4 checkbox">
-		         <input type="text" class="form-control" ng-model="importantForm.email" placeholder="Email">
+		     <div class="col-sm-2 checkbox">
+		         <input type="text" class="form-control custom-control" ng-model="importantForm.email" placeholder="Email">
+		         <span class="help-inline"></span>
+		     </div>
+		     
+		      <label class="col-sm-offset-1 col-sm-1">Alternate Email</label>
+		     <div class="col-sm-2 checkbox" style="margin-left: 2%;">
+		         <input type="text" class="form-control custom-control" ng-model="importantForm.isAltEmail" placeholder="Alternate Email">
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -115,34 +111,32 @@
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Alternate Email</label>
-		     <div class="col-sm-4 checkbox">
-		         <input type="text" class="form-control" ng-model="importantForm.isAltEmail" placeholder="Alternate Email">
-		         <span class="help-inline"></span>
-		     </div>
+		  	
 		</div>
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Preferred Communication</label>
-		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="importantForm.communication" ng-options="comm as comm.label for comm in metadatas.communications track by comm.value">
+		     <div class="col-sm-2">
+		         <select class="form-control custom-control" ng-model="importantForm.communication" ng-options="comm as comm.label for comm in metadatas.communications track by comm.value">
 					
 				 </select>
 				 
 		         <span class="help-inline"></span>
 		     </div>
+		     
+		      <label class="col-sm-offset-1 col-sm-1">Reminder Language</label>
+		     <div class="col-sm-2 checkbox">
+		         <select class="form-control custom-control" ng-model="importantForm.language" ng-options="language as language.label for language in metadatas.languages">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		     
+		     
 		</div>
 		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Reminder Language</label>
-		     <div class="col-sm-4 checkbox">
-		         <select class="form-control" ng-model="importantForm.language" ng-options="language as language.label for language in metadatas.languages track by language.value ">
-					
-				 </select>
-				 
-		         <span class="help-inline"></span>
-		     </div>
-		</div>
+		
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Patient Chart photo</label>
@@ -156,65 +150,72 @@
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Medication History Consent</label>
-		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="importantForm.consent" ng-options="yn as yn.label for yn in YesNos track by yn.value">
+		     <div class="col-sm-2">
+		         <select class="form-control custom-control" ng-model="importantForm.consent" ng-options="yn as yn.label for yn in YesNos">
 				 	
 				 </select>
+				  <p class="help-block">Patient has given consent to obtain medication history.</p>
 		     </div>
-		     <span class="col-sm-4">Patient has given consent to obtain medication history.</span>
-		</div>
-		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Payment Profile</label>
-		     <div class="col-sm-4">
-				 	<select class="form-control"  ng-model="importantForm.payment" ng-options="payment as payment.label for payment in metadatas.paymentModes track by payment.value">
+		    
+		     
+		     <label class="col-sm-offset-1 col-sm-1">Payment Profile</label>
+		     <div class="col-sm-2">
+				 	<select class="form-control custom-control"  ng-model="importantForm.payment" ng-options="payment as payment.label for payment in metadatas.paymentModes">
 						
 					</select>
+					 <p class="help-block">*affects default procedure prices</p> 
 		     </div>
-		     <span class="col-sm-4">*affects default procedure prices</span>
+		    
+		     
 		</div>
+		
+		
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Patient's Copay $</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control" ng-model="importantForm.patientCopay" placeholder="Patient's Copay">
+		     <div class="col-sm-2">
+				 <input type="text" class="form-control custom-control" ng-model="importantForm.patientCopay" placeholder="Patient's Copay">
 				 <span class="help-inline"></span>	
 		     </div>
-		</div>
-		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Default Appointment Profile</label>
-		     <div class="col-sm-4">
-				 <select class="form-control">
+		     
+		      <label class="col-sm-offset-1 col-sm-1">Default Appointment Profile</label>
+		     <div class="col-sm-2">
+				 <select class="form-control custom-control">
 				 	<option>----</option>
 				 </select>
 				 <span class="help-inline"></span>	
 		     </div>
+		     
 		</div>
+		
+	
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Follow-up Date</label>
-		     <div class="col-sm-4">
+		     <div class="col-sm-2">
 				  <input type="text"  role="button"  class="form-control col-sm-10" data-toggle="dropdown" value="{{importantForm.follow | date:'MMMM-dd-yyyy' || 'Last'}}" placeholder="MMMM-dd-yyyy">
    				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
    	 			     <datetimepicker  data-ng-model="importantForm.follow" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
  				  </ul>
+ 				   
 		     </div>
-		     <span class="col-sm-4">Patient will get reminders around this date to make an appointment</span>
-		</div>
+		    
 		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Follow-up Reason</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control" placeholder="Follow-up Reason">
+		
+		 <label class="col-sm-offset-1 col-sm-1">Follow-up Reason</label>
+		     <div class="col-sm-2">
+				 <input type="text" class="form-control custom-control" placeholder="Follow-up Reason">
 		     </div>
 		     <span class="help-inline">e.g. 2 week follow-up</span>	
+		
+		
 		</div>
 		
+	
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Last Appointment</label>
 		     <div class="col-sm-4">
-				  <input type="text"  role="button"  class="form-control col-sm-10" data-toggle="dropdown" value="{{importantForm.lastApt | date:'MMMM-dd-yyyy' || 'Last'}}" placeholder="MMMM-dd-yyyy">
+				  <input type="text"  role="button"  class="form-control custom-control col-sm-10" data-toggle="dropdown" value="{{importantForm.lastApt | date:'MMMM-dd-yyyy' || 'Last'}}" placeholder="MMMM-dd-yyyy">
    				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
    	 			     <datetimepicker  data-ng-model="importantForm.lastApt" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
  				  </ul>
@@ -230,3 +231,13 @@
 		</div>
 	</form>
 </div>
+
+
+<style>
+.custom-control{
+height: 26px !important;
+font-size: 12px !important;
+}
+
+
+</style>

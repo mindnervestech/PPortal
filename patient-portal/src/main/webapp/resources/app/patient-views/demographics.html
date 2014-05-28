@@ -1,62 +1,75 @@
-<div class="container">
+<div class="container" style="height: 500px;">
 	<form class="form-horizontal">
 		<h3 class="text-danger">Demographics</h3>
 		
 		<div class="form-group">
 			<label class="col-sm-offset-1 col-sm-2">Patient SSN</label>
 			<div class="col-sm-4">
-				<input name="masked" ui-mask="999-99-9999" data-ng-model="demographicForm.patientSSN" class="form-control" style="vertical-align: top;">
+				<input name="masked" ui-mask="999-99-9999"  data-ng-model="demographicForm.patientSSN" class="form-control custom-control" style="vertical-align: top;">
 				<div class="help-inline"></div>
 			</div>
 		</div>
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Patient Date of Birth</label>
-		     <div class="col-sm-4">
+		     <div class="col-sm-2">
 				  <input type="text"  role="button"  class="form-control col-sm-10" data-toggle="dropdown" value="{{demographicForm.patientDOB | date:'MMMM-dd-yyyy' || 'DOB'}}" placeholder="MMMM-dd-yyyy">
    				  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
    	 			     <datetimepicker  data-ng-model="demographicForm.patientDOB" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
  				  </ul>
 		     </div>
-		</div>
-		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Patient Gender</label>
-		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.patientGender" ng-options="g as g.label for g in metadatas.genders track by g.value">
+		     
+		    <label class="col-sm-offset-1 col-sm-1">Patient Gender</label>
+		     <div class="col-sm-2">
+		         <select class="form-control custom-control" ng-model="demographicForm.patientGender" ng-options="g as g.label for g in metadatas.genders track by g.value">
 					
 				 </select>
 				 
 		         <span class="help-inline"></span>
-		     </div>
+		     </div>  
+		     
+		     
 		</div>
+		
+	
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Race</label>
-		     <div class="col-sm-4">
-		         <select class="form-control" ng-model="demographicForm.race" ng-options="r as r.label for r in metadatas.races track by r.value">
+		     <div class="col-sm-2">
+		         <select class="form-control custom-control" ng-model="demographicForm.race" ng-options="r as r.label for r in metadatas.races track by r.value">
 					
 				 </select>
 				 
 		         <span class="help-inline"></span>
 		     </div>
+		    
+		     <label class="col-sm-offset-1 col-sm-1">Ethnicity</label>
+		     <div class="col-sm-2">
+		         <select class="form-control custom-control" data-ng-model="demographicForm.patientEthnicity" ng-options="e as e.label for e in metadatas.ethnicities track by e.value">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div> 
+		     
+		     
 		</div>
 		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Ethnicity</label>
-		     <div class="col-sm-4">
-		         <select class="form-control" data-ng-model="demographicForm.patientEthnicity" ng-options="e as e.label for e in metadatas.ethnicities track by e.value">
-					
-				 </select>
-				 
-		         <span class="help-inline"></span>
-		     </div>
-		</div>
+	
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Preferred Language</label>
-		     <div class="col-sm-4">
-		         <select class="form-control" data-ng-model="demographicForm.preferredLanguage" ng-options="e as e.label for e in metadatas.preferLanguages track by e.value">
+		     <div class="col-sm-2">
+		         <select class="form-control custom-control" data-ng-model="demographicForm.preferredLanguage" ng-options="e as e.label for e in metadatas.preferLanguages track by e.value">
+					
+				 </select>
+				 
+		         <span class="help-inline"></span>
+		     </div>
+		     
+		     <label class="col-sm-offset-1 col-sm-1">Patient Student Status</label>
+		     <div class="col-sm-2">
+		         <select class="form-control custom-control"  data-ng-model="demographicForm.studentStatus" ng-options="e as e.label for e in metadatas.studentStatuses track by e.value">
 					
 				 </select>
 				 
@@ -64,64 +77,54 @@
 		     </div>
 		</div>
 		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Patient Student Status</label>
-		     <div class="col-sm-4">
-		         <select class="form-control" data-ng-model="demographicForm.studentStatus" ng-options="e as e.label for e in metadatas.studentStatuses track by e.value">
-					
-				 </select>
-				 
-		         <span class="help-inline"></span>
-		     </div>
-		</div>
-		
+	
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Country</label>
-		     <div class="col-sm-4">
-		         <select class="form-control" data-ng-model="demographicForm.country" ng-options="c as c.label for c in metadatas.countries track by c.value">
+		     <div class="col-sm-2">
+		         <select class="form-control custom-control" data-ng-model="demographicForm.country" ng-options="c as c.label for c in metadatas.countries track by c.value">
 					
 				 </select>
 				 
 		         <span class="help-inline"></span>
 		     </div>
-		</div>
-		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Street Address</label>
-		     <div class="col-sm-4">
+		     
+		      <label class="col-sm-offset-1 col-sm-1">Street Address</label>
+		     <div class="col-sm-2">
 				 <textarea rows="3" cols="40" data-ng-model="demographicForm.streetAddress"></textarea>				 
 		         <span class="help-inline"></span>
 		     </div>
+		     
 		</div>
 		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Zip Code</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control" data-ng-model="demographicForm.zipCode">		 
-		         <span class="help-inline"></span>
-		     </div>
-		</div>
+	
 		
 		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">City</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control" data-ng-model="demographicForm.city">		 
+		  	 
+		     <div class="col-sm-offset-3 col-sm-2">
+				 <input type="text" class="form-control custom-control" placeholder="Zip Code" data-ng-model="demographicForm.zipCode">		 
 		         <span class="help-inline"></span>
 		     </div>
+		     
+		    
+		     <div class="col-sm-2" style="margin-left: 1%;">
+				 <input type="text" class="form-control custom-control" placeholder="City" data-ng-model="demographicForm.city">		 
+		         <span class="help-inline"></span>
+		     </div>
+		     
+		     
+		     <div class="col-sm-2" style="margin-left: 1%;">
+				 <input type="text" class="form-control custom-control" placeholder="State"  data-ng-model="demographicForm.state">		 
+		         <span class="help-inline"></span>
+		     </div>
+		     
 		</div>
 		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">State</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control" data-ng-model="demographicForm.state">		 
-		         <span class="help-inline"></span>
-		     </div>
-		</div>
+		
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Formatted Address</label>
 		     <div class="col-sm-4">
-				 <input type="text" readonly="readonly" class="form-control">		 
+				 <input type="text" readonly="readonly" class="form-control custom-control">		 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -129,34 +132,34 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Mail Address</label>
 		     <div class="col-sm-4">
-				 <textarea rows="3" cols="40" data-ng-model="demographicForm.mailAddress"></textarea>				 
+				 <textarea rows="3" cols="40" data-ng-model="demographicForm.mailAddress"></textarea>		
+				<p class="help-block">*If different from address. Only valid for US addresses.</p>  		 
 		     </div>
-		     <span class="col-sm-4">*If different from address. Only valid for US addresses.</span>
+		    
 		</div>
 		
 		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Mail Zip Code</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control" data-ng-model="demographicForm.mailZipCode">		 
+		  	
+		     <div class="col-sm-offset-3 col-sm-2">
+				 <input type="text" class="form-control custom-control" placeholder="Mail Zip Code" data-ng-model="demographicForm.mailZipCode">		 
 		         <span class="help-inline"></span>
 		     </div>
+		     
+		    
+		     <div class="col-sm-2" style="margin-left: 1%;">
+				 <input type="text" class="form-control custom-control" placeholder="Mail City" data-ng-model="demographicForm.mailCity">		 
+		         <span class="help-inline"></span>
+		     </div>
+		     
+		      
+		     <div class="col-sm-2"  style="margin-left: 1%;">
+				 <input type="text" class="form-control custom-control" placeholder="Mail State" data-ng-model="demographicForm.mailState">		 
+		         <span class="help-inline"></span>
+		     </div>
+		     
 		</div>
 		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Mail City</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control" data-ng-model="demographicForm.mailCity">		 
-		         <span class="help-inline"></span>
-		     </div>
-		</div>
 		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Mail State</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control" data-ng-model="demographicForm.mailState">		 
-		         <span class="help-inline"></span>
-		     </div>
-		</div>
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Notes</label>
@@ -167,46 +170,41 @@
 		
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Patient Marital Status</label>
-		     <div class="col-sm-4">
-		         <select class="form-control" data-ng-model="demographicForm.maritalStatus" data-ng-options="m as m.label for m in metadatas.maritalStatus track by m.value">
+		     <div class="col-sm-2">
+		         <select class="form-control custom-control" data-ng-model="demographicForm.maritalStatus" data-ng-options="m as m.label for m in metadatas.maritalStatus track by m.value">
 					
 				 </select>
 				 
 		         <span class="help-inline"></span>
 		     </div>
-		</div>
-		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">EPSDT Services</label>
-		     <div class="col-sm-4">
-		         <select class="form-control" data-ng-model="demographicForm.EPSDTService" ng-options="e as e.label for e in metadatas.epsdts track by e.value">
+		     
+		   <label class="col-sm-offset-1 col-sm-1">EPSDT Services</label>
+		     <div class="col-sm-2">
+		         <select class="form-control custom-control" data-ng-model="demographicForm.EPSDTService" ng-options="e as e.label for e in metadatas.epsdts track by e.value">
 					
 				 </select>
 				 
 		         <span class="help-inline"></span>
-		     </div>
+		     </div>  
+		     
 		</div>
 		
+		
+		
 		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Emergency Contact Name</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control" data-ng-model="demographicForm.emergencyContactName">		 
+		  	 <label class="col-sm-offset-1 col-sm-2">Emergency Contact</label>
+		     <div class="col-sm-2">
+				 <input type="text" class="form-control custom-control" placeholder="Emergency Contact Name" data-ng-model="demographicForm.emergencyContactName">		 
 		         <span class="help-inline"></span>
 		     </div>
-		</div>
-		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Emergency Contact Phone</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control" data-ng-model="demographicForm.emergencyContactPhone">		 
+		     
+		     <div class="col-sm-2" style="margin-left: 1%;">
+				 <input type="text" class="form-control custom-control" placeholder="Emergency Contact Phone" data-ng-model="demographicForm.emergencyContactPhone">		 
 		         <span class="help-inline"></span>
 		     </div>
-		</div>
-		
-		<div class="form-group">
-		  	 <label class="col-sm-offset-1 col-sm-2">Emergency Contact Relation</label>
-		     <div class="col-sm-4">
-				 <input type="text" class="form-control" data-ng-model="demographicForm.emergencyContactRelation">		 
+		     
+		      <div class="col-sm-2" style="margin-left: 1%;">
+				 <input type="text" class="form-control custom-control" placeholder="Emergency Contact Relation" data-ng-model="demographicForm.emergencyContactRelation">		 
 		         <span class="help-inline"></span>
 		     </div>
 		</div>
@@ -218,3 +216,13 @@
 		</div>
 	</form>
 </div>
+
+<style>
+.custom-control{
+height: 26px !important;
+font-size: 12px !important;
+
+}
+
+
+</style>

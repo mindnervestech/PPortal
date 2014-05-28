@@ -35,6 +35,13 @@
             left: 17px;
             position: absolute;
         }
+        
+        .custom-panel {
+			margin: 10px 0px 0 6px !important;
+		}
+		.lowerHeader1 {
+			padding: 0 0 10px 0 !important;
+		}
     </style>
   </head>
   <body id="patientDashboardPage" ng-app="patientPortal">
@@ -109,24 +116,24 @@
         </nav>
 	</header><!-- header -->
 	
-	<header class="lowerHeader">
+	<header class="lowerHeader lowerHeader1">
     	<div  class="container">
-            <section id="stats">
+            <section id="stats" >
             	<div class="statsLeft col-sm-6">
 	                <div class="col-xs-4">
-	               		<a class="panel panel1" data-toggle="modal" href="#appointmentsModal">
+	               		<a class="panel panel1 custom-panel" data-toggle="modal" href="#appointmentsModal">
 	                        <h1>APPOINTMENTS</h1>
 	                        <p><b>28</b> Due to 21 days</p>
 	                    </a>
 	                </div>
 	                <div class="col-xs-4">
-	                	<a class="panel panel2" data-toggle="modal" href="#remindersModal">
+	                	<a class="panel panel2 custom-panel" data-toggle="modal" href="#remindersModal">
 	                        <h1>REMINDERS</h1>
 	                        <p><b>14</b> Recent reminders</p>
 	                    </a>
 	                </div>
 	                <div class="col-xs-4">
-	                	<a class="panel panel3" data-toggle="modal" href="#notesModal">
+	                	<a class="panel panel3 custom-panel" data-toggle="modal" href="#notesModal">
 	                        <h1>CHARTS / NOTES</h1>
 	                        <p><b>17</b> New notes today</p>
 	                    </a>
@@ -135,19 +142,19 @@
              
              <div class="statsRight col-sm-6">
 	                <div class="col-xs-4">
-	               		<a class="panel panel4" ng-href="/patient/">
+	               		<a class="panel panel4 custom-panel" ng-href="/patient/">
 	                        <h1>PATIENT</h1>
 	                        <p>Register on 21 March</p>
 	                    </a>
 	                </div>
 	                <div class="col-xs-4">
-	                	<a class="panel panel5" data-toggle="modal" href="#billingModal">
+	                	<a class="panel panel5 custom-panel" data-toggle="modal" href="#billingModal">
 	                        <h1>BILLING</h1>
 	                        <p>Next due on 19 April 2014</p>
 	                    </a>
 	                </div>
 	                <div class="col-xs-4">
-	                	<a class="panel panel6" data-toggle="modal" href="#reportsModal">
+	                	<a class="panel panel6 custom-panel" data-toggle="modal" href="#reportsModal">
 	                        <h1>REPORTS</h1>
 	                        <p>Last checked at 5:34</p>
 	                    </a>
@@ -249,48 +256,48 @@
         </div><!-- container -->
     </header><!-- topLower -->
 	
-    <section class="container"><!--container section!-->
+    <section class="container" style="width: 100%;"><!--container section!-->
     	
         <aside class="sideLinks col-sm-2">
         	<a class="panel" href="#/make-appointment">
 	            <h2>Appointments</h2>
-	            <p class="col-sm-9">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
+	            <p class="col-sm-12">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
 	            <b class="col-sm-3 fa fa-clock-o"></b>
 	            <br class="clear">
 	        </a>
 	        <a class="panel" href="#">
 	            <h2>Medical History</h2>
-	            <p class="col-sm-9">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
+	            <p class="col-sm-12">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
 	            <b class="col-sm-3 fa fa-hospital-o"></b>
 	            <br class="clear">
 	        </a>
 	        <a class="panel" href="#">
 	            <h2>Request Refills</h2>
-	            <p class="col-sm-9">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
+	            <p class="col-sm-12">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
 	            <b class="col-sm-3 fa fa-medkit"></b>
 	            <br class="clear">
 	        </a>
 	        <a class="panel" href="#">
 	            <h2>Lab Reports</h2>
-	            <p class="col-sm-9">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
+	            <p class="col-sm-12">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
 	            <b class="col-sm-3 fa fa-bar-chart-o"></b>
 	            <br class="clear">
 	        </a>
 	        <a class="panel" href="#">
 	            <h2>Messages</h2>
-	            <p class="col-sm-9">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
+	            <p class="col-sm-12">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
 	            <b class="col-sm-3 fa fa-envelope-o"></b>
 	            <br class="clear">
 	        </a>
 	        <a class="panel" href="#">
 	            <h2>Health Records</h2>
-	            <p class="col-sm-9">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
+	            <p class="col-sm-12">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
 	            <b class="col-sm-3 fa fa-pencil-square-o"></b>
 	            <br class="clear">
 	        </a>
         </aside>
         
-        <div id="content" class="col-sm-10" ng-view="">
+        <div id="content" class="col-sm-10" ng-view="" >
     	
   		</div>	
         <div class="clr"></div>

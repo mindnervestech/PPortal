@@ -10,8 +10,15 @@ angular.module('patientPortal',
 ).config(function ($routeProvider) {
     $routeProvider
     .when('/', {
-      templateUrl: '/resources/app/patient-views/patient-form.html'
+      templateUrl: '/resources/app/patient-views/patient-form.html',
+      controller: 'MenuBarController'
+    }).when('/medHistory', {
+      templateUrl: '/resources/app/patient-views/history-main.html',
+      controller: 'MenuBarController'
+    }).otherwise({
+        redirectTo: '/'
     });
+    
 }).run(function(editableOptions) {
 	editableOptions.theme = 'bs3'; // bootstrap3 theme
 });

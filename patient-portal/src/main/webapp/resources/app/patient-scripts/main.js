@@ -2,6 +2,27 @@
 
 var patientPortal = angular.module('patientPortal');
 
+
+
+function tenant($scope){
+    $scope.name = '';
+  
+    $scope.contacts = [ {  } ];
+    
+    
+		
+    $scope.newContact = function($event){
+        $scope.contacts.push( {  } );
+        $event.preventDefault();
+    };
+    
+    $scope.submitSearch1 = function (set) {
+		  $scope.setText = set;
+		};
+
+}
+
+
 patientPortal.controller('MenuBarController', function($scope,MetadataService, PatientInfo) {
 	
 	$scope.initial = {};
@@ -14,8 +35,13 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 	
 	$scope.tabs.insurances = [
 	               { title:'Primary Insurance',active: true, content:'/resources/app/patient-views/primary-insurances.html' },
-	               { title:'Secondary Insurance', content:'/resources/app/patient-views/secondary-insurances.html' },
+	               { title:'Secondary Insurance', content:'/resources/app/patient-views/secondary-insurances.html' }
 	             ];
+	
+	$scope.tabsHistories=[
+	               { title:'jai',active: true, content:'/resources/app/patient-views/medical-History.html'},
+	               { title:'harshad', content:'/resources/app/patient-views/family-History.html' },             
+	                       ];
 	
 	$scope.insurance={
 			companyName : 'Degree'
@@ -81,4 +107,106 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 			console.log("Commited");
 		});
 	};
+
+	
+	
+	$scope.activeSmokers = 'activeSmokers';
+	 $scope.passiveSmokers = 'none';
+	 
+	 $scope.nonePassiveExpo='nonePassiveExpo';
+	 $scope.inPastPassiveExpo='inPastPassiveExpo';
+	 
+	 $scope.no='no';
+	 $scope.yes='yes';
+	 
+	 $scope.noAlcohol='noAlcohol';
+	 $scope.advancedDirective='setEnabled';
+	 
+	 $scope.livewith = [{name: "Mom", status:false},
+	                     {name: "Dad",status:false},
+	                     {name: "Uncle",status:false},
+	                     {name: "Aunt",status:false},
+	                     {name: "cousen",status:false},
+	                     {name: "granny",status:false},
+	                     {name: "grandFather",status:false},
+	                     {name: "Brother",status:false}];
+	 
+	 
+	  $scope.isShown = function(activeSmokers) {
+		       var isShow = (activeSmokers === $scope.activeSmokers);
+		       if(isShow){
+		    	   return isShow;
+		       }
+		       else{
+		    	   return false;
+		       }
+   };
+	$scope.isShownExposure = function(active) {
+	       var isShow = (active !== $scope.nonePassiveExpo);
+	       var notToShow=(active !== $scope.inPastPassiveExpo);
+	       if(isShow){
+	    	   return isShow;
+	       }
+	       else if(notToShow){
+	    	   return false;
+	       }
+	};
+	
+	$scope.isShownDrugs = function(active) {
+	       var isShow = (active ===$scope.yes);
+	       var notToShow=(active === $scope.no);
+	       if(isShow){
+	    	   return isShow;
+	       }
+	       else if(notToShow){
+	    	   return false;
+	       }
+	};
+	$scope.isShownAlcohol = function(active) {
+	       var notToShow=(active ==='noAlcohol');
+	       if(notToShow){
+	    	   return false;
+	       }
+	      return true; 
+	};
+	
+	$scope.markMyAppoitment = function(slot) {
+			 if(slot.status == true) {
+                slot.status = false;
+          } else if(slot.status == false) {
+                slot.status = true;
+          }
+	};
+	
+	$scope.disableDates = function(advancedDirective) {
+			 if(advancedDirective ==='true') {
+              return false;
+         } else {
+       	  return true;
+         }
+	};
+	$scope.recentClicked = function(travelDetails) {
+		if(travelDetails==='recent'){
+			return false;
+		}else {
+     	  return true;
+       }
+	};
+	$scope.pastClicked = function(travelDetails) {
+		if(travelDetails==='past'){
+			return false;
+		}else {
+     	  return true;
+       }
+	};
+	$scope.diseaseExpoClicked = function(travelDetails) {
+		if(travelDetails==='diseaseExpo'){
+			return false;
+		}else {
+     	  return true;
+       }
+	};
+	/* harshad */
+	
+	
 });

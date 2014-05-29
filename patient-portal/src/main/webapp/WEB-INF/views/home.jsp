@@ -286,7 +286,7 @@
 	            <br class="clear">
 	        </a>
         </aside>
-        
+        <span us-spinner spinner-key="loading..." ></span>
         <section class="col-sm-10" ng-view=""><!--right section!-->
 
   		</section><!--right section!-->

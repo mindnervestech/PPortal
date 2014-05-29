@@ -4,7 +4,7 @@ var app = angular.module('home-app');
 
 ///////////////////////// Search Service Start //////////////////////////////////
 
-app.controller('HomeController',function($scope, $location, $filter, AppointmentService, AppointmentSlotService, MetaDataService, DoctorsDataService){
+app.controller('HomeController',function($scope, $location, $filter, usSpinnerService ,AppointmentService, AppointmentSlotService, MetaDataService, DoctorsDataService){
 	
 	$scope.symptomFormArray = [];
 	$scope.currentSymptomFormIndex = 0;
@@ -169,12 +169,13 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 			painArea : [] 
 	};
 	function getMetadata(subid){
+		usSpinnerService.spin('loading...');
 		MetaDataService.GetMetaDataByLocation.get({
 						location:$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea,
 						sublocation: subid}, function(data){
-			
 						$scope.symptomFormArray[$scope.currentSymptomFormIndex].metadata = data;
 						$scope.$apply;
+						usSpinnerService.stop('loading...');
 		});
 	}
 	

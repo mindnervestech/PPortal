@@ -59,9 +59,7 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	        	$scope.symptomFormArray[$scope.currentSymptomFormIndex].selectedLevelOneText = item.text;
 	        }
 	      });
-		if($scope.levelTwoOption != undefined) {
-			$scope.setLevelTwo($scope.levelTwoOption[0].value);
-		}
+		
 		
 		$scope.$apply;
 	};
@@ -74,11 +72,17 @@ app.controller('HomeController',function($scope, $location, $filter, Appointment
 	$scope.setLevelOne = function(id) {
 		$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea = id;
 		$scope.updateLevelTwo();
+		if($scope.levelTwoOption != undefined) {
+			$scope.setLevelTwo($scope.levelTwoOption[0].value,$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea);
+		}
 		
 	};
 	
-	$scope.setLevelTwo = function(id) {
+	$scope.setLevelTwo = function(id, p_id) {
 		$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelTwoArea = id;
+		$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea = p_id;
+		$scope.updateLevelTwo();
+		
 		
 		angular.forEach($scope.levelTwoOption, function(item){
 	        if(item.value == $scope.symptomFormArray[$scope.currentSymptomFormIndex].levelTwoArea) {

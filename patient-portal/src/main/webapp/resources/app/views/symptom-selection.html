@@ -14,7 +14,7 @@
 									<label>Level Two</label>
 									<select required="required"
 										data-ng-model="symptomFormArray[currentSymptomFormIndex].levelTwoArea" 
-										data-ng-change="setLevelTwo(symptomFormArray[currentSymptomFormIndex].levelTwoArea)"  
+										data-ng-change="setLevelTwo(symptomFormArray[currentSymptomFormIndex].levelTwoArea,symptomFormArray[currentSymptomFormIndex].levelOneArea)"  
 										data-ng-options="area.value as area.text for area in levelTwoOption">
 										<option value="">-- Select--</option>
 									</select>

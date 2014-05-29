@@ -61,7 +61,7 @@
 					${registered}</p>
 			</c:if>
 			 --%>
-			<form class="form-horizontal" action="/validate_user" method="post">
+			<form class="form-horizontal" action="${pageContext.request.contextPath}/validate_user" method="post">
 				<fieldset id="login_field">
 					<div class="well" style="width: 350px;background-color: rgba(0, 0, 0, 0.2);">
 						<p>

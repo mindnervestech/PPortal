@@ -9,7 +9,7 @@ import play.db.ebean.Model;
 @Entity
 public class WorsedBy extends Model {
 
-	public static Model.Finder<Long,WorsedBy> find = new Model.Finder<Long,WorsedBy>(Long.class, WorsedBy.class);
+	private static Model.Finder<Long,WorsedBy> find = new Model.Finder<Long,WorsedBy>(Long.class, WorsedBy.class);
 	
 	@Id
 	public Long id;

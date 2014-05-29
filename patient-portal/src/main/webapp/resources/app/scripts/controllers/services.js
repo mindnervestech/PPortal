@@ -25,7 +25,7 @@ app.service('MetaDataService',function($resource){
 
 app.service('DoctorsDataService',function($resource){
 	this.GetData = $resource(
-			'/get-all-doctors',
+			'get-all-doctors',
 			{alt:'json',callback:'JSON_CALLBACK'},
 			{
 				get: {method:'GET', isArray:true}
@@ -36,7 +36,7 @@ app.service('DoctorsDataService',function($resource){
 
 app.service('AppointmentService',function($resource){
 	this.GetAllApps = $resource(
-			'/get-all-appointments',
+			'get-all-appointments',
 			{alt:'json',callback:'JSON_CALLBACK'},
 			{
 				get: {method:'GET', isArray:true}

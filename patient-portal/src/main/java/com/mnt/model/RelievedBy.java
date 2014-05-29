@@ -9,7 +9,7 @@ import play.db.ebean.Model;
 @Entity
 public class RelievedBy extends Model {
 
-	public static Model.Finder<Long,RelievedBy> find = new Model.Finder<Long,RelievedBy>(Long.class, RelievedBy.class);
+	private static Model.Finder<Long,RelievedBy> find = new Model.Finder<Long,RelievedBy>(Long.class, RelievedBy.class);
 	
 	@Id
 	public Long id;

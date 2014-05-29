@@ -9,7 +9,7 @@ import play.db.ebean.Model;
 @Entity
 public class WhenThisHappen  extends Model {
 
-	public static Model.Finder<Long,WhenThisHappen> find = new Model.Finder<Long,WhenThisHappen>(Long.class, WhenThisHappen.class);
+	private static Model.Finder<Long,WhenThisHappen> find = new Model.Finder<Long,WhenThisHappen>(Long.class, WhenThisHappen.class);
 	
 	@Id
 	public Long id;

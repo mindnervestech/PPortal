@@ -1157,6 +1157,9 @@ select {
 	margin-top:-4px;
 }
 
+.wrapperClassOnMap {
+	height: auto !important; 
+}
 
 
 

@@ -435,7 +435,7 @@ $(document).ready(function () {
 var IsTooltip = "False";
 $(document).ready(function () {
 	
-	$('.map').maphilight({ fade: true, stroke: false, fillColor: 'b84949', fillOpacity: 0.5 });
+	$('.map').maphilight({ fade: true, stroke: false, fillColor: 'b84949', fillOpacity: 0.5 , wrapClass:'wrapperClassOnMap'});
     $('.map1').maphilight({ fade: true, stroke: false, fillColor: 'b84949', fillOpacity: 0.5 });
     $('.map3').maphilight({ fade: true, stroke: false, fillColor: 'b84949', fillOpacity: 0.5 });
 	
@@ -965,7 +965,7 @@ function setImage(id) {
     }
     var ZoomImage = $("#ImgMan");
     ZoomImage.attr({ usemap: "#Map1", useMap: "#Map1" });
-    $('.map').maphilight({ fade: true, stroke: true, fillColor: 'b84949', fillOpacity: 0.5 });
+    $('.map').maphilight({ fade: true, stroke: true, fillColor: 'b84949', fillOpacity: 0.5, wrapClass:'wrapperClassOnMap' });
     $('.map1').maphilight({ fade: true, stroke: true, fillColor: 'b84949', fillOpacity: 0.5 });
     $('.map3').maphilight({ fade: true, stroke: false, fillColor: 'b84949', fillOpacity: 0.5 });
 }
@@ -1068,7 +1068,7 @@ function setImageBack(id) {
     }
     var ZoomImage = $("#ImgManBack");
     ZoomImage.attr({ usemap: "#Map3", useMap: "#Map3" });
-    $('.map').maphilight({ fade: true, stroke: true, fillColor: 'b84949', fillOpacity: 0.5 });
+    $('.map').maphilight({ fade: true, stroke: true, fillColor: 'b84949', fillOpacity: 0.5, wrapClass:'wrapperClassOnMap' });
     $('.map1').maphilight({ fade: true, stroke: true, fillColor: 'b84949', fillOpacity: 0.5 });
     $('.map3').maphilight({ fade: true, stroke: false, fillColor: 'b84949', fillOpacity: 0.5 });
 }

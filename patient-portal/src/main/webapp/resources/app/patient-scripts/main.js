@@ -28,19 +28,19 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 	$scope.initial = {};
 	
 	$scope.tabs = [
-	               { title:'Important',active: true, content:'/resources/app/patient-views/important.html' },
-	               { title:'Demographics', content:'/resources/app/patient-views/demographics.html'},
-	               { title:'Insurances', content:'/resources/app/patient-views/insurance-main.html'}
+	               { title:'Important',active: true, content: urlContext + '/resources/app/patient-views/important.html' },
+	               { title:'Demographics', content:urlContext +'/resources/app/patient-views/demographics.html'},
+	               { title:'Insurances', content: urlContext +'/resources/app/patient-views/insurance-main.html'}
 	             ];
 	
 	$scope.tabs.insurances = [
-	               { title:'Primary Insurance',active: true, content:'/resources/app/patient-views/primary-insurances.html' },
-	               { title:'Secondary Insurance', content:'/resources/app/patient-views/secondary-insurances.html' }
+	               { title:'Primary Insurance',active: true, content: urlContext + '/resources/app/patient-views/primary-insurances.html' },
+	               { title:'Secondary Insurance', content: urlContext + '/resources/app/patient-views/secondary-insurances.html' }
 	             ];
 	
 	$scope.tabsHistories=[
-	               { title:'jai',active: true, content:'/resources/app/patient-views/medical-History.html'},
-	               { title:'harshad', content:'/resources/app/patient-views/family-History.html' },             
+	               { title:'jai',active: true, content: urlContext + '/resources/app/patient-views/medical-History.html'},
+	               { title:'harshad', content: urlContext + '/resources/app/patient-views/family-History.html' },             
 	                       ];
 	
 	$scope.insurance={

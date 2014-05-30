@@ -70,7 +70,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/patient/", method = RequestMethod.GET)
+	@RequestMapping(value = "/form/", method = RequestMethod.GET)
 	public String patientForm(HttpSession session) {
 		if(session.getAttribute("code") == null) {
 	    	return "redirect:/login";

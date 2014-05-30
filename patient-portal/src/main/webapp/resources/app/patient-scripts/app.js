@@ -10,10 +10,10 @@ angular.module('patientPortal',
 ).config(function ($routeProvider) {
     $routeProvider
     .when('/', {
-      templateUrl: '/resources/app/patient-views/patient-form.html',
+      templateUrl: urlContext + '/resources/app/patient-views/patient-form.html',
       controller: 'MenuBarController'
     }).when('/medHistory', {
-      templateUrl: '/resources/app/patient-views/history-main.html',
+      templateUrl: urlContext + '/resources/app/patient-views/history-main.html',
       controller: 'MenuBarController'
     }).otherwise({
         redirectTo: '/'

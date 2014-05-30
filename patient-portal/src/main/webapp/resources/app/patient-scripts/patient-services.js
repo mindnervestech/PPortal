@@ -5,7 +5,7 @@ var patientPortal = angular.module('patientPortal');
 
 patientPortal.service('MetadataService',function($resource){
 	this.GetMetadata = $resource(
-			'/get-metadata',
+			urlContext + '/get-metadata',
 			{alt:'json',callback:'JSON_CALLBACK'},
 			{
 				get: {method:'GET'}
@@ -14,13 +14,13 @@ patientPortal.service('MetadataService',function($resource){
 });
 
 patientPortal.service('PatientInfo',function($resource){
-	this.saveImportant = $resource('/save-patient-imp-details');
-	this.saveDemographics = $resource('/save-patient-demographic-details');
-	this.savePrimaryInsurance = $resource('/save-patient-primary-insurance-details');
-	this.saveSecondaryInsurance = $resource('/save-patient-secondary-insurance-details');
+	this.saveImportant = $resource(urlContext + '/save-patient-imp-details');
+	this.saveDemographics = $resource(urlContext + '/save-patient-demographic-details');
+	this.savePrimaryInsurance = $resource(urlContext + '/save-patient-primary-insurance-details');
+	this.saveSecondaryInsurance = $resource(urlContext + '/save-patient-secondary-insurance-details');
 	
 	this.getImpDetails = $resource(
-			'/get-patient-imp-details',
+			urlContext + '/get-patient-imp-details',
 			{alt:'json',callback:'JSON_CALLBACK'},
 			{
 				get: {method:'GET'}
@@ -28,7 +28,7 @@ patientPortal.service('PatientInfo',function($resource){
 	);
 	
 	this.getDemographicsDetails = $resource(
-			'/get-patient-demographic-details',
+			urlContext + '/get-patient-demographic-details',
 			{alt:'json',callback:'JSON_CALLBACK'},
 			{
 				get: {method:'GET'}
@@ -36,7 +36,7 @@ patientPortal.service('PatientInfo',function($resource){
 	);
 	
 	this.getPrimaryInsuranceDetails = $resource(
-			'/get-patient-primary-insurance-details',
+			urlContext + '/get-patient-primary-insurance-details',
 			{alt:'json',callback:'JSON_CALLBACK'},
 			{
 				get: {method:'GET'}
@@ -44,7 +44,7 @@ patientPortal.service('PatientInfo',function($resource){
 	);
 	
 	this.getSecondaryInsuranceDetails = $resource(
-			'/get-patient-secondary-insurance-details',
+			urlContext + '/get-patient-secondary-insurance-details',
 			{alt:'json',callback:'JSON_CALLBACK'},
 			{
 				get: {method:'GET'}

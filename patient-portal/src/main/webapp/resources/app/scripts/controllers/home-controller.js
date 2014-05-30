@@ -284,7 +284,11 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 		$scope.step = 2;
 	};
 	
+});
+
+app.controller('AppointmentListController',function($scope, $location, $filter, AppointmentService) {
 	$scope.appointmentList = AppointmentService.GetAllApps.get({}, function(responce) {
 		console.log(responce);
 	});
 });
+

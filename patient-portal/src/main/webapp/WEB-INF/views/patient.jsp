@@ -43,6 +43,10 @@
 			padding: 0 0 10px 0 !important;
 		}
     </style>
+    
+    <script type="text/javascript">
+    	var urlContext = "${pageContext.request.contextPath}";
+    </script>
   </head>
   <body id="patientDashboardPage" ng-app="patientPortal">
   <span us-spinner spinner-key="loading..." ></span>
@@ -108,7 +112,7 @@
                    	    	<li><a href="#"><b class="fa fa-pencil-square"> </b> Edit Profile</a></li>
                             <li><a href="#"><b class="fa fa-cog"> </b> Settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="/logout"><b class="fa fa-sign-out"> </b> Logout</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logout"><b class="fa fa-sign-out"> </b> Logout</a></li>
                         </ul>
 		    </li>
                 </ul>
@@ -121,7 +125,7 @@
             <section id="stats" >
             	<div class="statsLeft col-sm-6">
 	                <div class="col-xs-4">
-	               		<a class="panel panel1 custom-panel" data-toggle="modal" href="#appointmentsModal">
+	               		<a class="panel panel1 custom-panel" data-toggle="modal" href="${pageContext.request.contextPath}/#/appointment-list">
 	                        <h1>APPOINTMENTS</h1>
 	                        <p><b>28</b> Due to 21 days</p>
 	                    </a>
@@ -142,7 +146,7 @@
              
              <div class="statsRight col-sm-6">
 	                <div class="col-xs-4">
-	               		<a class="panel panel4 custom-panel" ng-href="/patient/">
+	               		<a class="panel panel4 custom-panel" ng-href="${pageContext.request.contextPath}/form/#/">
 	                        <h1>PATIENT</h1>
 	                        <p>Register on 21 March</p>
 	                    </a>

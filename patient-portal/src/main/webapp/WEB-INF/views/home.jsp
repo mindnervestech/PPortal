@@ -15,6 +15,12 @@
 	<link href="${pageContext.request.contextPath}/resources/css/jquery.ui.all.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/wemblo.css" rel="stylesheet">
+	
+	<script type="text/javascript">
+		var urlContext = "${pageContext.request.contextPath}";
+		console.log(urlContext);
+	</script>
+	
 	<style type="text/css">
         .tooltip
         {
@@ -32,6 +38,13 @@
             left: 17px;
             position: absolute;
         }
+        
+        .custom-panel {
+			margin: 10px 0px 0 6px !important;
+		}
+		.lowerHeader1 {
+			padding: 0 0 10px 0 !important;
+		}
     </style>
   </head>
   <body id="patientDashboardPage" ng-app="home-app" ng-controller="HomeController" style="overflow-y: scroll;">
@@ -98,7 +111,7 @@
                    	    	<li><a href="#"><b class="fa fa-pencil-square"> </b> Edit Profile</a></li>
                             <li><a href="#"><b class="fa fa-cog"> </b> Settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="/logout"><b class="fa fa-sign-out"> </b> Logout</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logout"><b class="fa fa-sign-out"> </b> Logout</a></li>
                         </ul>
 		    </li>
                 </ul>
@@ -106,24 +119,24 @@
         </nav>
 	</header><!-- header -->
 	
-	<header class="lowerHeader">
+	<header class="lowerHeader lowerHeader1">
     	<div  class="container">
             <section id="stats">
             	<div class="statsLeft col-sm-6">
 	                <div class="col-xs-4">
-	               		<a class="panel panel1" href="/#/appointment-list">
+	               		<a class="panel panel1 custom-panel" href="${pageContext.request.contextPath}/#/appointment-list">
 	                        <h1>APPOINTMENTS</h1>
 	                        <p><b>28</b> Due to 21 days</p>
 	                    </a>
 	                </div>
 	                <div class="col-xs-4">
-	                	<a class="panel panel2" data-toggle="modal" href="#remindersModal">
+	                	<a class="panel panel2 custom-panel" data-toggle="modal" href="#remindersModal">
 	                        <h1>REMINDERS</h1>
 	                        <p><b>14</b> Recent reminders</p>
 	                    </a>
 	                </div>
 	                <div class="col-xs-4">
-	                	<a class="panel panel3" data-toggle="modal" href="#notesModal">
+	                	<a class="panel panel3 custom-panel" data-toggle="modal" href="#notesModal">
 	                        <h1>CHARTS / NOTES</h1>
 	                        <p><b>17</b> New notes today</p>
 	                    </a>
@@ -132,19 +145,19 @@
              
              <div class="statsRight col-sm-6">
 	                <div class="col-xs-4">
-	               		<a class="panel panel4" ng-href="/patient/">
+	               		<a class="panel panel4 custom-panel" ng-href="${pageContext.request.contextPath}/form/#/">
 	                        <h1>PATIENT</h1>
 	                        <p>Register on 21 March</p>
 	                    </a>
 	                </div>
-	                <div class="col-xs-4">
-	                	<a class="panel panel5" data-toggle="modal" href="#billingModal">
+	                <div class="col-xs-4 ">
+	                	<a class="panel panel5 custom-panel" data-toggle="modal" href="#billingModal">
 	                        <h1>BILLING</h1>
 	                        <p>Next due on 19 April 2014</p>
 	                    </a>
 	                </div>
 	                <div class="col-xs-4">
-	                	<a class="panel panel6" data-toggle="modal" href="#reportsModal">
+	                	<a class="panel panel6 custom-panel" data-toggle="modal" href="#reportsModal">
 	                        <h1>REPORTS</h1>
 	                        <p>Last checked at 5:34</p>
 	                    </a>

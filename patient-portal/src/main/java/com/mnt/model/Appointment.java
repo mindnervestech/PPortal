@@ -11,6 +11,9 @@ import com.mnt.module.appointment.SlotStatus;
 
 import play.db.ebean.Model;
 
+import com.avaje.ebean.Expr;
+import com.mnt.module.appointment.SlotStatus;
+
 @Entity
 public class Appointment extends Model {
 	
@@ -24,6 +27,10 @@ public class Appointment extends Model {
 	public int appointmentDate;
 	public int appointmentMonth;
 	public int appointmentYear;
+	
+	//Date fully object 
+    public Date appointmentDmy;
+
 	
 	//Status of Appointment
 	public String status;
@@ -80,6 +87,24 @@ public class Appointment extends Model {
 	
 	public static List<Appointment> getAllAppointments(Long patientId) {
 		return find.where().eq("appointmentOf_Id", patientId).findList();
+	}
+	
+	public static List<Appointment> getPastAppointments(Long patientId){
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		
+		return find.where().and(Expr.eq("appointmentOf_Id", patientId), Expr.lt("appointmentDmy", calendar.getTime())).findList();
+	}
+	
+	public static List<Appointment> getFutureAppointments(Long patientId){
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		
+		return find.where().and(Expr.eq("appointmentOf_Id", patientId), Expr.ge("appointmentDmy", calendar.getTime())).findList();
 	}
 
 	public Long getId() {
@@ -152,6 +177,14 @@ public class Appointment extends Model {
 
 	public void setAppointmentWith_Type(String appointmentWith_Type) {
 		this.appointmentWith_Type = appointmentWith_Type;
+	}
+
+	public Date getAppointmentDmy() {
+		return appointmentDmy;
+	}
+
+	public void setAppointmentDmy(Date appointmentDmy) {
+		this.appointmentDmy = appointmentDmy;
 	}
 
 	public int getAppointmentDate() {

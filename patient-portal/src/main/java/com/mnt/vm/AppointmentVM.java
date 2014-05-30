@@ -14,7 +14,7 @@ public class AppointmentVM {
 	public static AppointmentVM buildVM(Appointment apt) {
 		AppointmentVM appointment = new AppointmentVM();
 		appointment.aptId = apt.id;
-		appointment.aptDate = apt.appointmentDate + "/" +apt.appointmentMonth+"/" +apt.appointmentYear; 
+		appointment.aptDate = apt.appointmentDmy.toString();//apt.appointmentDate + "/" +apt.appointmentMonth+"/" +apt.appointmentYear; 
 		appointment.slot = TimeConverter.convertElapsedMinToDayTime(apt.startMin) + " - " + TimeConverter.convertElapsedMinToDayTime(apt.endMin);
 		appointment.aptWith = Doctors.getFullNameById(apt.appointmentWith_Id);
 		return appointment;

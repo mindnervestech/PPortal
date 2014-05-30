@@ -107,7 +107,7 @@
                     <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Alerts"><b class="fa fa-bell"><span class="badge pull-right">8</span></b></a></li>
                     <li class="tasks"><a href="#" data-toggle="tooltip" data-placement="bottom" title="Dashboard"><b class="fa fa-tachometer"></b></a></li>
                     <li class="tasks"><a href="#" data-toggle="tooltip" data-placement="bottom" title="Settings"><b class="fa fa-cog"></b></a></li>
-                    <li class="username active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="${pageContext.request.contextPath}/resources/images/icomale.png" alt="Username">Doctor Name <b class="caret"></b></a>
+                    <li class="username active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="${pageContext.request.contextPath}/resources/images/icomale.png" alt="Username">${user.firstname} ${user.lastname} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                    	    	<li><a href="#"><b class="fa fa-pencil-square"> </b> Edit Profile</a></li>
                             <li><a href="#"><b class="fa fa-cog"> </b> Settings</a></li>

@@ -3,6 +3,7 @@ package com.mnt.module.appointment.service;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -30,6 +31,7 @@ import com.mnt.module.appointment.data.AppointmentSlotViewModel;
 import com.mnt.module.appointment.data.SymptomReported;
 import com.mnt.module.appointment.repository.AppointmentDataStore;
 import com.mnt.vm.AppointmentVM;
+import com.mnt.vm.PastAndFutureAppointmentsVM;
 
 @Service
 public class AppoitmentServiceImpl implements AppoitmentService {
@@ -139,16 +141,29 @@ public class AppoitmentServiceImpl implements AppoitmentService {
 	}
 
 	@Override
-	public List<AppointmentVM> getAllAppointmentsOfPatient(String patientCode) {
+	public PastAndFutureAppointmentsVM getAllAppointmentsOfPatient(String patientCode) {
 		Patient patient = Patient.getPatientByCode(patientCode);
-		List<Appointment> appointments = Appointment.getAllAppointments(patient.getId());
 		
-		List<AppointmentVM> appointmentVMs = new ArrayList<>();
+		List<Appointment> appointments = Appointment.getPastAppointments(patient.getId());
+		PastAndFutureAppointmentsVM pastNFuture = new PastAndFutureAppointmentsVM();
+		
+		List<AppointmentVM> pastAppointments = new ArrayList<>();
 		for(Appointment apt : appointments) {
 			AppointmentVM vm = AppointmentVM.buildVM(apt);
-			appointmentVMs.add(vm);
+			pastAppointments.add(vm);
 		}
-		return appointmentVMs;
+		pastNFuture.setPastAppointments(pastAppointments);
+		
+		List<Appointment> fappointments = Appointment.getFutureAppointments(patient.getId());
+		List<AppointmentVM> futureAppointments = new ArrayList<>();
+		for(Appointment apt : fappointments) {
+			AppointmentVM vm = AppointmentVM.buildVM(apt);
+			futureAppointments.add(vm);
+		}
+		pastNFuture.setFutureAppointments(futureAppointments);
+		
+		
+		return pastNFuture;
 	}
 	
 	

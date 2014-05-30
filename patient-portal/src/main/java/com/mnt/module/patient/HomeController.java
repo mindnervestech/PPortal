@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import play.libs.Json;
 
@@ -34,6 +35,7 @@ import com.mnt.module.appointment.service.PatientService;
 import com.mnt.module.appointment.service.UserDataService;
 import com.mnt.pojo.User;
 import com.mnt.vm.AppointmentVM;
+import com.mnt.vm.PastAndFutureAppointmentsVM;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
@@ -127,7 +129,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/validate_user", method = RequestMethod.POST)
-	public String validateUser(User user, HttpSession session) {
+	public String validateUser(User user, HttpSession session, final RedirectAttributes redirectAttributes) {
 		Patient patient = userDataService.validatePatientUser(user);
 	    
 	    if(patient == null) {
@@ -139,6 +141,7 @@ public class HomeController {
 	    	return "redirect:newPasswordPage";
 	    } 
 	    
+	    redirectAttributes.addFlashAttribute("user", patient);
     	return "redirect:/";
 	}
 	
@@ -161,7 +164,7 @@ public class HomeController {
 	public @ResponseBody JsonNode getAllAppointments(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String patientCode = (String) session.getAttribute("code");
-		List<AppointmentVM> appointments = appoitmentService.getAllAppointmentsOfPatient(patientCode);
+		PastAndFutureAppointmentsVM appointments = appoitmentService.getAllAppointmentsOfPatient(patientCode);
 		
 		return Json.toJson(appointments);
 	}

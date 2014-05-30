@@ -13,8 +13,8 @@
 		        </tr>
 		    </thead>
 		    
-		    <tbody data-ng-show="appointmentList.length > 0">
-				<tr data-ng-repeat="a in appointmentList">
+		    <tbody data-ng-show="appointmentList.pastAppointments.length > 0">
+				<tr data-ng-repeat="a in appointmentList.pastAppointments">
 		    		<td>{{a.aptId}}</td>
 		    		<td>{{a.aptWith}}</td>
 		    		<td>{{a.aptDate}}</td>
@@ -22,7 +22,7 @@
 		    	</tr>		    
 		    </tbody>
 		    
-		    <tbody data-ng-show="appointmentList.length == 0">
+		    <tbody data-ng-show="appointmentList.pastAppointments.length == 0">
 				<tr class="danger">
 		    		<td colspan="4">Sorry No Results To Display!</td>
 		    	</tr>		    
@@ -30,3 +30,37 @@
 		</table>
 	</div>
 </div>
+
+<div class="getAppNow">
+	<div>
+		<h2><b class="fa fa-th"></b>Future Appointments List</h2>
+	</div>
+	<div class="getAppInner" style="height: auto;">
+		<table class="table table-condensed table-hover table-bordered" >
+  			<thead>
+		        <tr class="warning">
+		          <th>Appointment Id</th>
+				  <th>Appointment With</th>
+		          <th>Date</th>
+		          <th>Time Slot</th>
+		        </tr>
+		    </thead>
+		    
+		    <tbody data-ng-show="appointmentList.futureAppointments.length > 0">
+				<tr data-ng-repeat="a in appointmentList.futureAppointments">
+		    		<td>{{a.aptId}}</td>
+		    		<td>{{a.aptWith}}</td>
+		    		<td>{{a.aptDate}}</td>
+		    		<td>{{a.slot}}</td>
+		    	</tr>		    
+		    </tbody>
+		    
+		    <tbody data-ng-show="appointmentList.futureAppointments.length == 0">
+				<tr class="danger">
+		    		<td colspan="4">Sorry No Results To Display!</td>
+		    	</tr>		    
+		    </tbody>
+		</table>
+	</div>
+</div>
+

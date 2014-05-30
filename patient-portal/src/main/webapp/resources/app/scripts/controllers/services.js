@@ -39,7 +39,7 @@ app.service('AppointmentService',function($resource){
 			urlContext + '/get-all-appointments',
 			{alt:'json',callback:'JSON_CALLBACK'},
 			{
-				get: {method:'GET', isArray:true}
+				get: {method:'GET'}
 			}
 	);
 	

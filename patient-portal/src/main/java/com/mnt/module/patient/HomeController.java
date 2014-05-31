@@ -92,7 +92,7 @@ public class HomeController {
 	}
 		@RequestMapping(value = "/get-family-history-metadata", method = RequestMethod.GET)
 	public @ResponseBody JsonNode getMetadataForHistory() {
-		return Json.toJson(metadataService.getMetadataForHistory());
+		return Json.toJson(metadataService.getMetadataForPatientHistoty());
 	}
 	
 	

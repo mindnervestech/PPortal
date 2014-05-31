@@ -111,8 +111,8 @@ patientPortal.controller('HistoryController', function($scope,MetadataService, P
 
 	$scope.initial = {};
 	$scope.tabsHistories=[
-	   	               { title:'medical history',active: true, content:'/resources/app/patient-views/medical-History.html'},
-	   	               { title:'family history', content:'/resources/app/patient-views/family-History.html' }             
+	   	               { title:'medical history',active: true, content: urlContext +'/resources/app/patient-views/medical-History.html'},
+	   	               { title:'family history', content: urlContext +'/resources/app/patient-views/family-History.html' }             
 	   	                       ];
 	$scope.metadataHistorys = PatientHistory.getHisMetadata.get(function(data) {
 		console.log($scope.metadataHistorys);

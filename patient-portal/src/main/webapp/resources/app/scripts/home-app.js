@@ -16,7 +16,8 @@ angular.module('home-app', [
   'truncate',
   'ui.tinymce',
   'ui.utils',
-  'ngSanitize'
+  'ngSanitize',
+  'uiSlider'
 ])
  .config(function ($routeProvider) {
     $routeProvider
@@ -28,6 +29,7 @@ angular.module('home-app', [
       })
       .when('/appointment-list', {
     	  templateUrl: 'resources/app/views/appointment-list.html',
+    	  controller: 'AppointmentListController'
       });
   })
   .run(function(editableOptions) {

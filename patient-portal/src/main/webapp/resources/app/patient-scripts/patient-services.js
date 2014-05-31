@@ -53,22 +53,23 @@ patientPortal.service('PatientInfo',function($resource){
 });
 
 patientPortal.service('PatientHistory',function($resource){
-	this.saveHistory = $resource('/save-patient-history-details');
-		this.saveFamily = $resource('/save-patient-family-details');
-	this.getHistoryDetails = $resource('/get-patient-history-details',
+	this.saveHistory = $resource(urlContext +'/save-patient-history-details');
+	this.saveFamily = $resource(urlContext +'/save-patient-family-details');
+	
+	this.getHistoryDetails = $resource(urlContext +'/get-patient-history-details',
 			{alt:'json',callback:'JSON_CALLBACK'},
 			{
 				get: {method:'GET'}
 			}
 	);
 	
-	this.getHisMetadata = $resource('/get-history-metadata',
+	this.getHisMetadata = $resource(urlContext +'/get-history-metadata',
 			{alt:'json',callback:'JSON_CALLBACK'},{get: {method:'GET'}
 			}
 	);
 	
 	this.getFamilyDetails = $resource(
-			'/get-patient-family-details',
+			urlContext +'/get-patient-family-details',
 			{alt:'json',callback:'JSON_CALLBACK'},
 			{
 				get: {method:'GET'}
@@ -77,7 +78,7 @@ patientPortal.service('PatientHistory',function($resource){
 	
 	
 		this.GetHistoryMetadata = $resource(
-			'/get-family-history-metadata',
+				urlContext +'/get-family-history-metadata',
 			{alt:'json',callback:'JSON_CALLBACK'},
 			{
 				get: {method:'GET'}

@@ -68,20 +68,45 @@ public class Appointment extends Model {
 	}
 
 	public static Long makeAppointmentOfXForADayY(Long appointmentOf_Id, String appointmentOf_Type, 
-			Long appointmentWith_Id, String appointmentWith_Type, int startMin,int endMin, Calendar day) {
+			Long appointmentWith_Id, String appointmentWith_Type, int startMin,int endMin, Calendar day, String status) {
 		
-		Appointment appointment = new Appointment();
-		appointment.appointmentOf_Id = appointmentOf_Id;
-		appointment.appointmentOf_Type = appointmentOf_Type;
-		appointment.appointmentWith_Id = appointmentWith_Id;
-		appointment.appointmentWith_Type = appointmentWith_Type;
-		appointment.appointmentDate = day.get(Calendar.DATE);
-		appointment.appointmentMonth = day.get(Calendar.MONTH);
-		appointment.appointmentYear = day.get(Calendar.YEAR);
-		appointment.startMin = startMin;
-		appointment.endMin = endMin;
-		appointment.status = SlotStatus.AVAILABLE.name();
-		appointment.save();
+		Appointment partialAppointment = Appointment.getPatialAppointment(startMin, endMin, day, appointmentOf_Id);
+		Appointment appointment = null;
+		
+		if(partialAppointment == null) {
+			appointment = new Appointment();
+			appointment.appointmentOf_Id = appointmentOf_Id;
+			appointment.appointmentOf_Type = appointmentOf_Type;
+			appointment.appointmentWith_Id = appointmentWith_Id;
+			appointment.appointmentWith_Type = appointmentWith_Type;
+			appointment.appointmentDmy = day.getTime();
+			appointment.appointmentDate = day.get(Calendar.DATE);
+			appointment.appointmentMonth = day.get(Calendar.MONTH);
+			appointment.appointmentYear = day.get(Calendar.YEAR);
+			appointment.startMin = startMin;
+			appointment.endMin = endMin;
+			appointment.status = SlotStatus.PARTIAL.name();
+			appointment.save();
+		}
+		
+		else {
+			partialAppointment.setStatus(SlotStatus.BOOKED.name());
+			partialAppointment.update();
+			
+			appointment = new Appointment();
+			appointment.appointmentOf_Id = appointmentOf_Id;
+			appointment.appointmentOf_Type = appointmentOf_Type;
+			appointment.appointmentWith_Id = appointmentWith_Id;
+			appointment.appointmentWith_Type = appointmentWith_Type;
+			appointment.appointmentDmy = day.getTime();
+			appointment.appointmentDate = day.get(Calendar.DATE);
+			appointment.appointmentMonth = day.get(Calendar.MONTH);
+			appointment.appointmentYear = day.get(Calendar.YEAR);
+			appointment.startMin = startMin;
+			appointment.endMin = endMin;
+			appointment.status = SlotStatus.BOOKED.name();
+			appointment.save();
+		}
 		return appointment.id;
 	}
 	
@@ -105,6 +130,17 @@ public class Appointment extends Model {
 		calendar.set(Calendar.SECOND, 0);
 		
 		return find.where().and(Expr.eq("appointmentOf_Id", patientId), Expr.ge("appointmentDmy", calendar.getTime())).findList();
+	}
+
+	public static Appointment getPatialAppointment(int startMin,int endMin, Calendar calendar, Long patientId) {
+		return find.where().eq("appointmentOf_Id", patientId)
+						   .eq("appointmentDate", calendar.get(Calendar.DATE))
+						   .eq("appointmentMonth", calendar.get(Calendar.MONTH))
+						   .eq("appointmentYear", calendar.get(Calendar.YEAR))
+						   .eq("startMin", startMin)
+						   .eq("endMin", endMin)
+						   .eq("status", SlotStatus.PARTIAL.name())
+				.findUnique();
 	}
 
 	public Long getId() {

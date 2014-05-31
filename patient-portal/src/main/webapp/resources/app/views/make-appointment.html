@@ -55,7 +55,7 @@
 			<button 
 			data-ng-disabled="slot.status == 'BOOKED'" 
 			data-ng-click="markAppoitment(slot)" 
-			data-ng-class="(slot.status=='BOOKED') ? 'btn-danger' : (slot.status == 'REQUESTED') ? 'btn-warning' : 'btn-default'" 
+			data-ng-class="(slot.status=='BOOKED') ? 'btn-danger' : (slot.status == 'REQUESTED') ? 'btn-warning' : (slot.status == 'PARTIAL') ? 'btn-success' : 'btn-default'" 
 			data-ng-repeat="slot in slots" >{{slot.startTime}} - {{slot.endTime}}
 			</button>
 		</div>

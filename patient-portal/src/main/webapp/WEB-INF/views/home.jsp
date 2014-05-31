@@ -14,6 +14,7 @@
     <link href="${pageContext.request.contextPath}/resources/SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/jquery.ui.all.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/app/bower_components/angular-slider/angular-slider.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/wemblo.css" rel="stylesheet">
 	
 	<script type="text/javascript">
@@ -268,7 +269,7 @@
 	            <b class="col-sm-3 fa fa-clock-o"></b>
 	            <br class="clear">
 	        </a>
-	        <a class="panel" href="#">
+	        <a class="panel" href="${pageContext.request.contextPath}/#/medHistory">
 	            <h2>Medical History</h2>
 	            <p class="col-sm-9">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
 	            <b class="col-sm-3 fa fa-hospital-o"></b>
@@ -334,6 +335,9 @@
     <script src="${pageContext.request.contextPath}/resources/app/bower_components/angular-ui-tinymce/src/tinymce.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/app/bower_components/angular-ui-utils/ui-utils.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/app/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/app/bower_components/angular-slider/angular-slider.min.js"></script>
+    
     <script src="${pageContext.request.contextPath}/resources/app/bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
     <script src="${pageContext.request.contextPath}/resources/wemblo/js/minified/jquery.ui.effect.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/wemblo/js/minified/jquery.ui.effect-slide.min.js"></script>

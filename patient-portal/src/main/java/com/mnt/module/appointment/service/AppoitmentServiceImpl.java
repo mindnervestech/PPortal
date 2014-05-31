@@ -3,7 +3,6 @@ package com.mnt.module.appointment.service;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -16,14 +15,8 @@ import com.google.common.collect.Range;
 import com.mnt.model.Appointment;
 import com.mnt.model.AppointmentDocument;
 import com.mnt.model.AppointmentDocument.SymptomDocument;
-import com.mnt.model.BodyLocation;
-import com.mnt.model.Doctors;
 import com.mnt.model.KeyValue;
-import com.mnt.model.PainArea;
 import com.mnt.model.Patient;
-import com.mnt.model.RelievedBy;
-import com.mnt.model.WhenThisHappen;
-import com.mnt.model.WorsedBy;
 import com.mnt.module.appointment.SlotStatus;
 import com.mnt.module.appointment.TimeConverter;
 import com.mnt.module.appointment.data.AppointmentRequest;
@@ -55,34 +48,38 @@ public class AppoitmentServiceImpl implements AppoitmentService {
 		
 		for (int startTime = 0,  slot = 1 ; slot <= noOfSlotsInADay ; slot++, startTime = slot * perSlot) {
 			boolean isSlotTaken = false;
-			AppointmentSlotViewModel appointmentSlot;
-			for (Appointment appointment : appointments) {
-				 try {
-					 if(appointment.startMin > appointment.endMin) {
-						 Range.open(startTime, startTime + perSlot).intersection(Range.open(appointment.startMin, minInAday + appointment.endMin));
-						 isSlotTaken = true;
-					 } else {
-						 Range.open(startTime, startTime + perSlot).intersection(Range.open(appointment.startMin, appointment.endMin));
-						 isSlotTaken = true;
+			
+			if(startTime >= 540 && startTime < 1140) {
+				AppointmentSlotViewModel appointmentSlot;
+				Appointment appointment = null;
+				for (int i=0; i< appointments.size(); i++) {
+					 appointment = appointments.get(i);
+					 try {
+						 if(appointment.startMin > appointment.endMin) {
+							 Range.open(startTime, startTime + perSlot).intersection(Range.open(appointment.startMin, minInAday + appointment.endMin));
+							 isSlotTaken = true;
+						 } else {
+							 Range.open(startTime, startTime + perSlot).intersection(Range.open(appointment.startMin, appointment.endMin));
+							 isSlotTaken = true;
+						 }
+					 } catch(Exception exception) {
+						 // Slot is not taken.
+						 isSlotTaken = false;
 					 }
-				 } catch(Exception exception) {
-					 // Slot is not taken.
-					 isSlotTaken = false;
-				 }
-				 
-				 if(isSlotTaken) {
-					 break;
-				 }
+					 
+					 if(isSlotTaken) {
+						 break;
+					 }
+				}
+				
+				if(isSlotTaken) {
+					 appointmentSlot = new AppointmentSlotViewModel(startTime, startTime + perSlot, SlotStatus.valueOf(appointment.status));
+				} else {
+					 appointmentSlot = new AppointmentSlotViewModel(startTime, startTime + perSlot, SlotStatus.AVAILABLE );
+				}
+				
+				slots.add(appointmentSlot);
 			}
-			
-			if(isSlotTaken) {
-				 appointmentSlot = new AppointmentSlotViewModel(startTime, startTime + perSlot, SlotStatus.BOOKED );
-			} else {
-				 appointmentSlot = new AppointmentSlotViewModel(startTime, startTime + perSlot, SlotStatus.AVAILABLE );
-			}
-			
-			slots.add(appointmentSlot);
-			
 		}
 		return slots;
 	}
@@ -93,9 +90,10 @@ public class AppoitmentServiceImpl implements AppoitmentService {
 		cal.setTime(request.bookingRequest.appointmentDate);
 		int	startTime = TimeConverter.convertDayTimeToElapsedMin(request.bookingRequest.slots[0].startTime);
 		int	endTime = TimeConverter.convertDayTimeToElapsedMin(request.bookingRequest.slots[0].endTime);
+		String status = request.bookingRequest.slots[0].status;
 		
 		Long appointmentId = Appointment.makeAppointmentOfXForADayY
-		(request.bookingRequest.loggedUserId,"User",request.bookingRequest.appointmentWith,"Doctor",startTime, endTime, cal);
+		(request.bookingRequest.loggedUserId,"User",request.bookingRequest.appointmentWith,"Doctor",startTime, endTime, cal, status);
 		
 		
 		appointmentDataStore.saveAppointmentAsDocument(convertAppointmentRequestToAppointmentDocument(request,appointmentId));

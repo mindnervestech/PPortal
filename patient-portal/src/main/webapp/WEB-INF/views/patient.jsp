@@ -269,7 +269,7 @@
 	            <b class="col-sm-3 fa fa-clock-o"></b>
 	            <br class="clear">
 	        </a>
-	        <a class="panel" href="#">
+	        <a class="panel" href="${pageContext.request.contextPath}/form/#/medHistory">
 	            <h2>Medical History</h2>
 	            <p class="col-sm-12">Lullam tincidunt dapibus nisi. Aenean porttitor lengths egestas.</p>
 	            <b class="col-sm-3 fa fa-hospital-o"></b>

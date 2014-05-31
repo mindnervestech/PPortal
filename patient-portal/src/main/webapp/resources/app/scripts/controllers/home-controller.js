@@ -43,7 +43,7 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 	
 	
 	$scope.symptomForm = {
-			levelOneArea : 4,
+			levelOneArea : '',
 			levelTwoArea : 1,
 			painArea: 1,
 			whenThisHappen : 1
@@ -210,7 +210,8 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 			slot : [],
 			primaryDoctor: 1,
 			specialty : 1,
-			doctor : 1
+			doctor : 1,
+			severity : 10
 	}; 
 	
 	$scope.slots = [];
@@ -282,6 +283,12 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 	
 	$scope.gotoAppointmentPage = function () {
 		$scope.step = 2;
+	};
+	
+	$scope.severityFormatting = function(value) { 
+		console.log(value);
+		console.log("value"); 
+		return value + " %" ;
 	};
 	
 });

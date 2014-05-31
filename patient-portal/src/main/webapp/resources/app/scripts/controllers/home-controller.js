@@ -343,5 +343,22 @@ app.controller('AppointmentListController',function($scope, $location, $filter, 
 	$scope.appointmentList = AppointmentService.GetAllApps.get({}, function(responce) {
 		console.log(responce);
 	});
+	
+	
+	$scope.ViewDetails= function(aptId) {
+		console.log(aptId);
+		AppointmentService.GetAppointmentsDetails.get({'appointmentId': aptId}, function(data) {
+			console.log(data);
+		$scope.details = data;	
+		
+		
+		});
+		
+	};
+	
+	
+	
+	
+	
 });
 

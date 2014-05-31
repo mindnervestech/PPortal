@@ -67,6 +67,12 @@ public class Appointment extends Model {
 		
 	}
 
+	public static Appointment getAppointmentById(Long appointmentId) {
+		return find.where().
+					eq("id", appointmentId)
+					.findUnique();
+	}
+	
 	public static Long makeAppointmentOfXForADayY(Long appointmentOf_Id, String appointmentOf_Type, 
 			Long appointmentWith_Id, String appointmentWith_Type, int startMin,int endMin, Calendar day, String status) {
 		

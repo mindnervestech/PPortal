@@ -54,4 +54,15 @@ app.service('AppointmentService',function($resource){
 			}
 	);
 	
+	
+	this.GetAppointmentsDetails = $resource(
+			urlContext + '/get-appointments-Details?appointmentId=:appointmentId',
+			{alt:'json',callback:'JSON_CALLBACK'},
+			{
+				get: {method:'GET', params:{appointmentId :'@appointmentId'}}
+			}
+	);
+	
+	
+	
 });

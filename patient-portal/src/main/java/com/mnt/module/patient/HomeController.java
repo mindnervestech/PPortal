@@ -103,6 +103,12 @@ public class HomeController {
 		return Json.toJson(appoitmentService.getAppointmentSlots(doctorId, "Doctor", calendar, 30));
 	}
 	
+	@RequestMapping(value = "/get-appointments-Details", method = RequestMethod.GET)
+	public  @ResponseBody JsonNode GetAppointmentsDetails(@RequestParam("appointmentId") Long appointmentId) {
+		System.out.println("hello"+appointmentId);
+		return Json.toJson(appoitmentService.getAppointmentbyId(appointmentId));
+	}
+	
 	@RequestMapping(value = "/get-pain-metadata", method = RequestMethod.GET)
 	public @ResponseBody JsonNode getPainMetadata(Long location, Long sublocation) {
 		return Json.toJson(metadataService.getPainMetaDataByLocationID(location, sublocation));

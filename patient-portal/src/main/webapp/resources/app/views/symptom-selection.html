@@ -68,7 +68,7 @@
 									<label>Relieved By</label> 
 									<br>
 									<div>
-										<select required="required"
+										<select 
 										data-ng-model="symptomFormArray[currentSymptomFormIndex].relievedBy"  
 										data-ng-change="setRelievedBySelectedText()"
 										data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.relievedBy">
@@ -79,7 +79,7 @@
 								</div>
 								<div class="form-group  col-sm-offset-1 col-sm-5">
 									<label>Made Worse By</label>
-									<select required="required"
+									<select 
 									data-ng-model="symptomFormArray[currentSymptomFormIndex].worseBy"
 									data-ng-change="setMadeWorseBySelectedText()"  
 									data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.worseBy">
@@ -90,7 +90,7 @@
 								<br class="clear">	
 								<div class="form-group">
 									<label class="control-label">Other Symptoms Associated with <b class="textRed" ng-bind="symptomFormArray[currentSymptomFormIndex].selectedLevelOneText"></b></label>
-									<select required="required"
+									<select
 									data-ng-model="symptomFormArray[currentSymptomFormIndex].associatedSymptoms"  
 									data-ng-change="setAssociatedSymptomsSelectedText()"
 									data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.associatedSymptoms">

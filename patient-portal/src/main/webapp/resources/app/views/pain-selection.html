@@ -1,6 +1,6 @@
 			<div class="getAppNow">
 				<div class="botBorder"><h2><b class="fa fa-th"></b> Online Pending Appointments</h2></div>
-				<div class="getAppInner" style="height: 590px;">
+				<div class="getAppInner" style="height: 650px;">
 					
 					<div 
 					data-ng-include src="'resources/app/views/body-manequen.html'" 
@@ -30,7 +30,7 @@
     						
     						<a data-ng-class="step == 2 ? 'active' : ''" href="#"><b>2</b> <br> Make Appointment </a>
     						<a data-ng-class="step == 3 ? 'active' : ''" href="#"><b>3</b> <br> Confirmation </a>
-    						<a data-ng-class="step == 4 ? 'active' : ''" href="#"><b>4</b> <br> Done </a>
+    						<a data-ng-class="step == 4 ? 'active' : ''" href="#" id="custom-Step"><b>4</b> <br> Done </a>
     					
     					</div>
     					<div  data-ng-show="step == 1" data-ng-include src="'resources/app/views/symptom-selection.html'" class="formArea">
@@ -49,3 +49,17 @@
 				</div>
             </div>
             
+<style>
+
+#patientDashboardPage .getAppInner .mnqnRight .steps .sub-step b {
+border: 3px solid #1ED62D;
+background: #39DB3F;
+}
+
+ #custom-Step {
+
+	margin: -16px 0% 0 -4% !important;
+
+} 
+
+</style>

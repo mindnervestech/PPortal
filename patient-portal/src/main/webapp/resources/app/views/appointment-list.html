@@ -10,6 +10,7 @@
 				  <th>Appointment With</th>
 		          <th>Date</th>
 		          <th>Time Slot</th>
+		          <th>Action</th>
 		        </tr>
 		    </thead>
 		    
@@ -19,6 +20,7 @@
 		    		<td>{{a.aptWith}}</td>
 		    		<td>{{a.aptDate}}</td>
 		    		<td>{{a.slot}}</td>
+		    		<td><button type="button" class="btn btn-default btn-xs" data-ng-click="ViewDetails(a.aptId)">View</button></td>
 		    	</tr>		    
 		    </tbody>
 		    
@@ -43,6 +45,7 @@
 				  <th>Appointment With</th>
 		          <th>Date</th>
 		          <th>Time Slot</th>
+		          <th>Action</th>
 		        </tr>
 		    </thead>
 		    
@@ -52,6 +55,8 @@
 		    		<td>{{a.aptWith}}</td>
 		    		<td>{{a.aptDate}}</td>
 		    		<td>{{a.slot}}</td>
+		    		<td><button type="button" class="btn btn-default btn-xs" data-toggle="modal"
+                                       data-target="#myModal" data-ng-click="ViewDetails(a.aptId)">View</button></td>
 		    	</tr>		    
 		    </tbody>
 		    
@@ -64,3 +69,15 @@
 	</div>
 </div>
 
+<!-- <button class="btn-general-b pull-right" data-toggle="modal"
+                                       data-target="#myModal">
+                                       <h4 style="display: inline;">+</h4>
+                                       Create a group
+                               </button> -->
+
+
+<div  id="myModal">
+
+<h2>{{details}}</h2>
+
+</div>

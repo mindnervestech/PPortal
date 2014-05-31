@@ -100,6 +100,14 @@ public class AppoitmentServiceImpl implements AppoitmentService {
 		return appointmentId.toString();
 	}
 	
+	@Override
+	public Appointment getAppointmentbyId(Long appointmentId) {
+		Appointment appointment = Appointment.getAppointmentById(appointmentId);
+		System.out.println("hhhh"+appointment);
+		return appointment;
+	}
+	
+	
 	private AppointmentDocument convertAppointmentRequestToAppointmentDocument(AppointmentRequest request, Long appoitmentId ) {
 		AppointmentDocument appointmentDocument = new AppointmentDocument();
 		appointmentDocument.appointmentDate = request.bookingRequest.appointmentDate;

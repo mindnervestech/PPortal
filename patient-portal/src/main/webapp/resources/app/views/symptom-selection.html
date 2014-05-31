@@ -58,9 +58,7 @@
 								<div class="severity form-group">
 									<b class="fa fa-smile-o"></b>
 									<div class="scrollarArea">
-										<input type="text" class="percent">
-										<slider floor="0" ceiling="100" step="1" ng-model="symptomFormArray[currentSymptomFormIndex].severity" translate="severityFormatting"></slider>
-										<div class="severityScrollar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 50%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 50%;"></a></div>
+										<slider floor="0" ceiling="100" step="1" ng-init="symptomFormArray[currentSymptomFormIndex].severity=0;" ng-model="symptomFormArray[currentSymptomFormIndex].severity" translate="severityFormatting"></slider>
 									</div>
 									<b class="fa fa-frown-o"></b>
 								
@@ -91,7 +89,7 @@
 								
 								<br class="clear">	
 								<div class="form-group">
-									<label class="control-label">Other Symptoms Associated with <b class="textRed">TODO</b></label>
+									<label class="control-label">Other Symptoms Associated with <b class="textRed" ng-bind="symptomFormArray[currentSymptomFormIndex].selectedLevelOneText"></b></label>
 									<select required="required"
 									data-ng-model="symptomFormArray[currentSymptomFormIndex].associatedSymptoms"  
 									data-ng-change="setAssociatedSymptomsSelectedText()"
@@ -107,7 +105,7 @@
                                 		<b class="fa fa-check-circle-o"></b> Add Other Symptom
                                 	</a>
                                 	<a 
-                                		data-ng-show="(currentSymptomFormIndex == 0 && symptomFormArray.length >1) || (currentSymptomFormIndex == 1 && symptomFormArray.length > 2) || (currentSymptomFormIndex == 2 && symptomFormArray.length > 2)" 
+                                		data-ng-show="(currentSymptomFormIndex == 0 && symptomFormArray.length >1) || (currentSymptomFormIndex == 1 && symptomFormArray.length > 2) || (currentSymptomFormIndex == 2 && symptomFormArray.length > 3)" 
                                 		data-ng-click="removeThisSymptom(currentSymptomFormIndex)" class="btn btnOrange">
                                 		<b class="fa fa-check-circle-o"></b> Remove This Symptom
                                 	</a>

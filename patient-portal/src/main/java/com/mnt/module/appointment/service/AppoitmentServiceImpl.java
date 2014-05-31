@@ -131,6 +131,7 @@ public class AppoitmentServiceImpl implements AppoitmentService {
 			document.relievedBy = new KeyValue<Long, String>(sr.relievedBy, sr.selectedRelievedByText /*RelievedBy.getDescriptionById(sr.relievedBy)*/);;
 			document.whenThisHappen = new KeyValue<Long, String>(sr.whenThisHappen,  sr.selectedWhenThisHappenText /*WhenThisHappen.getDescriptionById(sr.whenThisHappen)*/);
 			document.worseBy = new KeyValue<Long, String>(sr.worseBy,  sr.selectedWorseByText /*WorsedBy.getDescriptionById(sr.worseBy)*/);
+			document.severity = sr.severity;
 			documentList.add(document);
 		}
 		appointmentDocument.symptom = documentList; 

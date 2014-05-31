@@ -35,20 +35,24 @@
     	</div>
 	</div>
 	
+		
 	<div class="form-group" >
-	    <pre> <em>{{appointmentForm.appointmentDate | date:'fullDate' }}</em></pre>
-	    <div class="well well-small pull-left" ng-model="appointmentForm.appointmentDate">
-	        <datepicker min="minDate" show-weeks="showWeeks"></datepicker>
-	    </div>
+	   
 	</div>
-	
-	<div class="form-group">
-		<label for="appointmentDate" class="col-sm-2 control-label">Appointment Slots</label>
-		<div class="col-sm-8">
+
+	<div class="form-group" data-ng-show="appointmentForm.primaryDoctor">
+		
+		<div class="col-sm-6">
+			 <div class="well well-small pull-left" ng-model="appointmentForm.appointmentDate">
+	        	<datepicker min="minDate" show-weeks="showWeeks" data-ng-click="chooseDate(appointmentForm.appointmentDate)"></datepicker>
+	    	</div>
+		</div>
+		
+		<div class="col-sm-6">
 			<button 
 			data-ng-disabled="slot.status == 'BOOKED'" 
 			data-ng-click="markAppoitment(slot)" 
-			data-ng-class="(slot.status=='BOOKED') ? 'btn-danger' : (slot.status == 'REQUESTED') ? 'btn-warning' : (slot.status == 'PARTIAL') ? 'btn-success' : 'btn-default'" 
+			data-ng-class="(slot.status=='BOOKED') ? 'btn-danger' : (slot.status == 'REQUESTED' || slot.status == 'PARTIAL') ? 'btn-warning' : 'btn-default'" 
 			data-ng-repeat="slot in slots" >{{slot.startTime}} - {{slot.endTime}}
 			</button>
 		</div>
@@ -59,7 +63,7 @@
 		 <div class="col-sm-3">
 		 	<select class="form-control" id="visitType"  
 					data-ng-model="appointmentForm.visitType" 
-					data-ng-options="a.value as a.text for a in visitTypeOption">
+					data-ng-options="a.value as a.label for a in visitTypes">
 					<option value="">-- Select--</option>
 			</select>
     	</div>

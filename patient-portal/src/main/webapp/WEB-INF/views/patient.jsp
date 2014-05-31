@@ -67,7 +67,7 @@
             <div class="leftGap hidden-lg"></div>
             <div id="navLeft" class="collapse navbar-collapse navbar-left">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="${pageContext.request.contextPath}/#/" ng-click="step = 1;">Home</a></li>
                     <li><a href="#">Tips &amp; Tolls</a></li>
                     <li><a href="#">Allergies</a></li>
                     <li class="dropdown">

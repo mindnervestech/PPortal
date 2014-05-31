@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.mnt.metadata.VisitType;
 import com.mnt.model.Doctors;
 import com.mnt.model.Patient;
 import com.mnt.pojo.User;
 import com.mnt.vm.ApplicationDataVM;
+import com.mnt.vm.DropdownVM;
 
 @Service
 public class UserDataServiceImpl implements UserDataService{
@@ -37,6 +39,16 @@ public class UserDataServiceImpl implements UserDataService{
 		patient.setPatientPassword(newPassword);
 		patient.setTemp(false);
 		patient.update();
+	}
+
+	@Override
+	public List<DropdownVM> getAllVisitTypes() {
+		List<DropdownVM> vms = new ArrayList<>();
+		for(VisitType v: VisitType.getAllVisitTypes()) {
+			DropdownVM vm = new DropdownVM(v.getLabel(), v.getValue());
+			vms.add(vm);
+		}
+		return vms;
 	}
 
 }

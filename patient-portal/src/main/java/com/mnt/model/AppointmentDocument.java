@@ -36,6 +36,7 @@ public class AppointmentDocument {
 		public Long painLasts;
 		public String painLastsUnit;
 		public KeyValue<Long,String> whenThisHappen;
+		public String severity;
 	}
 	
 }

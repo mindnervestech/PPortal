@@ -14,6 +14,7 @@ public class SymptomReported {
 	public Long whenThisHappen;
 	@JsonIgnore
 	public String metadata; 
+	public String severity;
 	
 	//new Fields added
 	public String selectedLevelOneText;

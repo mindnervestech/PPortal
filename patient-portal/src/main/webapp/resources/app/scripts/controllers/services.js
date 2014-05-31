@@ -34,6 +34,17 @@ app.service('DoctorsDataService',function($resource){
 	
 });
 
+app.service('VisitTypeDataService',function($resource){
+	this.GetData = $resource(
+			urlContext + '/get-all-visitTypes',
+			{alt:'json',callback:'JSON_CALLBACK'},
+			{
+				get: {method:'GET', isArray:true}
+			}
+	);
+	
+});
+
 app.service('AppointmentService',function($resource){
 	this.GetAllApps = $resource(
 			urlContext + '/get-all-appointments',

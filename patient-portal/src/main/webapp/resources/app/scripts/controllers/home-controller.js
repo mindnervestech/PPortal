@@ -4,18 +4,11 @@ var app = angular.module('home-app');
 
 ///////////////////////// Search Service Start //////////////////////////////////
 
-app.controller('HomeController',function($scope, $location, $filter, usSpinnerService ,AppointmentService, AppointmentSlotService, MetaDataService, DoctorsDataService){
+app.controller('HomeController',function($scope, $location, $filter, usSpinnerService ,AppointmentService, AppointmentSlotService, MetaDataService, DoctorsDataService, VisitTypeDataService){
 	
 	$scope.symptomFormArray = [];
 	$scope.currentSymptomFormIndex = 0;
-	// this DS will be part of POST Data
-	$scope.appointmentForm = {
-			appointmentDate : '',
-			slot : [],
-			primaryDoctor: 1,
-			specialty : 1,
-			doctor : 1
-	}; 
+	
 	$scope.levelOneOption = [
 	                         {text:"Head" , value:4, sub:[
 	                                                        {text:"Scalp" , value:7},
@@ -56,13 +49,9 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 			whenThisHappen : 1
 	};
 	
-	
-	
-		  
-		  
-	
 	// this DS will be part of POST Data
 	$scope.symptomFormArray.push($scope.symptomForm);
+	
 	
 	$scope.updateLevelTwo = function() {
 		angular.forEach($scope.levelOneOption, function(item){
@@ -154,6 +143,9 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 	};
 	
 	$scope.choosePrimaryDoctor = function() {
+		$scope.appointmentForm.appointmentDate = '';
+		$scope.appointmentForm.slot.length=0;
+		
 		angular.forEach($scope.primaryDoctorOption, function(item){
 			if(item.value == $scope.appointmentForm.primaryDoctor) {
 	        	$scope.appointmentForm.selectedprimaryDoctorText = item.text;
@@ -214,6 +206,17 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 	
 	$scope.doctorsOption = DoctorsDataService.GetData.get();
 	
+	$scope.visitTypes = VisitTypeDataService.GetData.get();
+	
+	// this DS will be part of POST Data
+	$scope.appointmentForm = {
+			appointmentDate : '',
+			slot : [],
+			primaryDoctor: 1,
+			specialty : 1,
+			doctor : 1
+	}; 
+	
 	$scope.slots = [];
 	$scope.checkAvailability = function() {
 		AppointmentSlotService.GetAppointmentSlots.get({date:$filter('date')($scope.appointmentForm.appointmentDate,'yyyyMMdd'),
@@ -240,6 +243,14 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 		}
 	};
 	
+	$scope.chooseDate = function(dateValue) {
+		if(dateValue!=undefined || dateValue!=new Date()) {
+			AppointmentSlotService.GetAppointmentSlots.get({date:$filter('date')(dateValue,'yyyyMMdd'),
+				doctor_id: $scope.appointmentForm.primaryDoctor},function(data) {
+					$scope.slots = data;
+			});
+		}
+	};
 	
 	$scope.bookAppoitment = function () {
 		$scope.appointmentForm.slot = $filter('filter')($scope.slots,{status:"REQUESTED"});
@@ -284,47 +295,45 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 	$scope.gotoAppointmentPage = function () {
 		$scope.step = 2;
 	};
-			  $scope.today = function() {
-		    $scope.appointmentForm.appointmentDate = new Date();
-		  };
-		  $scope.today();
+	
+	$scope.today = function() {
+	    $scope.appointmentForm.appointmentDate = new Date();
+	  };
+	  $scope.today();
 
-		  $scope.toggleWeeks = function () {
-		    $scope.showWeeks = ! $scope.showWeeks;
-		  };
+	  $scope.toggleWeeks = function () {
+	    $scope.showWeeks = ! $scope.showWeeks;
+	  };
 
-		  $scope.clear = function () {
-		    $scope.appointmentDate = null;
-		  };
-		  var myDate = new Date();
-		  myDate.setDate(myDate.getDate() + 3);
-		  // Disable weekend selection
-		  $scope.disabled = function(date, mode) {
-		    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-		  };
+	  $scope.clear = function () {
+	    $scope.appointmentDate = null;
+	  };
+	  var myDate = new Date();
+	  myDate.setDate(myDate.getDate() + 3);
+	  // Disable weekend selection
+	  $scope.disabled = function(date, mode) {
+	    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+	  };
 
-		  $scope.toggleMin = function() {
-		    $scope.minDate = ( $scope.minDate ) ? null : myDate;
-		  };
-		  $scope.toggleMin();
+	  $scope.toggleMin = function() {
+	    $scope.minDate = ( $scope.minDate ) ? null : myDate;
+	  };
+	  $scope.toggleMin();
 
-		  $scope.open = function() {
-		    $timeout(function() {
-		      $scope.opened = true;
-		    });
-		  };
+	  $scope.open = function() {
+	    $timeout(function() {
+	      $scope.opened = true;
+	    });
+	  };
 
-		  $scope.dateOptions = {
-		    'year-format': "'yy'",
-		    'starting-day': 1
-		  };
+	  $scope.dateOptions = {
+	    'year-format': "'yy'",
+	    'starting-day': 1
+	  };
 		  
-		  console.log($scope.appointmentForm.appointmentDate);
-
 	
 	$scope.severityFormatting = function(value) { 
-		console.log(value);
-		console.log("value"); 
+		$("span.innerBar").css('width', value+'%');
 		return value + " %" ;
 	};
 	
@@ -334,6 +343,5 @@ app.controller('AppointmentListController',function($scope, $location, $filter, 
 	$scope.appointmentList = AppointmentService.GetAllApps.get({}, function(responce) {
 		console.log(responce);
 	});
-
-
+});
 

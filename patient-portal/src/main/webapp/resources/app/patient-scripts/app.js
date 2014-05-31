@@ -14,7 +14,7 @@ angular.module('patientPortal',
       controller: 'MenuBarController'
     }).when('/medHistory', {
       templateUrl: urlContext + '/resources/app/patient-views/history-main.html',
-      controller: 'MenuBarController'
+      controller: 'HistoryController'
     }).otherwise({
         redirectTo: '/'
     });

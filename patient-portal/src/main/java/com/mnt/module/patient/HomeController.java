@@ -85,6 +85,17 @@ public class HomeController {
 		return Json.toJson(metadataService.getMetadataForPatients());
 	}
 	
+	@RequestMapping(value = "/get-history-metadata", method = RequestMethod.GET)
+	public @ResponseBody JsonNode getHistoryMetadata() {
+		System.out.println("fffffff");
+		return Json.toJson(metadataService.getMetadataForPatientHistoty());
+	}
+		@RequestMapping(value = "/get-family-history-metadata", method = RequestMethod.GET)
+	public @ResponseBody JsonNode getMetadataForHistory() {
+		return Json.toJson(metadataService.getMetadataForHistory());
+	}
+	
+	
 	@RequestMapping(value = "/get-appointment-slots", method = RequestMethod.GET)
 	public @ResponseBody JsonNode getAppointmentSlots(@RequestParam("date") @DateTimeFormat(pattern="yyyyMMdd") Date date, @RequestParam("doctor_id") Long doctorId) {
 		Calendar calendar = Calendar.getInstance();
@@ -256,5 +267,50 @@ public class HomeController {
 		DBObject dbObject = patientService.getDBObjectOfPatient(collectionName, patient.getId());
 		
 		return Json.toJson((dbObject==null) ? "" : dbObject.get("secInsuranceForm"));
+	}
+	//jai coded
+	
+	@RequestMapping(value = "/save-patient-history-details", method = RequestMethod.POST)
+	public String savePatientHistoryDetails(@RequestBody String patientHistory, HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		System.out.println("jai= "+patient);
+		String collectionName = "patientHist";
+		patientService.saveDataToMongoCollection(collectionName, patientHistory, patient.getId());
+		
+		return "medicalHistoryForm";
+	}
+	
+	@RequestMapping(value = "/get-patient-history-details", method = RequestMethod.GET)
+	public @ResponseBody JsonNode getPatientHistoryDetails(HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		
+		String collectionName = "patientHist";
+		DBObject dbObject = patientService.getDBObjectOfPatient(collectionName, patient.getId());
+		
+		return Json.toJson((dbObject == null)? "" : dbObject.get("historyForm"));
+	}
+@RequestMapping(value = "/save-patient-family-details", method = RequestMethod.POST)
+	public String savePatientFamilyDetails(@RequestBody String patientFamily, HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		
+		String collectionName = "patientFamilyInfo";
+		patientService.saveDataToMongoCollection(collectionName, patientFamily, patient.getId());
+		
+		return "patient";
+	}
+	
+	
+	@RequestMapping(value = "/get-patient-family-details", method = RequestMethod.GET)
+	public @ResponseBody JsonNode getPatientFamilyDetails(HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		
+		String collectionName = "patientFamilyInfo";
+		DBObject dbObject = patientService.getDBObjectOfPatient(collectionName, patient.getId());
+		
+		return Json.toJson((dbObject==null) ? "" : dbObject.get("familyhistory"));
 	}
 }

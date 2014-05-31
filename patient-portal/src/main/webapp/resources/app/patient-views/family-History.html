@@ -1,0 +1,185 @@
+<style>
+.mygrid-wrapper-div {
+   
+    height: 725px;
+}
+</style>
+
+<div class="control-group mygrid-wrapper-div">
+		<div class="thumbnail">
+		<div class="row"> 
+			<div class="col-xs-2 col-md-offset-1">
+				<h4 style="color:black;">family history :</h4>
+			</div>
+			<div class="col-xs-1">
+			<input type="radio" class="tt" name="type" data-ng-model="familyhistory.detail">Detail
+				history Reviewed 
+			</div>
+				<div class="col-xs-1">
+				<input type="radio" class="tt" name="sex" data-ng-model="familyhistory.nochange">No Change 
+			</div>
+		<div class="form-group dropdown col-xs-2">
+		    	<input class="form-control input-sm" type="text"  role="button" data-toggle="dropdown" value="{{familyhistory.from | date:'MMMM-dd-yyyy' || 'From'}}" placeholder="mm/dd/yyyy">
+		    	<span  class="input-sm dropdown-toggle textStyle addon"><i class="glyphicon glyphicon-calendar"></i></span>
+		    		<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		    		<datetimepicker  data-ng-model="familyhistory.from" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
+		  			</ul>
+				 
+		 </div>
+		 <div class="col-xs-1">
+		 <input type="radio" name="type">Updated
+		 </div>
+		 <div class="form-group dropdown col-xs-2" >
+				  <input class="form-control input-sm" type="text"  role="button" data-toggle="dropdown" value="{{familyhistory.to | date:'MMMM-dd-yyyy' || 'From'}}" placeholder="mm/dd/yyyy">
+				  <span  class="input-sm dropdown-toggle textStyle addon"><i class="glyphicon glyphicon-calendar"></i></span>
+				    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+				    		<datetimepicker  data-ng-model="familyhistory.to" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
+				  	</ul>
+	 	</div>
+
+			<input type="radio" name="sex" data-ng-model="familyhistory.ptadopted">Unabtainable pt.adopted
+		</div>
+		</div>
+ 
+		
+		<div class="thumbnail">
+			<div align="center">
+				<h4 style="color:black;">Mother</h4>
+			</div >
+			<div class="row form-group">
+			<div class="col-xs-1 col-md-offset-1">
+				<input type="radio" class="tt" name="alive" data-ng-model="familyhistory.motheralive">Alive
+			</div>
+			<div class="col-xs-1 ">
+				 <input type="text" name="Age" placeholder="Age" class="form-control  input-sm" data-ng-model="familyhistory.motherage"> 
+			</div>
+			<div class="col-xs-1 col-md-offset-1">
+				years <input type="radio" class="tt" name="type" data-ng-model="familyhistory.motheryears">
+			</div>
+			<div class="col-xs-1">
+				healthy <input type="radio" class="tt" name="type" data-ng-model="familyhistory.motherhealthy">
+			</div>
+				<div class="col-xs-1 col-md-offset-1">
+				 <input type="text" name="sh" placeholder="she has"  class="form-control  input-sm" data-ng-model="familyhistory.mothershehas">
+				</div>
+		</div>
+			
+			<div class="row"> 
+			<div class="col-xs-1 col-md-offset-1">
+				<input type="radio" class="tt" name="alive" value="died" data-ng-model="familyhistory.motherdied">Died
+				</div>
+				<div class="col-xs-1">
+				 <input type="text" name="Age" class="form-control input-sm" placeholder="Age" data-ng-model="familyhistory.diedage"> 
+				</div>
+				<div class="col-xs-1 col-md-offset-1">
+				 <input type="text" name="Age"  class="form-control input-sm" placeholder="year Form" data-ng-model="familyhistory.motheryearfrom">
+				</div>
+				<div class="col-xs-2 col-md-offset-2">
+				 <input type="text" name="Age" class="form-control input-sm" placeholder="She also had" data-ng-model="familyhistory.mothershealsohad">
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="thumbnail">
+		<div class="row form-group">
+			<div align="center">
+			      <h4 align="center" style="color:black;">Father</h4>
+			</div>
+			<div class="col-xs-1 col-md-offset-1">
+				<input type="radio" class="tt" name="alive" value="alive" data-ng-model="familyhistory.fatheralive">Alive
+			</div>	
+			   <div class="col-xs-1">
+				 <input type="text" name="Age"class="form-control input-sm" placeholder="Age" data-ng-model="familyhistory.fatherage"> 
+				</div>
+				<div class="col-xs-1 col-md-offset-1">
+				years <input type="radio" class="tt" name="type" value="healthy" data-ng-model="familyhistory.fatheryears">
+				</div>
+				<div class="col-xs-1">
+				healthy <input type="radio" class="tt" name="type" data-ng-model="familyhistory.fatherhealthy">
+				</div>
+				<div class="col-xs-2 col-md-offset-1">
+				 <input type="text" name="sh" value="" class="form-control input-sm" placeholder="He has" data-ng-model="familyhistory.fathershehas">
+				</div>
+			</div>
+			<div class="row">
+			   <div class="col-xs-1 col-md-offset-1">
+				<input type="radio" class="tt" name="alive" value="died" data-ng-model="familyhistory.fatherdied">Died
+				</div>
+				 <div class="col-xs-1">
+				 <input type="text" name="Age" class="form-control input-sm" placeholder="Age" data-ng-model="familyhistory.fatherdiedage"> 
+				</div>
+				 <div class="col-xs-2 col-md-offset-1">
+				<input type="text" name="Age"  class="form-control input-sm" placeholder="year Form" data-ng-model="familyhistory.fatheryearform">
+				</div>
+				 <div class="col-xs-2 col-md-offset-1">
+				 <input type="text" name="Age" class="form-control input-sm" placeholder="He also had" data-ng-model="familyhistory.fatherhealsohad">
+				</div>
+			</div>
+		</div>
+
+	<div ng-app=''>
+		<div ng-controller="tenant">
+		
+		
+			
+			<div class="thumbnail " ng-repeat="cont in contacts">
+				<div class="row form-group">
+					<label class="col-sm-offset-3 col-sm-1">Relations</label>
+	                <div class="col-md-3" >
+						<select class="form-control"  
+							data-ng-model="familyhistory.relation" 
+							data-ng-options="history.label for history in historymetadatas.relations track by history.value">
+							<option value="">---Select----</option>
+	                  	</select>
+	                  	
+	                </div>
+           		</div>
+           		
+				<div class="row form-group">
+				<div class="col-xs-1 col-md-offset-1">
+		 			<input type="radio" class="tt" name="alive" data-ng-model="familyhistory.otheralive">Alive
+		 		</div>
+		 		<div class="col-xs-1">
+				 <input type="text" name="Age" class="form-control input-sm" placeholder="Age" data-ng-model="familyhistory.otherage">  
+				</div>
+				<div class="col-xs-1 col-md-offset-1">
+					years <input type="radio" class="tt" name="type" data-ng-model="familyhistory.otheryears"> 
+				</div>
+				<div class="col-xs-1">
+					healthy <input type="radio"	class="tt" name="type" data-ng-model="familyhistory.otherhealthy">
+				</div>
+				<div class="col-xs-2 col-md-offset-1">
+				 <input type="text" name="sh" class="form-control input-sm" placeholder="Has" data-ng-model="familyhistory.otherhas">
+				</div>
+			   </div>
+				 <div class="row">
+				<div class="col-xs-1 col-md-offset-1">
+			    <input type="radio" class="tt" name="alive" data-ng-model="familyhistory.otherdied">Died 
+			    </div>
+				<div class="col-xs-1 ">
+				 <input type="text" name="Age"  class="form-control input-sm" placeholder="Age" data-ng-model="familyhistory.otherdidage"> 
+				</div>
+				<div class="col-xs-2 col-md-offset-1">
+				<input type="text" name="Age" class="form-control input-sm"  placeholder=" years Form" data-ng-model="familyhistory.otheryearform">
+			    </div>
+			     <div class="col-xs-2 col-md-offset-1">
+			     <input type="text" name="Age" 	class="form-control input-sm" placeholder="Also had" data-ng-model="familyhistory.otheralsohad">
+				</div>
+				</div>
+			
+			
+		</div>
+                		<button class="btn btn-default" ng-click="newContact($event)">+ Add New</button>
+           			<span ng-hide="contacts.length == 1">
+                        <button class="btn btn-default" ng-click="contacts.splice($index, 1)">remove</button>
+                    </span>  
+	</div>
+</div>
+    
+	
+		<div align="center" >
+			<button  class="btn btn-primary btn-xs" data-ng-click="saveFamilyDetails()">save</button>
+			<button class="btn btn-primary btn-xs" onclick="alert('Hello world!')">cancel</button>
+		</div>
+	</div>

@@ -28,7 +28,6 @@ angular.module('home-app', [
       })
       .when('/appointment-list', {
     	  templateUrl: 'resources/app/views/appointment-list.html',
-    	  controller: 'AppointmentListController'
       });
   })
   .run(function(editableOptions) {

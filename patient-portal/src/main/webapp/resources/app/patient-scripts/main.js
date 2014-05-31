@@ -38,10 +38,7 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 	               { title:'Secondary Insurance', content: urlContext + '/resources/app/patient-views/secondary-insurances.html' }
 	             ];
 	
-	$scope.tabsHistories=[
-	               { title:'jai',active: true, content: urlContext + '/resources/app/patient-views/medical-History.html'},
-	               { title:'harshad', content: urlContext + '/resources/app/patient-views/family-History.html' },             
-	                       ];
+	
 	
 	$scope.insurance={
 			companyName : 'Degree'
@@ -58,6 +55,11 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 		
 	});
 	
+	$scope.resetSubscriberForm = function() {
+		console.log($scope.insurance.subscriberForm);
+		angular.copy($scope.initial, $scope.insurance.subscriberForm);
+		console.log($scope.insurance.subscriberForm);
+	};
 	$scope.updateInsuranceForm = function() {
 		console.log($scope.insurance);
 		PatientInfo.savePrimaryInsurance.save({insuranceForm : $scope.insurance}, function() {
@@ -72,11 +74,7 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 		});
 	};
 	
-	$scope.resetSubscriberForm = function() {
-		console.log($scope.insurance.subscriberForm);
-		angular.copy($scope.initial, $scope.insurance.subscriberForm);
-		console.log($scope.insurance.subscriberForm);
-	};
+
 	
 	PatientInfo.getImpDetails.get( function(response) {
 		$scope.importantForm = response;
@@ -107,10 +105,35 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 			console.log("Commited");
 		});
 	};
+});
+
+patientPortal.controller('HistoryController', function($scope,MetadataService, PatientHistory) {
+
+	$scope.initial = {};
+	$scope.tabsHistories=[
+	   	               { title:'medical history',active: true, content:'/resources/app/patient-views/medical-History.html'},
+	   	               { title:'family history', content:'/resources/app/patient-views/family-History.html' }             
+	   	                       ];
+	$scope.metadataHistorys = PatientHistory.getHisMetadata.get(function(data) {
+		console.log($scope.metadataHistorys);
+	});
+	
+	PatientHistory.getHistoryDetails.get( function(response) {
+		$scope.patientHistory = response;
+	});
+
+
+$scope.savePatHistory = function() {
+	$scope.importantForm={};
+	console.log($scope.patientHistory);
+	PatientHistory.saveHistory.save({historyForm : $scope.patientHistory}, function() {
+		console.log("Commited_JAi");
+	});
+};
+/* harshad */
 
 	
-	
-	$scope.activeSmokers = 'activeSmokers';
+	 $scope.activeSmokers = 'activeSmokers';
 	 $scope.passiveSmokers = 'none';
 	 
 	 $scope.nonePassiveExpo='nonePassiveExpo';
@@ -121,6 +144,7 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 	 
 	 $scope.noAlcohol='noAlcohol';
 	 $scope.advancedDirective='setEnabled';
+	 $scope.familyhistory = {};
 	 
 	 $scope.livewith = [{name: "Mom", status:false},
 	                     {name: "Dad",status:false},
@@ -140,7 +164,24 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 		       else{
 		    	   return false;
 		       }
-   };
+    };
+    
+    	$scope.historymetadatas = PatientHistory.GetHistoryMetadata.get(function(data) {
+	console.log(data);
+	});
+    
+    	PatientHistory.getFamilyDetails.get( function(response) {
+		$scope.familyhistory = response;
+	});
+    
+    	$scope.saveFamilyDetails = function() {
+		console.log($scope.familyhistory);
+		PatientHistory.saveFamily.save({familyhistory : $scope.familyhistory}, function() {
+			console.log("Commited");
+		});
+	};
+    
+    
 	$scope.isShownExposure = function(active) {
 	       var isShow = (active !== $scope.nonePassiveExpo);
 	       var notToShow=(active !== $scope.inPastPassiveExpo);
@@ -151,8 +192,7 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 	    	   return false;
 	       }
 	};
-	
-	$scope.isShownDrugs = function(active) {
+		$scope.isShownDrugs = function(active) {
 	       var isShow = (active ===$scope.yes);
 	       var notToShow=(active === $scope.no);
 	       if(isShow){
@@ -170,43 +210,42 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 	      return true; 
 	};
 	
-	$scope.markMyAppoitment = function(slot) {
-			 if(slot.status == true) {
-                slot.status = false;
-          } else if(slot.status == false) {
-                slot.status = true;
-          }
-	};
+
 	
 	$scope.disableDates = function(advancedDirective) {
 			 if(advancedDirective ==='true') {
-              return false;
-         } else {
-       	  return true;
-         }
+               return false;
+          } else {
+        	  return true;
+          }
 	};
 	$scope.recentClicked = function(travelDetails) {
 		if(travelDetails==='recent'){
 			return false;
 		}else {
-     	  return true;
-       }
+      	  return true;
+        }
 	};
 	$scope.pastClicked = function(travelDetails) {
 		if(travelDetails==='past'){
 			return false;
 		}else {
-     	  return true;
-       }
+      	  return true;
+        }
 	};
 	$scope.diseaseExpoClicked = function(travelDetails) {
 		if(travelDetails==='diseaseExpo'){
 			return false;
 		}else {
-     	  return true;
-       }
+      	  return true;
+        }
 	};
-	/* harshad */
-	
-	
+	$scope.markMyAppoitment = function(slot) {
+		 if(slot.status == true) {
+	        slot.status = false;
+	  } else if(slot.status == false) {
+	        slot.status = true;
+	  }
+	};
 });
+

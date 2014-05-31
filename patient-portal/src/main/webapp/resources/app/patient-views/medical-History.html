@@ -1,0 +1,555 @@
+<style>
+.mygrid-wrapper-div {
+    overflow: scroll;
+    height: 725px;
+}
+</style>
+<form class="mygrid-wrapper-div">
+<nav class="thumbnail">
+	<div align="center">
+		<h4 style="color:black;">Personal Details</h4>
+	</div>
+<div class="row">
+<div class="col-xs-3 col-md-offset-2">
+<label for="searchBy"> Language Fluent in:</label>
+		<select class="form-control" ng-model="patientHistory.language" ng-options="g as g.label for g in metadataHistorys.languages track by g.value">
+		</select>
+</div>
+<div class="col-xs-3 col-md-offset-2">
+<label for="features"> Ethnicity:</label>
+		<select class="form-control" ng-model="patientHistory.ethnicity" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-3 col-md-offset-2">
+<label for="duration"> Country Of Origin:</label>
+			<select class="form-control" ng-model="patientHistory.country" ng-options="g as g.label for g in metadataHistorys.countries track by g.value">
+		</select>
+</div>
+<div class="col-xs-3 col-md-offset-2">
+<label for="education" > Education:</label>
+			<select class="form-control" ng-model="patientHistory.education" ng-options="g as g.label for g in metadataHistorys.educations track by g.value">
+		</select>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-3 col-md-offset-2">
+	<label for="searchBy">Degree Conferred:</label>
+			<select class="form-control" ng-model="patientHistory.degree" ng-options="g as g.label for g in metadataHistorys.degreeConferred track by g.value">
+		</select>
+</div>
+<div class="col-xs-3 col-md-offset-2">
+<label for="searchBy">Religion:</label>
+			<select class="form-control" ng-model="patientHistory.religion" ng-options="g as g.label for g in metadataHistorys.religions track by g.value">
+		</select>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-3 col-md-offset-2">
+<label for="features" >Occupation:</label>
+			<select class="form-control" ng-model="patientHistory.occupation" ng-options="g as g.label for g in metadataHistorys.occupations track by g.value">
+		</select>
+</div>
+<div class="col-xs-3 col-md-offset-2">
+	<label for="duration">Status:</label>
+			<select class="form-control" ng-model="patientHistory.status" ng-options="g as g.label for g in metadataHistorys.statuses track by g.value">
+		</select>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-3 col-md-offset-2" >
+	<label for="duration">Occupational Hazard Exposure:</label>
+			<select class="form-control" ng-model="patientHistory.hazExpo" ng-options="g as g.label for g in metadataHistorys.occupationHazards track by g.value">
+		</select>
+	</div>
+</div>
+</nav>
+
+
+<nav class="thumbnail">
+	<div align="center" >
+		<h4 style="color:black;">Tobacco Details</h4>
+	</div>
+	<div class="row">
+		<label class="form-group col-xs-2 col-md-offset-1">
+			Tobacco Usage:
+		</label>
+		<div class="form-group col-xs-1">
+			<input type="radio" ng-model="patientHistory.tobaccoUsage" value="none" > None
+		</div>
+		<div class="form-group col-xs-2">
+			<input type="radio" ng-model="patientHistory.tobaccoUsage" value="activeSmokers" > Active Smoker
+		</div>
+		<div class="form-group col-xs-2">
+			<input type="radio" ng-model="patientHistory.tobaccoUsage" value="quitTobacco" > Quit Tobacco
+		</div>
+		<div class="form-group col-xs-1 ">
+			 <input type="text" ng-model="patientHistory.tobaccoYear1" class="form-control input-sm" placeholder="Years">
+		</div>
+		<div class="form-group col-xs-2 col-md-offset-1">
+			<input type="radio" ng-model="patientHistory.tobaccoUsage" value="inThePastTobacco" > In The Past
+		</div>
+   </div>
+<div ng-show="isShown(patientHistory.tobaccoUsage)">
+<div class="row">
+ 	<label for="tobaccoHabit" class="form-group col-xs-2 col-md-offset-1"> Tobacco Habit:</label>
+	<div class="form-group col-xs-1">
+		<select class="form-control" ng-model="patientHistory.tobHabbit" ng-options="g as g.label for g in metadataHistorys.genders">
+		</select>
+	</div>
+	<div class="form-group col-xs-1 col-md-offset-1">
+	<select class="form-control" ng-model="patientHistory.tobDays" ng-options="g as g.label for g in metadataHistorys.genders">
+		</select>
+	</div>
+	<div class="form-group col-xs-2 col-md-offset-1">
+		<select class="form-control" ng-model="patientHistory.tobAmount" ng-options="g as g.label for g in metadataHistorys.genders">
+		</select>
+	</div>
+	<div class="form-group col-xs-1 col-md-offset-1">
+		 <input type="text" ng-model="patientHistory.tobNoOfYrs" class="form-control input-sm" placeholder="Years">
+	</div>
+</div>
+	
+	
+<div class="row">
+		<label for="passsiveSmokingExposure" class="col-xs-2 col-md-offset-1">Passsive Smoking Exposure:</label>
+	<div class="form-group col-xs-1">
+		<input type="radio" ng-model="patientHistory.tobPasssive" value="nonePassiveExpo" > None
+	</div>
+	<div class="form-group col-xs-2">
+		<input type="radio" ng-model="patientHistory.tobPasssive" value="inPastPassiveExpo" > In The Past
+	</div>
+</div>
+
+<div ng-show="isShownExposure(patientHistory.tobPasssive)">
+  <div class="row">
+			<label for="smokingExpWorkplace" class="col-xs-3 col-md-offset-2"> Smoking exposure at workplace:</label>
+		<div class="form-group col-xs-2 ">
+		   <input type="radio" name="passiveSmokeExpo"> Currently
+	    </div>
+	    <div class="form-group col-xs-2">
+		   <input type="radio" name="passiveSmokeExpo" ng-model="patientHistory.tobSmokeInPast"> In The Past
+	    </div>
+	    <div class="form-group col-xs-1">
+		    <input type="text" class="form-control input-sm" placeholder="Years"  ng-model="patientHistory.tobSmokeInPastYears">
+	     </div>
+	</div>
+	<div class="row">
+			<label for="smokingExpWorkplace" class="col-xs-3 col-md-offset-2"> Smoking exposure  from spouse:</label>
+		<div class="form-group col-xs-2 ">
+		   <input type="radio" name="passiveSmokeExpo" ng-model="patientHistory.tobSmokeSpouceCurr"> Currently
+	    </div>
+	    <div class="form-group col-xs-2">
+		   <input type="radio" name="passiveSmokeExpo" ng-model="patientHistory.tobSmokeExpoInPastSpouse"> In The Past
+	    </div>
+	    <div class="form-group col-xs-1">
+		    <input type="text" class="form-control input-sm" placeholder="Years" ng-model="patientHistory.tobSmokeExpoYearsSpouse">
+	     </div>
+	</div>
+	<div class="row">
+					<label for="smokingExpWorkplace" class="col-xs-3 col-md-offset-2"> Smoking exposure  at partner:</label>
+		<div class="form-group col-xs-2 ">
+		   <input type="radio" name="passiveSmokeExpo" ng-model="patientHistory.tobSmokeExpoAtPartnerCurr"> Currently
+	    </div>
+	    <div class="form-group col-xs-2">
+		   <input type="radio" name="passiveSmokeExpo"  ng-model="patientHistory.tobSmokeExpoAtPartnerInPast"> In The Past
+	    </div>
+	    <div class="form-group col-xs-1">
+		    <input type="text" class="form-control input-sm" placeholder="Years"  ng-model="patientHistory.tobSmokeExpoAtPartnerYears">
+	     </div>
+	</div>
+		<div class="row">
+			<label for="smokingExpWorkplace" class="col-xs-3 col-md-offset-2"> Smoking exposure to parents:</label>
+		<div class="form-group col-xs-2 ">
+		   <input type="radio" name="passiveSmokeExpo" ng-model="patientHistory.tobSmokeExpoAtParentCurr"> Currently
+	    </div>
+	    <div class="form-group col-xs-2">
+		   <input type="radio" name="passiveSmokeExpo" ng-model="patientHistory.tobSmokeExpoAtParentInPast"> In The Past
+	    </div>
+	    <div class="form-group col-xs-1">
+		    <input type="text" class="form-control input-sm" placeholder="Years" ng-model="patientHistory.tobSmokeExpoAtParentYears">
+	     </div>
+		</div> 
+	</div>
+	</div>
+	<div class="row">
+		<label for="attemptsatquitting" class="col-xs-2 col-md-offset-1"> Attempts at quitting:</label>
+		<div class="form-group col-xs-1">
+			<input type="radio" name="attemptsAtQuit" ng-model="patientHistory.attemptsAtQuitNone"> None
+		</div>
+		<div class="form-group col-xs-1">
+			<input type="radio" name="attemptsAtQuit" ng-model="patientHistory.attemptsAtQuitSingle" > Single
+		</div>
+		<div class="form-group col-xs-1">
+			<input type="radio" name="attemptsAtQuit" ng-model="patientHistory.attemptsAtQuitMulti"> Multiple
+		</div>
+		<div class="form-group col-xs-1 col-md-offset-1">
+			<input type="text" class="form-control input-sm" placeholder="Times" ng-model="patientHistory.attemptsAtQuitTimes"> 
+		</div>
+		<div class="form-group col-xs-2 col-md-offset-1">
+			<input type="radio" name="attemptsAtQuit" ng-model="patientHistory.attemptsAtQuitNoDesire"> No desire
+		</div>  
+	</div>
+</nav>
+
+<nav class="thumbnail">
+	<div align="center">
+		<h4 style="color:black;">Alcohol Details</h4>
+	</div>
+	<div class="row">
+	<label for="alcoholUsage" class="form-group col-xs-2 col-md-offset-1"> Alcohol Usage:</label>
+	<div class="form-group col-xs-1">
+		<input type="radio" ng-model="patientHistory.alcohol" value="noAlcohol"> None
+	</div>
+	<div class="form-group col-xs-1">
+		<input type="radio" ng-model="patientHistory.alcohol" value="yesAlcohol"> Yes
+	</div>
+	<div class="form-group col-xs-2">
+			<select class="form-control" ng-model="patientHistory.alcoholFreq" ng-options="g as g.label for g in metadataHistorys.genders">
+		</select>
+	</div>
+	<div class="form-group col-xs-2">
+		<input type="radio" ng-model="patientHistory.alcohol" value="quitDrink"> Quit Drinking
+	</div>
+	<div class="form-group col-xs-1">
+		<input type="text" ng-model="patientHistory.alcoholYears1" class="form-control input-sm" placeholder="Years"> 
+	</div>
+	<div class="form-group col-xs-2">
+		<input type="radio" ng-model="patientHistory.alcohol" value="inPastAlc"> In The Past
+	</div>
+	</div>
+	<div ng-show="isShownAlcohol(patientHistory.alcohol)">
+	<div class="row">
+	<label for="alcoholHabit"  class="form-group col-xs-2 col-md-offset-1"> Alcohol Habit:</label>
+	<div class="form-group col-xs-1">
+		<select class="form-control" ng-model="patientHistory.alcoholHabit" ng-options="g as g.label for g in metadataHistorys.genders">
+		</select>
+	</div>
+	<div class="form-group col-xs-1 col-md-offset-1">
+			<select class="form-control" ng-model="patientHistory.alcoholAmount" ng-options="g as g.label for g in metadataHistorys.genders">
+		</select>
+	</div>
+	<div class="form-group col-xs-1 col-md-offset-1">
+			<select class="form-control" ng-model="patientHistory.alcoholDays" ng-options="g as g.label for g in metadataHistorys.genders">
+		</select>
+	</div>
+	<div class="form-group col-xs-1 col-md-offset-1">
+		<input type="text" class="form-control input-sm" ng-model="patientHistory.alcoholYears2" placeholder="Years">
+	</div>
+	</div>
+	</div>
+	<div class="row">
+		<label for="drinkBeverages" class="form-group col-xs-2 col-md-offset-1"> Drink/Beverages:</label> 
+	<div class="form-group col-xs-1">
+		<input type="radio"  ng-model="patientHistory.drinkBev" value="coffee"> Coffee
+	</div>
+	<div class="form-group col-xs-1">
+		<input type="radio"   ng-model="patientHistory.drinkBev" value="tea"> Tea
+	</div>
+	<div class="form-group col-xs-1">
+		<input type="radio"  ng-model="patientHistory.drinkBev" value="juice"> Juice
+	</div>
+	<div class="form-group col-xs-1">
+			<select class="form-control" ng-model="patientHistory.drinkBev" ng-options="g as g.label for g in metadataHistorys.genders">
+		</select>
+	</div>
+		<div class="form-group col-xs-1 col-md-offset-1">
+		<input type="radio"  value="soda" ng-model="patientHistory.drinkBev"> Soda
+	</div>
+		<div class="form-group col-xs-1">
+		<input type="radio" value="milk" ng-model="patientHistory.drinkBev"> Milk
+	</div>
+		
+	</div>
+	<div class="row">
+	<div class="form-group col-xs-2 col-md-offset-3">
+			<select class="form-control" ng-model="patientHistory.BevAmount" ng-options="g as g.label for g in metadataHistorys.genders">
+		</select>
+	</div>
+		<div class="form-group col-xs-1 col-md-offset-1">
+			<select class="form-control" ng-model="patientHistory.BevUnit" ng-options="g as g.label for g in metadataHistorys.genders">
+		</select>
+	</div>
+	</div>
+</nav>
+
+<nav class="thumbnail">
+	<div align="center">
+		<h4 style="color:black;">Drugs Details</h4>
+	</div>
+	<div class="row">
+	<label for="streetDrugs" class="col-xs-1 col-md-offset-1"> Street Drugs:</label> 
+	<div class="form-group col-xs-1">
+		<input type="radio" ng-model="patientHistory.drugs" value="no" > No
+	</div>
+	<div class="form-group col-xs-1">
+		<input type="radio" ng-model="patientHistory.drugs" value="yes" > Yes
+	</div>
+	<div class="form-group col-xs-2">
+			<select class="form-control"  ng-model="patientHistory.drugsFrequency" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+	</div>
+	<div class="form-group col-xs-1">
+		<input type="radio" name="drugsDetails" ng-model="patientHistory.drugsQuit"> Quit
+	</div>
+	<div class="form-group col-xs-2">
+		<select class="form-control"  ng-model="patientHistory.drugsSpontanos" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+	</div>
+	<div class="form-group col-xs-1">
+		<input type="text" class="form-control input-sm" ng-model="patientHistory.drugsYears" name="drugsDetails" placeholder="Years"> 
+	</div>
+	<div class="form-group col-xs-2">
+		<input type="radio" name="drugsDetails" ng-model="patientHistory.drugsInPast"> In The Past
+	</div>
+	</div>
+	<div ng-show="isShownDrugs(patientHistory.drugs)">
+	<div class="row">
+		<label for="drugsUse" class="col-xs-1 col-md-offset-1"> Drugs use:</label> 
+	<div class="form-group col-xs-2 " >
+	<select class="form-control"  ng-model="patientHistory.drugsTypes" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+	</div>
+		<div class="form-group col-xs-1" >
+		<input type="text" ng-model="patientHistory.drugsFrequencyText" class="form-control input-sm" name="drugsDetails" placeholder="Frequency"> 
+	</div>
+	<div class="form-group col-xs-2 ">
+			<select class="form-control"  ng-model="patientHistory.drugsPer" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+	</div>
+  <div class="form-group col-xs-1">
+		<input type="text" ng-model="patientHistory.drugsNoOfYears" class="form-control input-sm" name="drugsDetails" placeholder="Years"> 
+	</div>
+	</div>
+	</div>
+</nav>
+
+<nav class="thumbnail">
+     <div class="row">
+		<div class="col-xs-2 col-md-offset-3" >
+			<h4 style="color:black;">Marital Status </h4>
+		</div>
+		<div class="form-group col-xs-3">
+			<select class="form-control"  ng-model="patientHistory.maritalStatus" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+	</div>
+	</div>
+	<div class="row">
+		    <div class="form-group col-xs-3 col-md-offset-1">
+		     Widowed in Past:
+			    <input type="radio" ng-model="patientHistory.widowInPast" value="yes"> Yes
+			    <input type="radio" ng-model="patientHistory.widowInPast" value="no"> No
+			</div>
+		<div class="form-group col-xs-3">
+		 Divorsed in Past:
+			<input type="radio" ng-model="patientHistory.divorsedInPast" value="yes"> Yes
+			<input type="radio" ng-model="patientHistory.divorsedInPast" value="no"> No
+		</div>
+		<div class="form-group col-xs-1">
+		<select class="form-control"  ng-model="patientHistory.noOfTimes" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+		</div>
+		<div class="form-group col-xs-2">
+			<select class="form-control"  ng-model="patientHistory.socialSupport" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+		</div>
+	</div>
+	<div class="row" >
+	<label for="livesWith" class="col-xs-2 col-md-offset-1" style="min-height: 60px;">Lives With:</label>
+	 <button ng-model="patientHistory.livesWith" data-ng-repeat="slot in livewith" style="width: 20%;" data-ng-click="markMyAppoitment(slot)"
+		data-ng-class="(slot.status==true) ? 'btn-warning' : 'btn-default'">{{slot.name}}
+     </button>
+	 </div>
+</nav>
+<nav class="navbar navbar-form thumbnail">
+	<div align="center">
+		<h4 style="color:black;">Home Environment and Safety</h4>
+	</div>
+	<div class="row">
+	<div class="col-xs-6">
+	<label for="carbonMonoxideDetectors" class="form-group col-xs-4 col-md-offset-2"> Carbon Monoxide detectors:</label>
+	<div class="form-group">
+		<input type="radio"  ng-model="patientHistory.CarbonMono" value="yes"> Yes
+	</div>
+		<div class="form-group">
+		<input type="radio"  ng-model="patientHistory.CarbonMono" value="no"> No
+	</div>
+	</div>
+	<div class="col-xs-6">
+	<label for="poolSpa" class="col-xs-4"> Pool/Spa:</label>
+		<div class="form-group">
+		<input type="radio" name="poolSpa" ng-model="patientHistory.poolSpa" value="yes"> Yes
+	</div>
+		<div class="form-group">
+		<input type="radio" name="poolSpa" ng-model="patientHistory.poolSpa" value="no"> No
+	</div>
+	</div>
+	</div>
+<div class="row">
+<div class="col-xs-6">
+	<label for="randomInHouse" class="form-group col-xs-4 col-md-offset-2"> Random In the House:</label>
+	<div class="form-group">
+		<input type="radio" ng-model="patientHistory.random" value="yes"> Yes
+	</div>
+		<div class="form-group">
+		<input type="radio"  ng-model="patientHistory.random" value="no"> No
+	</div>
+	</div>
+	<div class="col-xs-6">
+	<label for="firearm" class="col-xs-4"> Firearm:</label>
+		<div class="form-group">
+		<input type="radio" ng-model="patientHistory.firearm" value="yes"> Yes
+	</div>
+		<div class="form-group">
+		<input type="radio"  ng-model="patientHistory.firearm" value="no"> No
+	</div>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-xs-6">
+	<label for="smokeDetectors" class="form-group col-xs-4 col-md-offset-2"> Smoke detectors:</label>
+	<div class="form-group">
+		<input type="radio" value="yes" ng-model="patientHistory.smokeDetector"> Yes
+	</div>
+		<div class="form-group">
+		<input type="radio" value="no" ng-model="patientHistory.smokeDetector"> No
+	</div>
+	</div>
+	<div class="col-xs-6">
+	<label for="homeHeating" class="col-xs-4"> Home Heating:</label>
+		<div class="form-group">
+			<select class="form-control"  ng-model="patientHistory.homeHeating" ng-options="g as g.label for g in metadataHistorys.homeHeatings track by g.value">
+		</select>
+	</div>
+	</div>
+	</div>
+</nav>
+
+<nav class="navbar navbar-form  thumbnail">
+	<div align="center">
+		<h4 style="color:black; ">Travel</h4>
+	</div>
+	<div class="row">
+	
+	<div class="form-group col-xs-2 col-md-offset-1">
+		<input type="radio" ng-model="patientHistory.travels" value="outSideState"> Outside State
+	</div>
+		<div class="form-group col-xs-2">
+		<input type="radio" ng-model="patientHistory.travels" value="outSideCountry"> Outside of Country
+	</div>
+	<div class="form-group col-xs-2">
+		<input type="radio" ng-model="patientHistory.travels" value="diseaseExpo"> Disease exposure
+	</div>
+	<div class="form-group col-xs-3" >
+				<select class="form-control" ng-disabled="diseaseExpoClicked(patientHistory.travels)" ng-model="patientHistory.travelDiseaseTypes" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+	</div>
+	</div>
+	
+<div class="row">
+	<div class="form-group col-xs-2 col-md-offset-1">
+		<input type="radio" ng-model="patientHistory.travels" value="recent"> Recent
+	</div>
+		<div class="form-group col-xs-1">
+		 <input type="text" ng-model="patientHistory.travelText" class="form-control input-sm" name="tobacoDetails" ng-disabled="recentClicked(patientHistory.travels)"> 
+	</div>
+		<div class="form-group col-xs-2">
+			<select class="form-control" ng-disabled="recentClicked(patientHistory.travels)" ng-model="patientHistory.travelRecentDaysWeek" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+	</div>
+	<div class="form-group col-xs-2">
+		 <input type="text"  ng-model="patientHistory.travelRecentDaysWeek" placeholder="Destination:" class="form-control input-sm" name="destination" ng-disabled="recentClicked(patientHistory.travels)"> 
+	</div>
+	<div class="form-group col-xs-1">
+		<input type="text"  ng-model="patientHistory.travelRecentDaysWeek" placeholder="Time Period:" class="form-control input-sm" name="timePeriod" ng-disabled="recentClicked(patientHistory.travels)">
+	</div>
+	<div class="form-group col-xs-2">
+			<select class="form-control" ng-disabled="recentClicked(patientHistory.travels)" ng-model="patientHistory.travelRecentDaysWeekMonthYr" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+	</div>
+	</div>
+	<div class="row">
+	<div class="form-group col-xs-2 col-md-offset-1">
+		<input type="radio" ng-model="patientHistory.travels" value="past"> Past
+	</div>
+		<div class="form-group col-xs-1">
+		 <input type="text" placeholder="" ng-model="patientHistory.travelPastText" class="form-control input-sm" name="tobacoDetails" ng-disabled="pastClicked(patientHistory.travels)"> 
+	</div>
+		<div class="form-group col-xs-2">
+			<select class="form-control" ng-disabled="pastClicked(patientHistory.travels)" ng-model="patientHistory.travelPastDaysWeek" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+	</div>
+		<div class="form-group col-xs-2">
+		 <input type="text" ng-model="patientHistory.travelPastDest" placeholder="Destination:" class="form-control input-sm" name="tobacoDetails" ng-disabled="pastClicked(patientHistory.travels)"> 
+	</div>
+		<div class="form-group col-xs-1">
+		<input type="text" placeholder="Time Period:" ng-model="patientHistory.travelPastTimePeriod" class="form-control input-sm" name="tobacoDetails" ng-disabled="pastClicked(patientHistory.travels)">
+	</div>
+	<div class="form-group col-xs-2">
+	<select class="form-control" ng-disabled="pastClicked(patientHistory.travels)" ng-model="patientHistory.travelPastDaysWeekMonth" ng-options="g as g.label for g in metadataHistorys.ethnicities track by g.value">
+		</select>
+	</div>
+	</div>
+</nav>
+<nav class="navbar navbar-form thumbnail">
+	<div align="center">
+		<h4 style="color:black;">Advanced Directive</h4>
+	</div>
+	<div class="row">
+	
+	<div class="form-group col-xs-1 col-md-offset-1" >
+		<input type="radio"  ng-model="patientHistory.advancedDirective"  value="noneAdvancedDirective"> None
+	</div>
+		<div class="form-group col-xs-2">
+		<input type="radio" ng-model="patientHistory.advancedDirective" value="patientRefuses"> Patient refuses
+	</div>
+			<div class="form-group col-xs-2">
+		<input type="radio" ng-model="patientHistory.advancedDirective" value="durablePower"> Durable Power Of Attorny
+	</div>
+		<div class="form-group col-xs-2">
+		<input type="radio" ng-model="patientHistory.advancedDirective" value="healthCare"> HealthCare proxy
+	</div>
+		<div class="form-group col-xs-2">
+		<input type="radio" ng-model="patientHistory.advancedDirective" value="livingWill"> Living will
+	</div>
+		<div class="form-group">
+		<input type="radio" ng-model="patientHistory.advancedDirective" value="resuscitate"> Do not resuscitate
+	</div>
+	</div>
+	
+<div class="row">
+	<div class="form-group col-xs-2 col-md-offset-1" >
+		<input type="radio" ng-model="patientHistory.advancedDirective" value="true"> Yes
+	</div>
+		 <div class="form-group dropdown col-xs-2" >
+             <input class="form-control input-sm" ng-disabled="disableDates(patientHistory.advancedDirective)" type="text"  role="button" data-toggle="dropdown" value="{{patientHistory.from | date:'MMMM-dd-yyyy' || 'From'}}" placeholder="Date Of Execution">
+               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					 <datetimepicker  data-ng-model="patientHistory.from" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day'}">
+					 </datetimepicker>
+                     </ul>
+         </div> 
+		<div class="form-group dropdown col-xs-2 col-md-offset-1" >
+			<input class="form-control input-sm" type="text"  ng-disabled="disableDates(patientHistory.advancedDirective)" role="button" data-toggle="dropdown" value="{{patientHistory.to | date:'MMMM-dd-yyyy' || 'From'}}" placeholder="Date reviewed">
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+               <datetimepicker  data-ng-model="patientHistory.to" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }">
+               </datetimepicker>
+              </ul> 
+		</div>
+	<div class="form-group col-xs-2 col-md-offset-1">
+	<input type="radio" value="donotLifeSupport" data-ng-model="patientHistory.doNotLifeSupport" > Do not place on life support
+	</div>
+	</div>
+</nav>
+
+<nav class="navbar navbar-form thumbnail">
+<div class="row">
+<label for="others" class="col-xs-2 col-md-offset-1">Others:</label>
+<textarea class="col-md-offset-1 input-xlarge" rows="5" cols="80" data-ng-model="patientHistory.textArea" ></textarea>
+</div>
+</nav>
+<div class="row" align="center">
+<input class="btn btn-primary btn-xs" data-ng-click="savePatHistory()" type="button" value="Ok"> 
+<input class="btn btn-primary btn-xs" type="button" value="Cancel"> 
+</div>
+</form>

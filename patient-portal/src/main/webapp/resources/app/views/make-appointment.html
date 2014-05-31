@@ -35,18 +35,11 @@
     	</div>
 	</div>
 	
-	<div class="form-group dropdown">
-		<label for="appointmentDate" class="col-sm-2 control-label">Appointment Date </label>
-		<div class="col-sm-6">
-		 	<input readonly="readonly" type="text" class="input-sm form-control dropdown-toggle textStyle" 
-		 	data-ng-init="appointmentForm.appointmentDate=''" data-toggle="dropdown" value="{{appointmentForm.appointmentDate | date:'MMMM-dd-yyyy' || 'Choose Appoitment Date'}}" placeholder="Choose Appoitment Date">
-		 	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-		   		<datetimepicker  required="required"  data-ng-model="appointmentForm.appointmentDate" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView: 'day' }"></datetimepicker>
-			</ul>
-		 </div>
-		 <div class="col-sm-2">
-			<button class="btn" data-ng-show="appointmentForm.primaryDoctor.length>0" data-ng-disabled = "appointmentForm.appointmentDate.length > 4" data-ng-click="checkAvailability()"> Check Availability</button>
-		 </div>
+	<div class="form-group" >
+	    <pre> <em>{{appointmentForm.appointmentDate | date:'fullDate' }}</em></pre>
+	    <div class="well well-small pull-left" ng-model="appointmentForm.appointmentDate">
+	        <datepicker min="minDate" show-weeks="showWeeks"></datepicker>
+	    </div>
 	</div>
 	
 	<div class="form-group">

@@ -9,4 +9,5 @@ public interface MetaDataService {
 	MetadataVM getMetadataForPatients();
 	BodyLocation getPainMetaDataByLocationID(Long location, Long sublocation);
 	MedHistoryVM getMetadataForPatientHistoty();
+	MedHistoryVM getMetadataForHistory();
 }

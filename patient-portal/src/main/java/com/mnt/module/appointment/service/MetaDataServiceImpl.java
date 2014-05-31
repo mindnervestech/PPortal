@@ -264,4 +264,10 @@ public class MetaDataServiceImpl implements MetaDataService {
 		
 		return metadata;
 	}
+
+	@Override
+	public MedHistoryVM getMetadataForHistory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

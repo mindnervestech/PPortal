@@ -1,137 +1,135 @@
-<div class="container">
+<div class="row">
 	<div class="form-horizontal">
-		<div class="col-sm-12" data-ng-repeat="symptom in symptomFormArray">
+		<div class="col-sm-6 pull-left" data-ng-repeat="symptom in symptomFormArray">
 			<h3 class="text-danger">Symptom {{$index+1}} Details</h3>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Body Part</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ symptom.selectedLevelOneText }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Body Part</label>
+				<div class="col-sm-8">
+					<span>{{ symptom.selectedLevelOneText }}</span>
 				</div>
 			</div>
-			
+			<!-- 
 			<div class="form-group">
 				<label class="col-sm-offset-1 col-sm-2">Body Sub-part</label>
 				<div class="col-sm-6">
 					<span class="col-sm-12">{{ symptom.selectedLevelTwoText }}</span>
 				</div>
-			</div>
+			</div> -->
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">When does this happen</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ symptom.selectedWhenThisHappenText }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">When does this happen</label>
+				<div class="col-sm-8">
+					<span>{{ symptom.selectedWhenThisHappenText }}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Pain</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ symptom.selectedPainAreaText }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Pain</label>
+				<div class="col-sm-8">
+					<span>{{ symptom.selectedPainAreaText }}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Pain Lasts For</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ symptom.painLasts }} {{symptom.painLastsUnit}}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Pain Lasts For</label>
+				<div class="col-sm-8">
+					<span>{{ symptom.painLasts }} {{symptom.painLastsUnit}}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Relieved By</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ symptom.selectedRelievedByText }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Relieved By</label>
+				<div class="col-sm-8">
+					<span>{{ symptom.selectedRelievedByText }}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Made Worse By</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ symptom.selectedWorseByText }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Made Worse By</label>
+				<div class="col-sm-8">
+					<span>{{ symptom.selectedWorseByText }}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Other Symptoms</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ symptom.selectedAssociatedSymptomsText }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Other Symptoms</label>
+				<div class="col-sm-8">
+					<span>{{ symptom.selectedAssociatedSymptomsText }}</span>
 				</div>
 			</div>
 		</div>
-	</div>
-	
-	<div class="form-horizontal">
-		<div class="col-sm-12">
+		
+		<div class="col-sm-6 pull-left">
 			<h3 class="text-danger">Appointment Details</h3>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Primary Doctor</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{appointmentForm.selectedprimaryDoctorText}}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Primary Doctor</label>
+				<div class="col-sm-8">
+					<span>{{appointmentForm.selectedprimaryDoctorText}}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Speciality Required</label>
-				<div class="col-sm-3">
-					<span class="col-sm-12">{{ appointmentForm.selectedSpecialtyText }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Speciality Required</label>
+				<div class="col-sm-8">
+					<span>{{ appointmentForm.selectedSpecialtyText }}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Doctor's Name</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ appointmentForm.selectedDoctorText }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Doctor's Name</label>
+				<div class="col-sm-8">
+					<span>{{ appointmentForm.selectedDoctorText }}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Appointment Date</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ appointmentForm.appointmentDate | date:'MMMM-dd-yyyy' }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Appointment Date</label>
+				<div class="col-sm-8">
+					<span>{{ appointmentForm.appointmentDate | date:'MMMM-dd-yyyy' }}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Appointment Slot</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12" data-ng-repeat="s in slots| filter:'REQUESTED'">{{s.startTime}}-{{s.endTime}}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Appointment Slot</label>
+				<div class="col-sm-8">
+					<span data-ng-repeat="s in slots| filter:'REQUESTED'">{{s.startTime}}-{{s.endTime}}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Visit Type</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ appointmentForm.visitType }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Visit Type</label>
+				<div class="col-sm-8">
+					<span>{{ appointmentForm.visitType }}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Email</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ appointmentForm.email }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Email</label>
+				<div class="col-sm-86">
+					<span>{{ appointmentForm.email }}</span>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-sm-offset-1 col-sm-2">Notes</label>
-				<div class="col-sm-6">
-					<span class="col-sm-12">{{ appointmentForm.notes }}</span>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4">Notes</label>
+				<div class="col-sm-8">
+					<span>{{ appointmentForm.notes }}</span>
 				</div>
 			</div>
 		</div>
-	</div>
-	
-	<div class="form-group">
-		 <div class="col-sm-2">
-		 	<button  class="btn form-control" data-ng-click="gotoSymptomSelection()">Goto Symptom Selection</button>
-		 </div>
-		 <div class="col-sm-offset-1 col-sm-2">
-		 	<button  class="btn-primary form-control" data-ng-click="gotoAppointmentPage()">Edit Appointment</button>
-		 </div>
-		 <div class="col-sm-offset-1 col-sm-2">
-			<button  class="btn-success form-control" data-ng-click="bookAppoitment()">Book Appointment</button>
-		 </div>	
+		
+		<div class="col-sm-12">
+			 <div class="col-sm-3">
+			 	<button  class="btn form-control" data-ng-click="gotoSymptomSelection()">Goto Symptom Selection</button>
+			 </div>
+			 <div class="col-sm-offset-1 col-sm-2">
+			 	<button  class="btn-primary form-control" data-ng-click="gotoAppointmentPage()">Edit Appointment</button>
+			 </div>
+			 <div class="col-sm-offset-1 col-sm-2">
+				<button  class="btn-success form-control" data-ng-click="bookAppoitment()">Book Appointment</button>
+			 </div>	
+		</div>
 	</div>
 </div>

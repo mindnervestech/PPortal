@@ -10,36 +10,36 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 	$scope.currentSymptomFormIndex = 0;
 	
 	$scope.levelOneOption = [
-	                         {text:"Head" , value:4, sub:[
-	                                                        {text:"Scalp" , value:7},
-	                                                        {text:"Fore Head" , value:8},
-	                                                        {text:"Right Eye" , value:9},
-	                                                        {text:"Left Eye" , value:10},
-	                                                        {text:"Nose" , value:6},
-	                                                        {text:"Right Ear" , value:11},
-	                                                        {text:"Left Ear" , value:12},
-	                                                        {text:"Mouth" , value:5},
-	                                                        {text:"Jaws" , value:13},
-	                                                        {text:"Chin" , value:14},
-	                                                        {text:"Right Face" , value:15},
-	                                                        {text:"Left Face" , value:16}]},
-	                         {text:"Neck(Front)" , value:20, sub:[
-	                                                         {text:"Throat" , value:18},
-	                                                         {text:"Neck" , value:19}]},
-	                         {text:"Chest" , value:21, sub:[
-	                                                         {text:"Left Chest" , value:22},
-	                                                         {text:"Right Chest" , value:23}]},
-	                         {text:"Right Upper Arm" , value:1, sub:[{text:"" , value:""}]},
-	                         {text:"Left Upper  Arm" , value:30, sub:[{text:"" , value:""}]},
-	                         {text:"Abdomen" , value:25, sub:[{text:"" , value:""}]},
-	                         {text:"Right Lower Arm" , value:21, sub:[{text:"" , value:""}]},
-	                         {text:"Left Lower Arm" , value:22, sub:[{text:"" , value:""}]},
-	                         {text:"Pelvis" , value:23, sub:[{text:"" , value:""}]},
-	                         {text:"Right Thigh Area" , value:24, sub:[{text:"" , value:""}]},
-	                         {text:"Left Thigh Area" , value:31, sub:[{text:"" , value:""}]},
-	                         {text:"Right Calf Area" , value:32, sub:[{text:"" , value:""}]},
-	                         {text:"Left Calf Area" , value:28, sub:[{text:"" , value:""}]}
-	                         ];
+		                        {text:"Head" , value:4},
+	                            {text:"Scalp" , value:7},
+	                            {text:"Fore Head" , value:8},
+	                            {text:"Right Eye" , value:9},
+	                            {text:"Left Eye" , value:10},
+	                            {text:"Nose" , value:6},
+	                            {text:"Right Ear" , value:11},
+	                            {text:"Left Ear" , value:12},
+	                            {text:"Mouth" , value:5},
+	                            {text:"Jaws" , value:13},
+	                            {text:"Chin" , value:14},
+	                            {text:"Right Face" , value:15},
+	                            {text:"Left Face" , value:16},
+	                            {text:"Neck(Front)" , value:20},
+                                {text:"Throat" , value:18},
+                                {text:"Neck" , value:19},
+	                            {text:"Chest" , value:21},
+                                {text:"Left Chest" , value:22},
+	                            {text:"Right Chest" , value:23}/*,
+	                            {text:"Right Upper Arm" , value:1},
+	                            {text:"Left Upper  Arm" , value:30},
+	                            {text:"Abdomen" , value:25},
+	                            {text:"Right Lower Arm" , value:21},
+	                            {text:"Left Lower Arm" , value:22},
+	                            {text:"Pelvis" , value:23},
+	                            {text:"Right Thigh Area" , value:24},
+	                            {text:"Left Thigh Area" , value:31},
+		                        {text:"Right Calf Area" , value:32},
+		                        {text:"Left Calf Area" , value:28}*/
+		                     ];
 	
 	
 	$scope.symptomForm = {
@@ -77,7 +77,7 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 		if($scope.levelTwoOption != undefined) {
 			$scope.setLevelTwo($scope.levelTwoOption[0].value,$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea);
 		}
-		
+		getMetadata(id);
 	};
 	
 	$scope.setLevelTwo = function(id, p_id) {
@@ -175,18 +175,26 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 	};
 	function getMetadata(subid){
 		usSpinnerService.spin('loading...');
-		MetaDataService.GetMetaDataByLocation.get({
-						location:$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea,
-						sublocation: subid}, function(data){
-						$scope.symptomFormArray[$scope.currentSymptomFormIndex].metadata = data;
-						$scope.$apply;
-						usSpinnerService.stop('loading...');
-		});
+		if($scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea != undefined){
+			MetaDataService.GetMetaDataByLocation.get({
+				location:$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea,
+				sublocation: subid}, function(data){
+				$scope.symptomFormArray[$scope.currentSymptomFormIndex].metadata = data;
+				$scope.$apply;
+				usSpinnerService.stop('loading...');
+			});
+		}
+		else {
+			$scope.symptomFormArray[$scope.currentSymptomFormIndex].metadata = {};
+			$scope.$apply;
+			usSpinnerService.stop('loading...');
+		}
 	}
 	
 	$scope.addOtherSymptom = function() {
 		$scope.symptomFormArray.push({});
 		$scope.currentSymptomFormIndex++;
+		$scope.symptomFormArray[$scope.currentSymptomFormIndex].severity = 0;
 		$("#imgZoomOutButton").click();
 		console.log($scope.symptomFormArray);
 	};
@@ -339,7 +347,16 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 	};
 	
 	$scope.painLastsOptions = [{ text:1, value:1 }, { text:2, value:2 }, { text:3, value:3 },
-	                           { text:4, value:4 }, { text:5, value:5 }, { text:6, value:6 }];
+	                           { text:4, value:4 }, { text:5, value:5 }, { text:6, value:6 },
+	                           { text:7, value:7 }, { text:8, value:8 }, { text:9, value:9 },
+	                           { text:10, value:10 }, { text:11, value:11 }, { text:12, value:12 },
+	                           { text:13, value:13 }, { text:14, value:14 }, { text:15, value:15 },
+	                           { text:16, value:16 }, { text:17, value:17 }, { text:18, value:18 },
+	                           { text:19, value:19 }, { text:20, value:20 }, { text:21, value:21 },
+	                           { text:22, value:22 }, { text:23, value:23 }, { text:24, value:24 },
+	                           { text:25, value:25 }, { text:26, value:26 }, { text:27, value:27 },
+	                           { text:28, value:28 }, { text:29, value:29 }, { text:30, value:30 }
+	                           ];
 	
 });
 

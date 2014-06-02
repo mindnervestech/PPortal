@@ -1,16 +1,16 @@
 <p><b>LOCATION:</b> Select other Area (s) if needed <br>
     						
     						<form name="form" role="form" id="symptom-form">
-    							<div class="form-group col-sm-6">
+    							<div class="form-group">
 									<label>Level One</label>
 									<select required="required"
 										data-ng-options="area.value as area.text for area in levelOneOption"
-										data-ng-change="updateLevelTwo()" 
+										data-ng-change="setLevelOne(symptomFormArray[currentSymptomFormIndex].levelOneArea)" 
 										data-ng-model="symptomFormArray[currentSymptomFormIndex].levelOneArea">
 										<option value="">-- Select--</option>
 									</select>
 								</div>
-    							<div class="form-group col-sm-5 col-sm-offset-1">
+    							<!-- <div class="form-group col-sm-5 col-sm-offset-1">
 									<label>Level Two</label>
 									<select required="required"
 										data-ng-model="symptomFormArray[currentSymptomFormIndex].levelTwoArea" 
@@ -19,7 +19,7 @@
 										<option value="">-- Select--</option>
 									</select>
 								</div>
-								
+								 -->
 								<p><b>Please use details below to describe <b class="textRed" 
 								ng-bind="symptomFormArray[currentSymptomFormIndex].selectedLevelOneText"></b> symptoms:</b></p>
     						
@@ -51,16 +51,16 @@
 									</div>
 									<div class="col-sm-offset-1 col-sm-6">
 										<div class="btn-group btn-group-xs">
-											<label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'seconds') ? 'active':''">
+											<label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'seconds') ? ['active','selected']:''">
 											    <input style=" display: none; " type="radio" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit" value="seconds" > Seconds
 											  </label>
-											  <label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'minutes') ? 'active':''">
+											  <label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'minutes') ? ['active','selected']:''">
 											    <input style=" display: none; " type="radio" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit" value="minutes" > Minutes
 											  </label>
-											  <label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'hours') ? 'active':''">
+											  <label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'hours') ? ['active','selected']:''">
 											    <input style=" display: none; " type="radio" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit" value="hours"> Hours
 											  </label>
-											  <label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'days') ? 'active':''">
+											  <label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'days') ? ['active','selected'] :''">
 											    <input style=" display: none; " type="radio" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit" value="days"> Days
 											  </label>
 										</div>
@@ -137,5 +137,8 @@
 		font-size: 12px !important;
 	}
 
+	.selected {
+		background: #238C00 !important;
+	}
 
 </style>

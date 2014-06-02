@@ -93,7 +93,7 @@ public class AppoitmentServiceImpl implements AppoitmentService {
 		String status = request.bookingRequest.slots[0].status;
 		
 		Long appointmentId = Appointment.makeAppointmentOfXForADayY
-		(request.bookingRequest.loggedUserId,"User",request.bookingRequest.appointmentWith,"Doctor",startTime, endTime, cal, status);
+		(request.bookingRequest.loggedUserId,"User",request.bookingRequest.appointmentWith,"Doctor",startTime, endTime, cal, status, request.bookingRequest.visitType);
 		
 		
 		appointmentDataStore.saveAppointmentAsDocument(convertAppointmentRequestToAppointmentDocument(request,appointmentId));
@@ -127,6 +127,7 @@ public class AppoitmentServiceImpl implements AppoitmentService {
 				Doctors.getFullNameById(request.bookingRequest.appointmentWith));*/
 		appointmentDocument.endTime = request.bookingRequest.slots[0].endTime;
 		appointmentDocument.startTime = request.bookingRequest.slots[0].startTime;
+		appointmentDocument.notes = request.bookingRequest.notes;
 		
 		List<SymptomDocument> documentList = new ArrayList<>();
 		for(SymptomReported sr : request.symptom) {

@@ -8,13 +8,11 @@ public class MetadataVM {
 	public List<DropdownVM> languages;
 	public List<DropdownVM> epsdts;
 	public List<DropdownVM> ethnicities;
-	public List<DropdownVM> genders;
 	public List<DropdownVM> maritalStatus;
 	public List<DropdownVM> paymentModes;
 	public List<DropdownVM> preferLanguages;
 	public List<DropdownVM> races;
 	public List<DropdownVM> studentStatuses;
-	public List<DropdownVM> yesNos;
 	public List<DropdownVM> countries;
 	public List<DropdownVM> secInsuranceTypes;
 	
@@ -27,10 +25,6 @@ public class MetadataVM {
 	
 	public void setEpsdts(List<DropdownVM> epsdts) {
 		this.epsdts = epsdts;
-	}
-
-	public void setGenders(List<DropdownVM> genders) {
-		this.genders = genders;
 	}
 
 	public void setMaritalStatus(List<DropdownVM> maritalStatus) {
@@ -51,10 +45,6 @@ public class MetadataVM {
 
 	public void setStudentStatuses(List<DropdownVM> studentStatuses) {
 		this.studentStatuses = studentStatuses;
-	}
-
-	public void setYesNos(List<DropdownVM> yesNos) {
-		this.yesNos = yesNos;
 	}
 
 	public void setStatuses(List<DropdownVM> statuses) {

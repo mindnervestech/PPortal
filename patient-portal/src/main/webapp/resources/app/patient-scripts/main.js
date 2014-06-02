@@ -50,10 +50,13 @@ patientPortal.controller('MenuBarController', function($scope,MetadataService, P
 	
 	$scope.importantForm = {};
 	$scope.demographicForm = {};
-	
+	$scope.metadatas= {};
 	$scope.metadatas = MetadataService.GetMetadata.get(function(data) {
 		
 	});
+	
+	$scope.JSmetadata = {"yesNos" : [ {value:"Y", label:"Yes"}, {value:"N", label:"No"} ],
+						 "genders" : [{value:"M", label:"Male"}, {value:"F", label:"Female"}, {value:"O", label:"Other"}]};
 	
 	$scope.resetSubscriberForm = function() {
 		console.log($scope.insurance.subscriberForm);

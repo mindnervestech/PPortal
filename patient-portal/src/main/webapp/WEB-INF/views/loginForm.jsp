@@ -59,7 +59,7 @@
 			<c:if test="${not empty registered}">
 				<p class="registered" class="serif" style="color: #00ff00;">
 					${registered}</p>
-			</c:if>
+			</c:if>   
 			 --%>
 			<form class="form-horizontal" action="${pageContext.request.contextPath}/validate_user" method="post">
 				<fieldset id="login_field">

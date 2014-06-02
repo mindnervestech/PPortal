@@ -86,7 +86,7 @@
 		   
 		    <label class="col-sm-offset-1 col-sm-2">Secondary insurance type</label>
 		     <div class="col-sm-2">
-		     	 <span ng-show="!secInsuranceForm.$visible" editable-select="secInsurance.insuranceTypeCode" e-name="subscriberGender" e-ng-options="g.label as g.label for g in metadatas.genders">{{secInsurance.insuranceTypeCode || 'Not Set'}}</span>
+		     	 <span ng-show="!secInsuranceForm.$visible" editable-select="secInsurance.insuranceTypeCode" e-name="subscriberGender" e-ng-options="g.label as g.label for g in JSmetadata.genders">{{secInsurance.insuranceTypeCode || 'Not Set'}}</span>
 		     </div>
 		</div>
 		
@@ -107,7 +107,7 @@
 			<div class="form-group">
 			  	 <label class="col-sm-offset-1 col-sm-2">Patient relationship to the Subscribe</label>
 			     <div class="col-sm-4">
-			     	 <span ng-show="!secInsuranceForm.$visible" editable-select="secInsurance.subscriberPatientRelation" e-name="subscriberPatientRelation" e-ng-options="g.label as g.label for g in metadatas.genders">{{secInsurance.subscriberPatientRelation || 'Not Set'}}</span>
+			     	 <span ng-show="!secInsuranceForm.$visible" editable-select="secInsurance.subscriberPatientRelation" e-name="subscriberPatientRelation" e-ng-options="g.label as g.label for g in JSmetadata.genders">{{secInsurance.subscriberPatientRelation || 'Not Set'}}</span>
 			     </div>
 			</div>
 			
@@ -136,7 +136,7 @@
 			
 			  	 <label class="col-sm-offset-1 col-sm-2">Subscriber's Gender</label>
 			     <div class="col-sm-2">
-			     	 <span ng-show="!insuranceForm.$visible" editable-select="insurance.subscriberGender" e-name="subscriberGender" e-ng-options="g.label as g.label for g in metadatas.genders">{{insurance.subscriberGender || 'Not Set'}}</span>
+			     	 <span ng-show="!insuranceForm.$visible" editable-select="insurance.subscriberGender" e-name="subscriberGender" e-ng-options="g.label as g.label for g in JSmetadata.genders">{{insurance.subscriberGender || 'Not Set'}}</span>
 			     </div>
 			</div>
 			

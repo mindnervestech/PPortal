@@ -100,13 +100,6 @@ public class MetaDataServiceImpl implements MetaDataService {
 		metadata.setEthnicities(dropdownVM);
 		
 		dropdownVM = new ArrayList<>();
-		for(Gender g : genders) {
-			DropdownVM vm = new DropdownVM(g.getLabel(), g.getValue());
-			dropdownVM.add(vm);
-		}
-		metadata.setGenders(dropdownVM);
-		
-		dropdownVM = new ArrayList<>();
 		for(Languages l : languages) {
 			DropdownVM vm = new DropdownVM(l.getLabel(), l.getValue());
 			dropdownVM.add(vm);
@@ -147,13 +140,6 @@ public class MetaDataServiceImpl implements MetaDataService {
 			dropdownVM.add(vm);
 		}
 		metadata.setStudentStatuses(dropdownVM);
-		
-		dropdownVM = new ArrayList<>();
-		for(YesNos p : yesNos) {
-			DropdownVM vm = new DropdownVM(p.getLabel(), p.getValue());
-			dropdownVM.add(vm);
-		}
-		metadata.setYesNos(dropdownVM);
 		
 		dropdownVM = new ArrayList<>();
 		for(Country c : countries) {

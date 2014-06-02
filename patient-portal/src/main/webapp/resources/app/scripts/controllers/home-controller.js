@@ -46,7 +46,8 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 			levelOneArea : '',
 			levelTwoArea : 1,
 			painArea: 1,
-			whenThisHappen : 1
+			whenThisHappen : 1,
+			painLastsUnit: "seconds" 
 	};
 	
 	// this DS will be part of POST Data
@@ -336,6 +337,9 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 		$("span.innerBar").css('width', value+'%');
 		return value + " %" ;
 	};
+	
+	$scope.painLastsOptions = [{ text:1, value:1 }, { text:2, value:2 }, { text:3, value:3 },
+	                           { text:4, value:4 }, { text:5, value:5 }, { text:6, value:6 }];
 	
 });
 

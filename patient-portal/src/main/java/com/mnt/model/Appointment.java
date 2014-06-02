@@ -77,7 +77,7 @@ public class Appointment extends Model {
 	}
 	
 	public static Long makeAppointmentOfXForADayY(Long appointmentOf_Id, String appointmentOf_Type, 
-			Long appointmentWith_Id, String appointmentWith_Type, int startMin,int endMin, Calendar day, String status) {
+			Long appointmentWith_Id, String appointmentWith_Type, int startMin,int endMin, Calendar day, String status, String visitType) {
 		
 		Appointment partialAppointment = Appointment.getPatialAppointment(startMin, endMin, day, appointmentOf_Id);
 		Appointment appointment = null;
@@ -95,6 +95,7 @@ public class Appointment extends Model {
 			appointment.startMin = startMin;
 			appointment.endMin = endMin;
 			appointment.status = SlotStatus.PARTIAL.name();
+			appointment.visitType = visitType;
 			appointment.save();
 		}
 		
@@ -114,6 +115,7 @@ public class Appointment extends Model {
 			appointment.startMin = startMin;
 			appointment.endMin = endMin;
 			appointment.status = SlotStatus.BOOKED.name();
+			appointment.visitType = visitType;
 			appointment.save();
 		}
 		return appointment.id;
@@ -254,6 +256,14 @@ public class Appointment extends Model {
 
 	public void setAppointmentYear(int appointmentYear) {
 		this.appointmentYear = appointmentYear;
+	}
+
+	public String getVisitType() {
+		return visitType;
+	}
+
+	public void setVisitType(String visitType) {
+		this.visitType = visitType;
 	}
 	
 	

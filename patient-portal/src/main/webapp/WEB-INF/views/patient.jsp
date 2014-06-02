@@ -63,7 +63,7 @@
                 	<span class="sr-only">Toggle navigation</span>
                     <span><b class="fa fa-tasks"></b>DASHBOARD</span>
                 </button>
-            </div>
+            </div> 
             <div class="leftGap hidden-lg"></div>
             <div id="navLeft" class="collapse navbar-collapse navbar-left">
                 <ul class="nav navbar-nav">

@@ -28,6 +28,7 @@
 									<select required="required" data-ng-model="symptomFormArray[currentSymptomFormIndex].whenThisHappen" 
 											data-ng-change="setWhenThisHappenSelectedText()"  
 											data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.whenThisHappen">
+											<option value="">-- Select--</option>
 									</select>
 								</div>
 								<div class="form-group">
@@ -35,24 +36,36 @@
 									<select required="required" data-ng-model="symptomFormArray[currentSymptomFormIndex].painArea" 
 											 data-ng-change="setDescribePainSelectedText()" 	
 									         data-ng-options="area.id as area.description for area in symptomFormArray[currentSymptomFormIndex].metadata.painArea">
+									         <option value="">-- Select--</option>
 									</select>
 									
 								</div>
 								<div class="form-group">
 									<label>Pain Lasts</label> 
 									<br>
-									<div class="col-sm-6">
-										<input required="required" type="number" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLasts">
-									</div>
-									<div class="col-sm-6">
-										<select required="required" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit">
-										  <option value="">-- Select--</option>
-										  <option selected="selected">Seconds</option>
-										  <option>Miniutes</option>
-										  <option>Hours</option>
-										  <option>Days</option>
+									<div class="col-sm-5">
+										<select required="required" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLasts" 
+									         data-ng-options="p.text as p.value for p in painLastsOptions">
+									         <option value="">-- Select--</option>
 										</select>
 									</div>
+									<div class="col-sm-offset-1 col-sm-6">
+										<div class="btn-group btn-group-xs">
+											<label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'seconds') ? 'active':''">
+											    <input style=" display: none; " type="radio" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit" value="seconds" > Seconds
+											  </label>
+											  <label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'minutes') ? 'active':''">
+											    <input style=" display: none; " type="radio" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit" value="minutes" > Minutes
+											  </label>
+											  <label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'hours') ? 'active':''">
+											    <input style=" display: none; " type="radio" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit" value="hours"> Hours
+											  </label>
+											  <label class="btn btn-default" ng-class="(symptomFormArray[currentSymptomFormIndex].painLastsUnit == 'days') ? 'active':''">
+											    <input style=" display: none; " type="radio" data-ng-model="symptomFormArray[currentSymptomFormIndex].painLastsUnit" value="days"> Days
+											  </label>
+										</div>
+									</div>
+									
 								<br class="clear">
 								</div>
 								<div class="severity form-group">
@@ -97,6 +110,7 @@
 										<option value="">-- Select--</option>
 									</select>
 								</div>
+								
                                 <div class="text-center">
                                 	<a data-ng-disabled="form.$invalid" data-ng-click="doneSymptomSelection()" id="btnAddSympStep1" class="btn btnOrange"><b class="fa fa-check-circle-o">
                                 		</b> Done

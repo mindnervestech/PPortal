@@ -126,7 +126,7 @@
 		     
 		      <label class="col-sm-offset-1 col-sm-1">Reminder Language</label>
 		     <div class="col-sm-2 checkbox">
-		         <select class="form-control custom-control" ng-model="importantForm.language" ng-options="language as language.label for language in metadatas.languages">
+		         <select class="form-control custom-control" ng-model="importantForm.language" ng-options="language as language.label for language in metadatas.languages track by language.value">
 					
 				 </select>
 				 
@@ -151,7 +151,7 @@
 		<div class="form-group">
 		  	 <label class="col-sm-offset-1 col-sm-2">Medication History Consent</label>
 		     <div class="col-sm-2">
-		         <select class="form-control custom-control" ng-model="importantForm.consent" ng-options="yn as yn.label for yn in YesNos">
+		         <select class="form-control custom-control" ng-model="importantForm.consent" ng-options="yn as yn.label for yn in JSmetadata.yesNos  track by yn.value">
 				 	
 				 </select>
 				  <p class="help-block">Patient has given consent to obtain medication history.</p>
@@ -160,7 +160,7 @@
 		     
 		     <label class="col-sm-offset-1 col-sm-1">Payment Profile</label>
 		     <div class="col-sm-2">
-				 	<select class="form-control custom-control"  ng-model="importantForm.payment" ng-options="payment as payment.label for payment in metadatas.paymentModes">
+				 	<select class="form-control custom-control"  ng-model="importantForm.payment" ng-options="payment as payment.label for payment in metadatas.paymentModes track by payment.value">
 						
 					</select>
 					 <p class="help-block">*affects default procedure prices</p> 
@@ -204,7 +204,7 @@
 		
 		 <label class="col-sm-offset-1 col-sm-1">Follow-up Reason</label>
 		     <div class="col-sm-2">
-				 <input type="text" class="form-control custom-control" placeholder="Follow-up Reason">
+				 <input type="text" class="form-control custom-control"  data-ng-model="importantForm.followReason" placeholder="Follow-up Reason">
 		     </div>
 		     <span class="help-inline">e.g. 2 week follow-up</span>	
 		

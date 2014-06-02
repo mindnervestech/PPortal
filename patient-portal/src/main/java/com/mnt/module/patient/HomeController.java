@@ -121,7 +121,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/get-all-visitTypes", method= RequestMethod.GET)
 	public @ResponseBody JsonNode getAllVisitTypesData() {
-		return Json.toJson(userDataService.getAllDoctorsData());
+		return Json.toJson(userDataService.getAllVisitTypes());
 	}
 	
 	@RequestMapping(value = "/book-appointment-slots", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

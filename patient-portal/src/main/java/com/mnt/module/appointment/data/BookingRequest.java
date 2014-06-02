@@ -18,6 +18,7 @@ public class BookingRequest {
 	public String selectedSpecialtyText;
 	public String selectedDoctorText;
 	public String email;
+	public String visitType;
 	
 	public Long loggedUserId;
 	public String loggedUserName;

@@ -38,6 +38,9 @@ public class Appointment extends Model {
 	// Any Notes attached with appointment
 	public String notes;
 	
+	//visit type of appointment
+	public String visitType;
+	
 	// Start of Time
 	public int startMin;
 	// Start of End Time

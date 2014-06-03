@@ -109,9 +109,12 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/get-appointments-Details", method = RequestMethod.GET)
-	public  @ResponseBody JsonNode GetAppointmentsDetails(@RequestParam("appointmentId") Long appointmentId) {
-		System.out.println("hello"+appointmentId);
-		return Json.toJson(appoitmentService.getAppointmentbyId(appointmentId));
+	public  @ResponseBody JsonNode GetAppointmentsDetails(@RequestParam("appointmentId") int appointmentId, HttpServletRequest request) {
+		String collectionName = "appointment";
+		DBObject dbObject = patientService.getDBObjectOfappoinment(collectionName, appointmentId);
+		System.out.println("dataa1122"+dbObject);
+		return Json.toJson(dbObject);
+		
 	}
 	
 	@RequestMapping(value = "/get-pain-metadata", method = RequestMethod.GET)

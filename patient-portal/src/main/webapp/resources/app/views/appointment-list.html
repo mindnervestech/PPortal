@@ -20,7 +20,8 @@
 		    		<td>{{a.aptWith}}</td>
 		    		<td>{{a.aptDate}}</td>
 		    		<td>{{a.slot}}</td>
-		    		<td><button type="button" class="btn btn-default btn-xs" data-ng-click="ViewDetails(a.aptId)">View</button></td>
+		    		<td><button type="button" class="btn btn-default btn-xs"  data-toggle="modal"
+                                       data-target="#myModal" data-ng-click="ViewDetails(a.aptId)">View</button></td>
 		    	</tr>		    
 		    </tbody>
 		    
@@ -69,15 +70,120 @@
 	</div>
 </div>
 
-<!-- <button class="btn-general-b pull-right" data-toggle="modal"
-                                       data-target="#myModal">
-                                       <h4 style="display: inline;">+</h4>
-                                       Create a group
-                               </button> -->
 
-
-<div  id="myModal">
-
-<h2>{{details}}</h2>
-
+<div class="modal fade lightbox" id="myModal" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+     
+    <div class="row">
+	<div class="form-horizontal">
+		<div class="col-sm-6 pull-left" data-ng-repeat="s1 in details.symptom" style="padding-left: 8%;">
+			<h3 class="text-danger">Symptom {{$index+1}} Details</h3>
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">Body Part</label>
+				<div class="col-sm-4">
+					<span>{{s1.levelOne.value}}</span>
+				</div>
+			</div>
+		
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">When does this happen</label>
+				<div class="col-sm-4">
+					<span>{{ s1.whenThisHappen.value }}</span>
+				</div>
+			</div>
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">Pain</label>
+				<div class="col-sm-4">
+					<span>{{ s1.painArea.value }}</span>
+				</div>
+			</div>
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">Pain Lasts For</label>
+				<div class="col-sm-4">
+					<span>{{ s1.painLasts}}</span>
+				</div>
+			</div>
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">Relieved By</label>
+				<div class="col-sm-4">
+					<span>{{ s1.relievedBy.value }}</span>
+				</div>
+			</div>
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">Made Worse By</label>
+				<div class="col-sm-4">
+					<span>{{ s1.worseBy.value }}</span>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="col-sm-6 pull-left" style="padding-left: 8%;">
+			<h3 class="text-danger">Appointment Details</h3>
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">Primary Doctor</label>
+				<div class="col-sm-4">
+					<span>{{details.primaryDoctor.value}}</span>
+				</div>
+			</div>
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">Speciality Required</label>
+				<div class="col-sm-4">
+					<span>{{details.specialty.value }}</span>
+				</div>
+			</div>
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">Doctor's Name</label>
+				<div class="col-sm-4">
+					<span>{{details.doctor.value }}</span>
+				</div>
+			</div>
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">Appointment Date</label>
+				<div class="col-sm-4">
+					<span>{{ details.appointmentDate  | date:'MMMM-dd-yyyy' }}</span>
+				</div>
+			</div>
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">Appointment Slot</label>
+				<div class="col-sm-4">
+					<span>{{details.startTime}}-{{details.endTime}}</span>
+				</div>
+			</div>
+			
+			
+			<div class="form-group col-sm-12">
+				<label class="col-sm-6">Notes</label>
+				<div class="col-sm-4">
+					<span>{{ details.notes }}</span>
+				</div>
+			</div>
+		</div>
+		
+		
+	</div>
+</div> 
+   
+			
+    <!--  <h2>{{details}}</h2> -->
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
+      </div>
+      
+    </div>
+  </div>
 </div>

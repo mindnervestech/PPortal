@@ -12,33 +12,55 @@
 					data-ng-if = "step == 1 && loggedUserGender=='FEMALE'" class="tabing_part col-sm-4">
 					</div>
 					
-					<div data-ng-class="step == 1 ? 'col-sm-8' : 'col-sm-12'" class="mnqnRight">
+					<div data-ng-class="step == 1 ? 'col-sm-8' : 'col-sm-12'" class="mnqnRight" style="width: 100%;">
 					<div id="step1" class="stepsbg" style="display: block;">
 						<br class="clear">
-    					<div class="steps">
-    						<hr>
-    						<a href="#" data-ng-class="step == 1 ? 'active' : ''"><b>1</b> <br> Select Symptoms</a>
-    						
-    						<a data-ng-show = "step == 1" class="sub-step" 
-    						data-ng-click="setcurrentSymptomFormIndex(0)" href="#" ><b>a</b> <br></a>
-    						
-    						<a data-ng-show = "step == 1" class="sub-step" 
-    						data-ng-class="(symptomFormArray.length < 2) ? 'sub-step-disabled' : ''" 
-    						data-ng-click="(symptomFormArray.length < 2) ? '' : setcurrentSymptomFormIndex(1)" href="#" ><b>b</b> <br></a>
-    						
-    						<a data-ng-show = "step == 1" class="sub-step sub-step-last"
-    						data-ng-class="(symptomFormArray.length < 3) ? 'sub-step-disabled' : ''" 
-    						data-ng-click="(symptomFormArray.length < 3) ? '' : setcurrentSymptomFormIndex(2)" href="#" ><b>c</b> <br></a>
-    						
-    						<a data-ng-class="step == 2 ? 'active' : ''" href="#"><b>2</b> <br> Make Appointment </a>
-    						<a data-ng-class="step == 3 ? 'active' : ''" href="#"><b>3</b> <br> Confirmation </a>
-    						<a data-ng-class="step == 4 ? 'active' : ''" href="#" id="custom-Step"><b>4</b> <br> Done </a>
     					
+    					<div style="float: left;width: 100%;">
+	    					<div class="steps row" >
+	    						<hr style="width: 77%;margin-left: 5%;margin-top: 2%;">
+	    						<div style="float: left; width: 21%;margin-top: -1.5%;">
+		    						<a href="#" data-ng-class="step == 1 ? 'active' : ''"><b>1</b> <br> Select Symptoms</a>
+		    						
+		    						<div style="float: left;margin-top: 7%;">
+			    						 <a data-ng-show = "step == 1"  class="sub-step" 
+			    						data-ng-click="setcurrentSymptomFormIndex(0)" href="#" ><b>a</b> <br></a>
+			    						
+			    						<a data-ng-show = "step == 1" class="sub-step" style="min-width: 0%;"
+			    						data-ng-class="(symptomFormArray.length < 2) ? 'sub-step-disabled' : ''" 
+			    						data-ng-click="(symptomFormArray.length < 2) ? '' : setcurrentSymptomFormIndex(1)" href="#" ><b>b</b> <br></a>
+			    						
+			    						<a data-ng-show = "step == 1" class="sub-step sub-step-last" style="min-width: 0%;"
+			    						data-ng-class="(symptomFormArray.length < 3) ? 'sub-step-disabled' : ''" 
+			    						data-ng-click="(symptomFormArray.length < 3) ? '' : setcurrentSymptomFormIndex(2)" href="#" ><b>c</b> <br></a>
+		    						 </div>
+	    						 </div>
+	    						<a data-ng-class="step == 2 ?  'active' : ''" href="#" style="width: 21%;"><b>2</b> <br> Make Appointment </a>
+	    						<a data-ng-class="step == 3 ? 'active' : ''" href="#" style="width: 21%;"><b>3</b> <br> Confirmation </a>
+	    						<a data-ng-class="step == 4 ? 'active' : ''" href="#" style="width: 21%;" id="custom-Step"><b>4</b> <br> Done </a>
+	    					
+	    					</div>
     					</div>
-    					<div  data-ng-show="step == 1" data-ng-include src="'resources/app/views/symptom-selection.html'" class="formArea">
-    					</div>
+    					<div>
+	    				
+	    					<div style="width: 48%; float: left; ">
+		    					<div 
+									data-ng-include src="'resources/app/views/body-manequen.html'" 
+									data-ng-show = "step == 1" class="tabing_part col-sm-10" style="width: 81.333333%;">
+								</div> 
+	    					</div>
+	    					<div style="width: 48%; float: left; ">
+		    					<div  data-ng-show="step == 1" data-ng-include src="'resources/app/views/symptom-selection.html'" class="formArea">
+		    					</div>
+	    					</div>
+	    					
+	    					<!-- <div  data-ng-show="step == 1" data-ng-include src="'resources/app/views/symptom-selection.html'" class="formArea">
+	    					</div> -->
 					    
-					    <div data-ng-show="step == 2" data-ng-include src="'resources/app/views/make-appointment.html'" class="formArea">
+					    </div>
+					    
+					    <div data-ng-show="step == 2" data-ng-include src="'resources/app/views/make-appointment.html'" class="formArea" style="float: left;width: 100%;
+					    ">
 					    </div>
 					    
 					    <div data-ng-show="step == 3" data-ng-include src="'resources/app/views/confirm-appointment.html'" class="formArea">
@@ -58,10 +80,27 @@ border: 3px solid #1ED62D;
 background: #39DB3F;
 }
 
+
+#patientDashboardPage .getAppInner .mnqnRight .steps hr {
+	border-bottom: 3px solid #198CFE;
+
+}
+
+#patientDashboardPage .getAppInner .mnqnRight .steps hr {
+margin: 0% 0% 0% 0%;
+}
+
+#patientDashboardPage .getAppInner .mnqnRight .steps a {
+float: left;
+margin: -2% 2% 0% 1%;
+text-align: center;
+line-height: 2em;
+}
+
+
+/* 
  #custom-Step {
-
-	margin: -16px 0% 0 -4% !important;
-
-} 
-
+	margin: -2% 20% 0 12% !important;
+}  
+*/
 </style>

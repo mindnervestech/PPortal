@@ -51,4 +51,15 @@ public class PatientServiceImpl implements PatientService{
 		DBObject dbObject = dbCollection.findOne(whereQuery);
 		return dbObject;
 	}
+
+	
+	@Override
+	public DBObject getDBObjectOfappoinment(String collectionName, int appointmentId) {
+		DBCollection dbCollection = null;
+		dbCollection = mongoTemplate.getCollection(collectionName);
+		BasicDBObject whereQuery = new BasicDBObject();
+		whereQuery.put("appoitmentId", appointmentId);
+		DBObject dbObject = dbCollection.findOne(whereQuery);
+		return dbObject;
+	}
 }

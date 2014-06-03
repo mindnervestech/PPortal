@@ -4,12 +4,17 @@ var app = angular.module('home-app');
 
 ///////////////////////// Search Service Start //////////////////////////////////
 
-app.controller('HomeController',function($scope, $location, $filter, usSpinnerService ,AppointmentService, AppointmentSlotService, MetaDataService, DoctorsDataService, VisitTypeDataService){
+app.controller('HomeController',function($scope, $location, $filter, usSpinnerService ,AppointmentService, AppointmentSlotService, 
+							BodyPartsService,MetaDataService, DoctorsDataService, VisitTypeDataService){
 	
 	$scope.symptomFormArray = [];
 	$scope.currentSymptomFormIndex = 0;
 	
-	$scope.levelOneOption = [
+	$scope.loggedUserGender = gender;
+	
+	$scope.levelOneOption = BodyPartsService.GetData.get(); 
+	console.log($scope.levelOneOption);
+		/*[
 		                        {text:"Head" , value:4},
 	                            {text:"Scalp" , value:7},
 	                            {text:"Fore Head" , value:8},
@@ -28,7 +33,7 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
                                 {text:"Neck" , value:19},
 	                            {text:"Chest" , value:21},
                                 {text:"Left Chest" , value:22},
-	                            {text:"Right Chest" , value:23}/*,
+	                            {text:"Right Chest" , value:23},
 	                            {text:"Right Upper Arm" , value:1},
 	                            {text:"Left Upper  Arm" , value:30},
 	                            {text:"Abdomen" , value:25},
@@ -38,8 +43,8 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 	                            {text:"Right Thigh Area" , value:24},
 	                            {text:"Left Thigh Area" , value:31},
 		                        {text:"Right Calf Area" , value:32},
-		                        {text:"Left Calf Area" , value:28}*/
-		                     ];
+		                        {text:"Left Calf Area" , value:28}
+		                     ];*/
 	
 	
 	$scope.symptomForm = {
@@ -73,10 +78,11 @@ app.controller('HomeController',function($scope, $location, $filter, usSpinnerSe
 	
 	$scope.setLevelOne = function(id) {
 		$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea = id;
-		$scope.updateLevelTwo();
-		if($scope.levelTwoOption != undefined) {
+		console.log($scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea);
+		//$scope.updateLevelTwo();
+		/*if($scope.levelTwoOption != undefined) {
 			$scope.setLevelTwo($scope.levelTwoOption[0].value,$scope.symptomFormArray[$scope.currentSymptomFormIndex].levelOneArea);
-		}
+		}*/
 		getMetadata(id);
 	};
 	

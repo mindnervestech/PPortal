@@ -19,7 +19,9 @@
 	
 	<script type="text/javascript">
 		var urlContext = "${pageContext.request.contextPath}";
-		console.log(urlContext);
+		
+		var gender = "${user.gender}";
+		console.log(gender);
 	</script>
 	
 	<style type="text/css">

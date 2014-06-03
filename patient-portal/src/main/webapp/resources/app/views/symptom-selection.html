@@ -4,7 +4,7 @@
     							<div class="form-group">
 									<label>Level One</label>
 									<select required="required"
-										data-ng-options="area.value as area.text for area in levelOneOption"
+										data-ng-options="area.value as area.label for area in levelOneOption"
 										data-ng-change="setLevelOne(symptomFormArray[currentSymptomFormIndex].levelOneArea)" 
 										data-ng-model="symptomFormArray[currentSymptomFormIndex].levelOneArea">
 										<option value="">-- Select--</option>

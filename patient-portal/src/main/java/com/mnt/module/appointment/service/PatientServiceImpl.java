@@ -51,5 +51,4 @@ public class PatientServiceImpl implements PatientService{
 		DBObject dbObject = dbCollection.findOne(whereQuery);
 		return dbObject;
 	}
-
 }

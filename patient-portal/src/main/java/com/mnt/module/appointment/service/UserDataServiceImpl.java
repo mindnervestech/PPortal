@@ -6,11 +6,13 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.mnt.metadata.VisitType;
+import com.mnt.model.BodyLocation;
 import com.mnt.model.Doctors;
 import com.mnt.model.Patient;
 import com.mnt.pojo.User;
 import com.mnt.vm.ApplicationDataVM;
 import com.mnt.vm.DropdownVM;
+import com.mnt.vm.DropdownVMForLevelOne;
 
 @Service
 public class UserDataServiceImpl implements UserDataService{
@@ -51,4 +53,14 @@ public class UserDataServiceImpl implements UserDataService{
 		return vms;
 	}
 
+
+	@Override
+	public List<DropdownVMForLevelOne> getAllBodyParts(String gender) {
+		List<BodyLocation> bodyLocations = BodyLocation.getAllBodyParts(gender);
+		List<DropdownVMForLevelOne> dropdownVMs = new ArrayList<>();
+		for(BodyLocation b : bodyLocations) {
+			dropdownVMs.add(new DropdownVMForLevelOne(b.name, b.id));
+		}
+		return dropdownVMs;
+	}
 }

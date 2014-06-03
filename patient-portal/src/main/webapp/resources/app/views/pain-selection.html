@@ -4,11 +4,13 @@
 					
 					<div 
 					data-ng-include src="'resources/app/views/body-manequen.html'" 
-					data-ng-show = "step == 1" class="tabing_part col-sm-4">
-					  
-							
+					data-ng-if = "step == 1 && loggedUserGender =='MALE'" class="tabing_part col-sm-4">
 					</div>
 					
+					<div 
+					data-ng-include src="'resources/app/views/girl-body-manequen.html'" 
+					data-ng-if = "step == 1 && loggedUserGender=='FEMALE'" class="tabing_part col-sm-4">
+					</div>
 					
 					<div data-ng-class="step == 1 ? 'col-sm-8' : 'col-sm-12'" class="mnqnRight">
 					<div id="step1" class="stepsbg" style="display: block;">

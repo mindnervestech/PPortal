@@ -18,6 +18,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -65,10 +66,14 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(HttpSession session) {
+	public String home(HttpSession session, ModelMap map) {
 		if(session.getAttribute("code") == null) {
 	    	return "redirect:login";
 	    }
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		map.put("user", patient);
+		
 		return "home";
 	}
 	
@@ -124,6 +129,19 @@ public class HomeController {
 		return Json.toJson(userDataService.getAllVisitTypes());
 	}
 	
+	@RequestMapping(value="/get-all-body-parts", method= RequestMethod.GET)
+	public @ResponseBody JsonNode getAllBodyParts(HttpSession session) {
+		String patientCode = (String) session.getAttribute("code");
+		Patient patient = Patient.getPatientByCode(patientCode);
+		
+		if(patient == null) {
+			Map<String,String> map = new HashMap<>();
+			map.put("noResult", "noResult");
+			return Json.toJson(map);
+		}
+		return Json.toJson(userDataService.getAllBodyParts(patient.gender));
+	}
+	
 	@RequestMapping(value = "/book-appointment-slots", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody JsonNode bookAppointmentSlots (@RequestBody AppointmentRequest request,HttpSession session) throws ParseException {
 		String patientCode = (String) session.getAttribute("code");
@@ -163,7 +181,6 @@ public class HomeController {
 	    	return "redirect:newPasswordPage";
 	    } 
 	    
-	    redirectAttributes.addFlashAttribute("user", patient);
     	return "redirect:/";
 	}
 	

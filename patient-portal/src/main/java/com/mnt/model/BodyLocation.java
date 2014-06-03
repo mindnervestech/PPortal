@@ -1,5 +1,6 @@
 package com.mnt.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -39,6 +40,9 @@ public class BodyLocation  extends Model {
 	
 	@Column(name="containedin_id")
 	public Long containedin;
+	
+	@Column(name="gender_type")
+	public String genderType;
 	
 	@Cacheable(value="defaultCache#0", key="#id")
 	public static String getNameById(Long id) {
@@ -103,5 +107,19 @@ public class BodyLocation  extends Model {
 		this.group = group;
 	}
 	
+
+	public String getGenderType() {
+		return genderType;
+	}
+	public void setGenderType(String genderType) {
+		this.genderType = genderType;
+	}
+	
+	public static List<BodyLocation> getAllBodyParts(String gender) {
+		ArrayList<String> list = new ArrayList<>();
+		list.add(gender);
+		list.add("BOTH");
+		return find.where().in("genderType", list).findList();
+	}
 	
 }

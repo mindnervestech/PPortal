@@ -17,6 +17,8 @@ public class Patient extends Model{
 	@Id
 	public Long id;
 	
+	public String gender;
+	
 	public String firstname;
 	
 	public String lastname;
@@ -75,6 +77,14 @@ public class Patient extends Model{
 		this.patientPassword = patientPassword;
 	}
 	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	public static Patient getPatientByCodeAndPassword(User user) {
 		Patient patient = find.where().and(Expr.eq("patientId", user.patientCode),
 				Expr.eq("patientPassword", user.patientPassword)).findUnique();

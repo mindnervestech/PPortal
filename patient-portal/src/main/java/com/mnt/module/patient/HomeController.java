@@ -112,7 +112,6 @@ public class HomeController {
 	public  @ResponseBody JsonNode GetAppointmentsDetails(@RequestParam("appointmentId") int appointmentId, HttpServletRequest request) {
 		String collectionName = "appointment";
 		DBObject dbObject = patientService.getDBObjectOfappoinment(collectionName, appointmentId);
-		System.out.println("dataa1122"+dbObject);
 		return Json.toJson(dbObject);
 		
 	}

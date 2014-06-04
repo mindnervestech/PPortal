@@ -88,8 +88,7 @@
             </beans:list>
         </beans:property>
     </beans:bean> 
-	
-	
-	
-	
+
+	<beans:import resource="classpath:spring-quartz.xml"/>
+	<beans:import resource="classpath:spring-mail.xml"/>
 </beans:beans>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="emailTask" class="com.mnt.quartz.EmailTask" />
+ 
+	<!-- Spring Quartz -->
+	<bean name="jobSchedular" class="org.springframework.scheduling.quartz.JobDetailBean">
+ 
+		<property name="jobClass" value="com.mnt.quartz.QuartzScheduler" />
+ 
+		<property name="jobDataAsMap">
+		  <map>
+			<entry key="emailTask" value-ref="emailTask" />
+		  </map>
+		</property>
+ 
+	</bean>
+ 
+	<!-- Cron Trigger, run every 5 seconds -->
+	<bean id="cronTrigger" 
+                class="org.springframework.scheduling.quartz.CronTriggerBean">
+ 
+		<property name="jobDetail" ref="jobSchedular" />
+		<property name="cronExpression" value="0 0 1 * * ?" />
+ 
+	</bean>
+ 
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="jobSchedular" />
+			</list>
+		</property>
+ 
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

@@ -249,6 +249,27 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- Spring 3 dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+	 
+		<!-- QuartzJobBean in spring-context-support.jar -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+	 
+		<!-- Spring + Quartz need transaction -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
 		<dependency>
      		<groupId>com.google.code.simple-spring-memcached</groupId>
      		<artifactId>spring-cache</artifactId>

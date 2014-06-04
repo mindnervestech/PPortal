@@ -153,6 +153,21 @@ public class Appointment extends Model {
 						   .eq("status", SlotStatus.PARTIAL.name())
 				.findUnique();
 	}
+	
+	public static List<Appointment> getAllAppointmentsXsDayAfter(int... days) {
+		
+		List<Date> dates = new ArrayList<>();
+		for(int day : days) {
+			Calendar calendarDayAfter = Calendar.getInstance();
+			calendarDayAfter.set(Calendar.HOUR_OF_DAY, 0);
+			calendarDayAfter.set(Calendar.MINUTE, 0);
+			calendarDayAfter.set(Calendar.SECOND, 0);
+			calendarDayAfter.add(Calendar.DATE, day);
+			dates.add(calendarDayAfter.getTime());
+		}
+		List<Appointment> appointments = Appointment.find.where().in("appointmentDmy", dates).findList();
+		return appointments;
+	}
 
 	public Long getId() {
 		return id;

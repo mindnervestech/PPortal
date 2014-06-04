@@ -1,5 +1,6 @@
 package com.mnt.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -29,6 +30,9 @@ public class Patient extends Model{
 	
 	public String patientPassword;
 
+	@Column(unique=true, nullable=false)
+	public String patientEmail;
+	
 	public Long getId() {
 		return id;
 	}
@@ -85,6 +89,14 @@ public class Patient extends Model{
 		this.gender = gender;
 	}
 
+	public String getPatientEmail() {
+		return patientEmail;
+	}
+
+	public void setPatientEmail(String patientEmail) {
+		this.patientEmail = patientEmail;
+	}
+
 	public static Patient getPatientByCodeAndPassword(User user) {
 		Patient patient = find.where().and(Expr.eq("patientId", user.patientCode),
 				Expr.eq("patientPassword", user.patientPassword)).findUnique();
@@ -93,6 +105,11 @@ public class Patient extends Model{
 	
 	public static Patient getPatientByCode(String code) {
 		Patient patient = find.where().eq("patientId", code).findUnique();
+		return patient;
+	}
+	
+	public static Patient getPatientById(Long Id) {
+		Patient patient = find.where().eq("id", Id).findUnique();
 		return patient;
 	}
 }
